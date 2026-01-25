@@ -93,11 +93,11 @@ const Experience = () => {
                   whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <p className="text-4xl md:text-5xl font-display font-medium text-foreground mb-2">
+                  <p className="text-stat text-foreground mb-2">
                     {stat.value}
                   </p>
-                  <p className="font-semibold text-foreground mb-2">{stat.label}</p>
-                  <p className="text-sm text-muted-foreground">{stat.description}</p>
+                  <p className="text-label text-foreground mb-2">{stat.label}</p>
+                  <p className="body-small">{stat.description}</p>
                 </motion.div>
               </AnimatedSection>
             ))}
@@ -122,14 +122,14 @@ const Experience = () => {
                 >
                   <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-accent" />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
-                    <h3 className="text-xl font-display font-medium text-foreground">
+                    <h3 className="heading-small text-foreground">
                       {exp.role}
                     </h3>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="body-small">
                       {exp.period}
                     </span>
                   </div>
-                  <p className="text-sm font-medium text-accent mb-3">{exp.company}</p>
+                  <p className="text-label text-accent-foreground mb-3">{exp.company}</p>
                   <p className="body-default text-muted-foreground">{exp.description}</p>
                 </motion.div>
               </AnimatedSection>
@@ -155,14 +155,14 @@ const Experience = () => {
                   whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-lg font-display font-medium text-foreground mb-4">
+                  <h3 className="heading-small text-foreground mb-4">
                     {category.title}
                   </h3>
                   <ul className="space-y-2">
                     {category.skills.map((skill) => (
                       <li 
                         key={skill} 
-                        className="text-sm text-muted-foreground flex items-center gap-2"
+                        className="body-small flex items-center gap-2"
                       >
                         <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0" />
                         {skill}

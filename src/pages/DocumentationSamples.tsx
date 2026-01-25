@@ -86,7 +86,7 @@ const DocumentationSamples = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <h3 className="heading-subsection text-foreground">{sample.title}</h3>
+                    <h3 className="heading-card text-foreground">{sample.title}</h3>
                     <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full">
                       {sample.type}
                     </span>

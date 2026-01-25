@@ -26,7 +26,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link 
             to="/" 
-            className="font-display text-xl font-medium text-foreground hover:text-foreground/80 transition-colors"
+            className="text-logo text-foreground hover:text-foreground/80 transition-colors"
           >
             Portfolio
           </Link>
@@ -38,7 +38,7 @@ export function Navigation() {
                   <Link
                     to={link.href}
                     className={cn(
-                      "text-sm font-medium transition-colors duration-200 link-underline",
+                      "text-nav transition-colors duration-200 link-underline",
                       location.pathname === link.href
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
@@ -85,7 +85,7 @@ function MobileNav() {
                 <Link
                   to={link.href}
                   className={cn(
-                    "block text-base font-medium py-2 transition-colors",
+                    "block body-default font-medium py-2 transition-colors",
                     location.pathname === link.href
                       ? "text-foreground"
                       : "text-muted-foreground"
