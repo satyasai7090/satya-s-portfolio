@@ -1,0 +1,181 @@
+import { PageLayout } from "@/components/layout/PageLayout";
+import { SectionHeader } from "@/components/shared/SectionHeader";
+import { AnimatedSection, AnimatedText } from "@/components/shared/AnimatedSection";
+
+const impactStats = [
+  { value: "500+", label: "Documents Delivered", description: "User guides, API docs, release notes, and compliance materials" },
+  { value: "60%", label: "Onboarding Reduction", description: "Average reduction in user/developer onboarding time" },
+  { value: "15+", label: "Product Launches", description: "Documentation delivered for major product releases" },
+  { value: "100%", label: "Audit Compliance", description: "Zero findings in regulatory documentation audits" },
+];
+
+const experience = [
+  {
+    role: "Senior Technical Writer",
+    company: "Enterprise SaaS Company",
+    period: "2023 – Present",
+    description: "Lead technical writer for core platform products. Own end-to-end documentation for API products, developer portals, and enterprise integrations. Mentor junior writers and establish documentation standards.",
+  },
+  {
+    role: "Technical Writer",
+    company: "Healthcare Technology Startup",
+    period: "2021 – 2023",
+    description: "Sole documentation owner for clinical software platform. Built compliance documentation framework meeting FDA and EU regulatory requirements. Reduced documentation-related release delays by 80%.",
+  },
+  {
+    role: "Technical Writer (Contract)",
+    company: "Various Technology Clients",
+    period: "2020 – 2021",
+    description: "Contract documentation work for B2B software companies. Projects included API documentation, user guides, and knowledge base development.",
+  },
+];
+
+const skillCategories = [
+  {
+    title: "Documentation Types",
+    skills: [
+      "API & Developer Documentation",
+      "User Guides & Tutorials",
+      "Regulatory & Compliance Docs",
+      "Release Notes & Changelogs",
+      "Knowledge Base Articles",
+      "Internal Process Documentation",
+    ],
+  },
+  {
+    title: "Tools & Technologies",
+    skills: [
+      "Markdown / MDX",
+      "Git & GitHub",
+      "OpenAPI / Swagger",
+      "Docs-as-Code Workflows",
+      "Confluence & Notion",
+      "XML / DITA (Structured Authoring)",
+    ],
+  },
+  {
+    title: "Collaboration & Process",
+    skills: [
+      "Agile / Scrum Environments",
+      "Cross-functional Team Work",
+      "Technical SME Interviews",
+      "Documentation Reviews",
+      "Style Guide Development",
+      "Content Strategy",
+    ],
+  },
+];
+
+const Experience = () => {
+  return (
+    <PageLayout>
+      {/* Hero Section */}
+      <section className="section-padding">
+        <div className="container-narrow">
+          <AnimatedText>
+            <p className="label-caps mb-4">Background</p>
+          </AnimatedText>
+          <AnimatedText delay={0.1}>
+            <h1 className="heading-display text-foreground mb-6">
+              Experience & Skills
+            </h1>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="body-large">
+              Three years of delivering documentation that drives clarity, 
+              reduces support burden, and meets enterprise standards.
+            </p>
+          </AnimatedText>
+        </div>
+      </section>
+
+      {/* Professional Impact */}
+      <section className="section-padding surface-warm">
+        <div className="container-wide">
+          <SectionHeader
+            label="Impact"
+            title="Professional Impact"
+            centered
+          />
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {impactStats.map((stat, index) => (
+              <AnimatedSection key={stat.label} delay={index * 0.1}>
+                <div className="card-elevated text-center h-full">
+                  <p className="text-4xl md:text-5xl font-display font-medium text-foreground mb-2">
+                    {stat.value}
+                  </p>
+                  <p className="font-semibold text-foreground mb-2">{stat.label}</p>
+                  <p className="text-sm text-muted-foreground">{stat.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Timeline */}
+      <section className="section-padding">
+        <div className="container-narrow">
+          <SectionHeader
+            label="Experience"
+            title="Professional History"
+          />
+          <div className="mt-10 space-y-8">
+            {experience.map((exp, index) => (
+              <AnimatedSection key={exp.role} delay={index * 0.1}>
+                <div className="relative pl-8 border-l-2 border-border pb-8 last:pb-0">
+                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-accent" />
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
+                    <h3 className="text-xl font-display font-medium text-foreground">
+                      {exp.role}
+                    </h3>
+                    <span className="text-sm text-muted-foreground">
+                      {exp.period}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-accent mb-3">{exp.company}</p>
+                  <p className="body-default text-muted-foreground">{exp.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className="section-padding surface-warm">
+        <div className="container-wide">
+          <SectionHeader
+            label="Skills"
+            title="Core Skills & Tools"
+            centered
+          />
+          <div className="mt-12 grid md:grid-cols-3 gap-8">
+            {skillCategories.map((category, index) => (
+              <AnimatedSection key={category.title} delay={index * 0.1}>
+                <div className="card-elevated h-full">
+                  <h3 className="text-lg font-display font-medium text-foreground mb-4">
+                    {category.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {category.skills.map((skill) => (
+                      <li 
+                        key={skill} 
+                        className="text-sm text-muted-foreground flex items-center gap-2"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+    </PageLayout>
+  );
+};
+
+export default Experience;
