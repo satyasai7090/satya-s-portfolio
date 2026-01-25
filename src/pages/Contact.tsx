@@ -114,8 +114,8 @@ const Contact = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-8 h-8 text-accent" />
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="heading-small text-foreground mb-2">
                       Message Sent!
