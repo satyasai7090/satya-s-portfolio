@@ -50,7 +50,9 @@ const Contact = () => {
                 </h2>
                 <div className="space-y-6">
                   <motion.a 
-                    href="mailto:sarah.mitchell@example.com"
+                    href="mailto:satyasai7090@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-4 group"
                     whileHover={{ x: 6, scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
@@ -62,13 +64,13 @@ const Contact = () => {
                     <div>
                       <p className="body-small">Email</p>
                       <p className="text-label text-foreground group-hover:text-accent-foreground transition-colors">
-                        sarah.mitchell@example.com
+                        satyasai7090@gmail.com
                       </p>
                     </div>
                   </motion.a>
                   
                   <motion.a 
-                    href="https://linkedin.com/in/sarahmitchell"
+                    href="https://www.linkedin.com/in/satya-sai-pasupuleti-7090pj"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 group"
@@ -82,7 +84,7 @@ const Contact = () => {
                     <div>
                       <p className="body-small">LinkedIn</p>
                       <p className="text-label text-foreground group-hover:text-accent-foreground transition-colors">
-                        linkedin.com/in/sarahmitchell
+                        linkedin.com/in/satya-sai-pasupuleti-7090pj
                       </p>
                     </div>
                   </motion.a>

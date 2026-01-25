@@ -150,21 +150,21 @@ const Index = () => {
               {/* Professional Links */}
               <div className="flex items-center gap-6">
                 {[{
-                href: "https://linkedin.com",
+                href: "https://www.linkedin.com/in/satya-sai-pasupuleti-7090pj",
                 icon: Linkedin,
                 label: "LinkedIn",
                 external: true
               }, {
-                href: "mailto:sarah@example.com",
+                href: "mailto:satyasai7090@gmail.com",
                 icon: Mail,
                 label: "Email",
-                external: false
+                external: true
               }, {
-                href: "/resume.pdf",
+                href: "https://drive.google.com/file/d/1EbbJkW94T3EXT_Y3dWEcT66H5fRRSkov/view",
                 icon: FileText,
                 label: "Resume",
-                external: false
-              }].map((link, i) => <motion.a key={link.label} href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-200" custom={i} variants={linkVariants} initial="hidden" animate="visible" whileHover={{
+                external: true
+              }].map((link, i) => <motion.a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-200" custom={i} variants={linkVariants} initial="hidden" animate="visible" whileHover={{
                 x: 4,
                 scale: 1.02
               }}
