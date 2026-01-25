@@ -1,39 +1,26 @@
+import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { SectionHeader } from "@/components/shared/SectionHeader";
-import { AnimatedSection, AnimatedText } from "@/components/shared/AnimatedSection";
+import { PageHero } from "@/components/shared/PageHero";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { Check } from "lucide-react";
 
 const About = () => {
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <AnimatedText>
-            <p className="label-caps mb-4">About</p>
-          </AnimatedText>
-          <AnimatedText delay={0.1}>
-            <h1 className="heading-display text-foreground mb-6">
-              How I Work
-            </h1>
-          </AnimatedText>
-          <AnimatedText delay={0.2}>
-            <p className="body-large">
-              I specialize in creating clear, accurate, and user-focused documentation 
-              for complex enterprise software environments.
-            </p>
-          </AnimatedText>
-        </div>
-      </section>
+      <PageHero
+        label="About"
+        title="How I Work"
+        description="I specialize in creating clear, accurate, and user-focused documentation for complex enterprise software environments."
+      />
 
       {/* Professional Overview */}
       <section className="section-padding surface-warm">
         <div className="container-narrow">
-          <SectionHeader
-            label="Overview"
-            title="Professional Background"
-          />
-          <AnimatedSection className="mt-10">
+          <AnimatedSection>
+            <p className="label-caps mb-3">Overview</p>
+            <h2 className="heading-section text-foreground mb-8">Professional Background</h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
             <div className="prose prose-lg">
               <p className="body-default text-muted-foreground leading-relaxed mb-6">
                 With over three years of experience in technical writing, I've had the privilege 
@@ -55,13 +42,17 @@ const About = () => {
       {/* How I Work */}
       <section className="section-padding">
         <div className="container-narrow">
-          <SectionHeader
-            label="Approach"
-            title="How I Approach Documentation"
-          />
-          <div className="mt-10 space-y-8">
-            <AnimatedSection delay={0}>
-              <div className="card-elevated">
+          <AnimatedSection>
+            <p className="label-caps mb-3">Approach</p>
+            <h2 className="heading-section text-foreground mb-8">How I Approach Documentation</h2>
+          </AnimatedSection>
+          <div className="space-y-8">
+            <AnimatedSection delay={0.1}>
+              <motion.div
+                className="card-elevated"
+                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <h3 className="heading-subsection text-foreground mb-4">Structure First</h3>
                 <p className="body-default text-muted-foreground">
                   Every documentation project begins with a clear understanding of the information 
@@ -69,11 +60,15 @@ const About = () => {
                   before writing a single word. This ensures consistency across all deliverables 
                   and makes future updates manageable.
                 </p>
-              </div>
+              </motion.div>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.1}>
-              <div className="card-elevated">
+            <AnimatedSection delay={0.15}>
+              <motion.div
+                className="card-elevated"
+                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <h3 className="heading-subsection text-foreground mb-4">User-Centered Writing</h3>
                 <p className="body-default text-muted-foreground">
                   I write with the end user in mind—whether that's a developer integrating an API, 
@@ -81,11 +76,15 @@ const About = () => {
                   Understanding the audience's technical level and goals shapes every decision, 
                   from terminology to task structure.
                 </p>
-              </div>
+              </motion.div>
             </AnimatedSection>
             
             <AnimatedSection delay={0.2}>
-              <div className="card-elevated">
+              <motion.div
+                className="card-elevated"
+                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <h3 className="heading-subsection text-foreground mb-4">Collaborative Process</h3>
                 <p className="body-default text-muted-foreground">
                   Great documentation requires close collaboration with product managers, engineers, 
@@ -93,7 +92,7 @@ const About = () => {
                   in sprint ceremonies, and maintain open channels for feedback and review throughout 
                   the development cycle.
                 </p>
-              </div>
+              </motion.div>
             </AnimatedSection>
           </div>
         </div>
@@ -102,11 +101,11 @@ const About = () => {
       {/* What I Bring */}
       <section className="section-padding surface-warm">
         <div className="container-narrow">
-          <SectionHeader
-            label="Value"
-            title="What I Bring to Teams"
-          />
-          <div className="mt-10 grid md:grid-cols-2 gap-6">
+          <AnimatedSection>
+            <p className="label-caps mb-3">Value</p>
+            <h2 className="heading-section text-foreground mb-8">What I Bring to Teams</h2>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               "Reliability in complex, high-stakes environments",
               "Meticulous attention to accuracy and detail",
@@ -115,13 +114,17 @@ const About = () => {
               "Acting lead experience on documentation initiatives",
               "Recognition for documentation excellence",
             ].map((item, index) => (
-              <AnimatedSection key={index} delay={index * 0.05}>
-                <div className="flex items-start gap-3 p-4">
+              <AnimatedSection key={index} delay={0.1 + index * 0.05}>
+                <motion.div
+                  className="flex items-start gap-3 p-4"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
                     <Check className="w-3.5 h-3.5 text-accent" />
                   </div>
                   <p className="body-default text-foreground">{item}</p>
-                </div>
+                </motion.div>
               </AnimatedSection>
             ))}
           </div>

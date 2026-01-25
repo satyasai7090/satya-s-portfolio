@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { AnimatedSection, AnimatedText } from "@/components/shared/AnimatedSection";
+import { PageHero } from "@/components/shared/PageHero";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,25 +32,11 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <AnimatedText>
-            <p className="label-caps mb-4">Get in Touch</p>
-          </AnimatedText>
-          <AnimatedText delay={0.1}>
-            <h1 className="heading-display text-foreground mb-6">
-              Let's Connect
-            </h1>
-          </AnimatedText>
-          <AnimatedText delay={0.2}>
-            <p className="body-large">
-              Open to new opportunities, collaborations, and interesting 
-              documentation challenges. I'd love to hear from you.
-            </p>
-          </AnimatedText>
-        </div>
-      </section>
+      <PageHero
+        label="Get in Touch"
+        title="Let's Connect"
+        description="Open to new opportunities, collaborations, and interesting documentation challenges. I'd love to hear from you."
+      />
 
       {/* Contact Content */}
       <section className="section-padding surface-warm">
@@ -61,9 +49,11 @@ const Contact = () => {
                   Direct Contact
                 </h2>
                 <div className="space-y-6">
-                  <a 
+                  <motion.a 
                     href="mailto:sarah.mitchell@example.com"
                     className="flex items-center gap-4 group"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                       <Mail className="w-5 h-5 text-foreground" />
@@ -74,13 +64,15 @@ const Contact = () => {
                         sarah.mitchell@example.com
                       </p>
                     </div>
-                  </a>
+                  </motion.a>
                   
-                  <a 
+                  <motion.a 
                     href="https://linkedin.com/in/sarahmitchell"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 group"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                       <Linkedin className="w-5 h-5 text-foreground" />
@@ -91,7 +83,7 @@ const Contact = () => {
                         linkedin.com/in/sarahmitchell
                       </p>
                     </div>
-                  </a>
+                  </motion.a>
                 </div>
                 
                 <div className="divider my-8" />
@@ -104,13 +96,22 @@ const Contact = () => {
 
             {/* Contact Form */}
             <AnimatedSection delay={0.1} className="md:col-span-3">
-              <div className="card-elevated">
+              <motion.div
+                className="card-elevated"
+                whileHover={{ boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.1)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <h2 className="heading-subsection text-foreground mb-6">
                   Send a Message
                 </h2>
                 
                 {isSubmitted ? (
-                  <div className="text-center py-8">
+                  <motion.div
+                    className="text-center py-8"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="w-8 h-8 text-accent" />
                     </div>
@@ -127,7 +128,7 @@ const Contact = () => {
                     >
                       Send Another Message
                     </Button>
-                  </div>
+                  </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-4">
@@ -166,25 +167,30 @@ const Contact = () => {
                       </p>
                     </div>
                     
-                    <Button 
-                      type="submit" 
-                      variant="hero" 
-                      size="lg" 
-                      className="w-full sm:w-auto"
-                      disabled={isSubmitting}
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {isSubmitting ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="w-4 h-4 ml-1" />
-                        </>
-                      )}
-                    </Button>
+                      <Button 
+                        type="submit" 
+                        variant="hero" 
+                        size="lg" 
+                        className="w-full sm:w-auto"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          "Sending..."
+                        ) : (
+                          <>
+                            Send Message
+                            <Send className="w-4 h-4 ml-1" />
+                          </>
+                        )}
+                      </Button>
+                    </motion.div>
                   </form>
                 )}
-              </div>
+              </motion.div>
             </AnimatedSection>
           </div>
         </div>
