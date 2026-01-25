@@ -73,10 +73,33 @@ const Index = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center overflow-hidden">
+      <section className="min-h-[90vh] flex items-center overflow-hidden relative">
+        {/* Background decorative elements */}
+        <motion.div 
+          className="absolute top-20 right-[10%] w-3 h-3 rounded-full bg-primary/30"
+          variants={decorativeVariants}
+          initial="hidden"
+          animate="visible"
+          custom={0.8}
+        />
+        <motion.div 
+          className="absolute top-40 right-[5%] w-2 h-2 rounded-full bg-secondary/50"
+          variants={decorativeVariants}
+          initial="hidden"
+          animate="visible"
+          custom={1.0}
+        />
+        <motion.div 
+          className="absolute bottom-32 left-[8%] w-2 h-2 rounded-full bg-primary/20"
+          variants={decorativeVariants}
+          initial="hidden"
+          animate="visible"
+          custom={1.2}
+        />
+        
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Text Content */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Text Content - Left Side */}
             <motion.div 
               className="order-2 lg:order-1"
               variants={containerVariants}
@@ -94,7 +117,8 @@ const Index = () => {
                 variants={itemVariants}
                 className="heading-display text-foreground mb-6"
               >
-                Sarah Mitchell
+                Hello, I'm<br />
+                <span className="text-primary">Sarah Mitchell</span>
               </motion.h1>
               
               <motion.p 
@@ -116,13 +140,7 @@ const Index = () => {
                   <Button variant="hero" size="lg" asChild>
                     <Link to="/case-studies">
                       View Case Studies
-                      <motion.span
-                        initial={{ x: 0 }}
-                        whileHover={{ x: 4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </motion.span>
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </motion.div>
@@ -162,17 +180,18 @@ const Index = () => {
               </div>
             </motion.div>
             
-            {/* Profile Photo */}
+            {/* Profile Photo - Right Side */}
             <motion.div 
-              className="order-1 lg:order-2"
+              className="order-1 lg:order-2 relative"
               variants={imageVariants}
               initial="hidden"
               animate="visible"
             >
               <div className="relative max-w-md mx-auto lg:max-w-none">
+                {/* Main image container */}
                 <motion.div 
-                  className="aspect-square rounded-2xl overflow-hidden bg-muted shadow-2xl"
-                  whileHover={{ scale: 1.02 }}
+                  className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-2xl"
+                  whileHover={{ scale: 1.01 }}
                   transition={{ duration: 0.3 }}
                 >
                   <img 
@@ -181,20 +200,41 @@ const Index = () => {
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
-                {/* Decorative elements with staggered animation */}
+                
+                {/* Floating experience badge */}
                 <motion.div 
-                  className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent rounded-2xl -z-10"
+                  className="absolute -right-4 top-1/3 bg-card shadow-xl rounded-2xl px-5 py-4 border border-border"
+                  variants={decorativeVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={0.8}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                >
+                  <p className="text-3xl font-display font-semibold text-primary">3+</p>
+                  <p className="text-xs text-muted-foreground font-medium">Years<br />Experience</p>
+                </motion.div>
+                
+                {/* Decorative elements */}
+                <motion.div 
+                  className="absolute -bottom-6 -left-6 w-28 h-28 bg-accent rounded-3xl -z-10"
+                  variants={decorativeVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={0.6}
+                />
+                <motion.div 
+                  className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-2xl -z-10"
                   variants={decorativeVariants}
                   initial="hidden"
                   animate="visible"
                   custom={0.7}
                 />
                 <motion.div 
-                  className="absolute -top-4 -left-4 w-16 h-16 bg-secondary rounded-xl -z-10"
+                  className="absolute top-8 -left-3 w-6 h-6 bg-primary/20 rounded-full -z-10"
                   variants={decorativeVariants}
                   initial="hidden"
                   animate="visible"
-                  custom={0.9}
+                  custom={1.0}
                 />
               </div>
             </motion.div>
@@ -207,22 +247,34 @@ const Index = () => {
         <div className="container-wide">
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection delay={0}>
-              <div className="text-center p-6">
-                <p className="text-4xl font-display font-medium text-foreground mb-2">3+</p>
-                <p className="text-muted-foreground">Years Experience</p>
-              </div>
+              <motion.div 
+                className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50"
+                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="text-4xl font-display font-semibold text-primary mb-2">3+</p>
+                <p className="text-muted-foreground font-medium">Years Experience</p>
+              </motion.div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <div className="text-center p-6">
-                <p className="text-4xl font-display font-medium text-foreground mb-2">500+</p>
-                <p className="text-muted-foreground">Documents Delivered</p>
-              </div>
+              <motion.div 
+                className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50"
+                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="text-4xl font-display font-semibold text-primary mb-2">500+</p>
+                <p className="text-muted-foreground font-medium">Documents Delivered</p>
+              </motion.div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <div className="text-center p-6">
-                <p className="text-4xl font-display font-medium text-foreground mb-2">10+</p>
-                <p className="text-muted-foreground">Enterprise Projects</p>
-              </div>
+              <motion.div 
+                className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50"
+                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="text-4xl font-display font-semibold text-primary mb-2">10+</p>
+                <p className="text-muted-foreground font-medium">Enterprise Projects</p>
+              </motion.div>
             </AnimatedSection>
           </div>
         </div>
