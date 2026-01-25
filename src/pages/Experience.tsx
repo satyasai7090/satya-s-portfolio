@@ -4,7 +4,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { AnimatedSection, AnimatedContainer, AnimatedItem, containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 
 const impactStats = [
-  { value: "500+", label: "Documents Delivered", description: "User guides, API docs, release notes, and compliance materials" },
+  { value: "200+", label: "Documents Delivered", description: "User guides, API docs, release notes, and compliance materials" },
   { value: "60%", label: "Onboarding Reduction", description: "Average reduction in user/developer onboarding time" },
   { value: "15+", label: "Product Launches", description: "Documentation delivered for major product releases" },
   { value: "100%", label: "Audit Compliance", description: "Zero findings in regulatory documentation audits" },
