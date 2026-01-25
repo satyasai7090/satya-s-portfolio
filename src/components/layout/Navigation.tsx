@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -30,23 +31,26 @@ export function Navigation() {
             Portfolio
           </Link>
           
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors duration-200 link-underline",
-                    location.pathname === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      "text-sm font-medium transition-colors duration-200 link-underline",
+                      location.pathname === link.href
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ThemeToggle />
+          </div>
 
           {/* Mobile menu button */}
           <MobileNav />
@@ -60,7 +64,8 @@ function MobileNav() {
   const location = useLocation();
   
   return (
-    <div className="md:hidden">
+    <div className="md:hidden flex items-center gap-2">
+      <ThemeToggle />
       <details className="group">
         <summary className="list-none cursor-pointer p-2">
           <div className="flex flex-col gap-1.5">
