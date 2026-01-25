@@ -22,7 +22,7 @@ export function Footer() {
               Contact
             </Link>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/satya-sai-pasupuleti-7090pj" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-nav text-muted-foreground hover:text-foreground transition-colors"
@@ -30,7 +30,9 @@ export function Footer() {
               LinkedIn
             </a>
             <a 
-              href="mailto:hello@example.com"
+              href="mailto:satyasai7090@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-nav text-muted-foreground hover:text-foreground transition-colors"
             >
               Email
