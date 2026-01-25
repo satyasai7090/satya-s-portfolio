@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { SectionHeader } from "@/components/shared/SectionHeader";
-import { AnimatedSection, AnimatedText } from "@/components/shared/AnimatedSection";
+import { PageHero } from "@/components/shared/PageHero";
+import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 const impactStats = [
   { value: "500+", label: "Documents Delivered", description: "User guides, API docs, release notes, and compliance materials" },
@@ -69,44 +70,35 @@ const skillCategories = [
 const Experience = () => {
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <AnimatedText>
-            <p className="label-caps mb-4">Background</p>
-          </AnimatedText>
-          <AnimatedText delay={0.1}>
-            <h1 className="heading-display text-foreground mb-6">
-              Experience & Skills
-            </h1>
-          </AnimatedText>
-          <AnimatedText delay={0.2}>
-            <p className="body-large">
-              Three years of delivering documentation that drives clarity, 
-              reduces support burden, and meets enterprise standards.
-            </p>
-          </AnimatedText>
-        </div>
-      </section>
+      <PageHero
+        label="Background"
+        title="Experience & Skills"
+        description="Three years of delivering documentation that drives clarity, reduces support burden, and meets enterprise standards."
+      />
 
       {/* Professional Impact */}
       <section className="section-padding surface-warm">
         <div className="container-wide">
-          <SectionHeader
-            label="Impact"
-            title="Professional Impact"
-            centered
-          />
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <AnimatedSection>
+            <div className="text-center mb-12">
+              <p className="label-caps mb-3">Impact</p>
+              <h2 className="heading-section text-foreground">Professional Impact</h2>
+            </div>
+          </AnimatedSection>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {impactStats.map((stat, index) => (
-              <AnimatedSection key={stat.label} delay={index * 0.1}>
-                <div className="card-elevated text-center h-full">
+              <AnimatedSection key={stat.label} delay={0.1 + index * 0.1}>
+                <motion.div
+                  className="card-elevated text-center h-full"
+                  whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <p className="text-4xl md:text-5xl font-display font-medium text-foreground mb-2">
                     {stat.value}
                   </p>
                   <p className="font-semibold text-foreground mb-2">{stat.label}</p>
                   <p className="text-sm text-muted-foreground">{stat.description}</p>
-                </div>
+                </motion.div>
               </AnimatedSection>
             ))}
           </div>
@@ -116,14 +108,18 @@ const Experience = () => {
       {/* Experience Timeline */}
       <section className="section-padding">
         <div className="container-narrow">
-          <SectionHeader
-            label="Experience"
-            title="Professional History"
-          />
-          <div className="mt-10 space-y-8">
+          <AnimatedSection>
+            <p className="label-caps mb-3">Experience</p>
+            <h2 className="heading-section text-foreground mb-10">Professional History</h2>
+          </AnimatedSection>
+          <div className="space-y-8">
             {experience.map((exp, index) => (
-              <AnimatedSection key={exp.role} delay={index * 0.1}>
-                <div className="relative pl-8 border-l-2 border-border pb-8 last:pb-0">
+              <AnimatedSection key={exp.role} delay={0.1 + index * 0.1}>
+                <motion.div
+                  className="relative pl-8 border-l-2 border-border pb-8 last:pb-0"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-accent" />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
                     <h3 className="text-xl font-display font-medium text-foreground">
@@ -135,7 +131,7 @@ const Experience = () => {
                   </div>
                   <p className="text-sm font-medium text-accent mb-3">{exp.company}</p>
                   <p className="body-default text-muted-foreground">{exp.description}</p>
-                </div>
+                </motion.div>
               </AnimatedSection>
             ))}
           </div>
@@ -145,15 +141,20 @@ const Experience = () => {
       {/* Skills */}
       <section className="section-padding surface-warm">
         <div className="container-wide">
-          <SectionHeader
-            label="Skills"
-            title="Core Skills & Tools"
-            centered
-          />
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
+          <AnimatedSection>
+            <div className="text-center mb-12">
+              <p className="label-caps mb-3">Skills</p>
+              <h2 className="heading-section text-foreground">Core Skills & Tools</h2>
+            </div>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-3 gap-8">
             {skillCategories.map((category, index) => (
-              <AnimatedSection key={category.title} delay={index * 0.1}>
-                <div className="card-elevated h-full">
+              <AnimatedSection key={category.title} delay={0.1 + index * 0.1}>
+                <motion.div
+                  className="card-elevated h-full"
+                  whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <h3 className="text-lg font-display font-medium text-foreground mb-4">
                     {category.title}
                   </h3>
@@ -168,7 +169,7 @@ const Experience = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </AnimatedSection>
             ))}
           </div>
