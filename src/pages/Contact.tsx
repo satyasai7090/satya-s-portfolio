@@ -52,11 +52,12 @@ const Contact = () => {
                   <motion.a 
                     href="mailto:sarah.mitchell@example.com"
                     className="flex items-center gap-4 group"
-                    whileHover={{ x: 4 }}
+                    whileHover={{ x: 6, scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                      <Mail className="w-5 h-5 text-foreground" />
+                    <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
+                      <Mail className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
                     </div>
                     <div>
                       <p className="body-small">Email</p>
@@ -71,11 +72,12 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 group"
-                    whileHover={{ x: 4 }}
+                    whileHover={{ x: 6, scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                      <Linkedin className="w-5 h-5 text-foreground" />
+                    <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
+                      <Linkedin className="w-5 h-5 text-foreground group-hover:text-primary transition-colors duration-200" />
                     </div>
                     <div>
                       <p className="body-small">LinkedIn</p>

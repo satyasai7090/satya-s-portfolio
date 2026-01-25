@@ -89,8 +89,9 @@ const Experience = () => {
             {impactStats.map((stat, index) => (
               <AnimatedSection key={stat.label} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="card-elevated card-hover-glow text-center h-full"
-                  whileHover={{ y: -4 }}
+                  className="card-elevated card-hover-glow text-center h-full border border-transparent"
+                  whileHover={{ y: -8, borderColor: "hsl(var(--primary) / 0.3)" }}
+                  whileTap={{ y: -4, scale: 0.99 }}
                   transition={{ duration: 0.3 }}
                 >
                   <p className="text-stat text-foreground mb-2">
@@ -116,11 +117,12 @@ const Experience = () => {
             {experience.map((exp, index) => (
               <AnimatedSection key={exp.role} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="relative pl-8 border-l-2 border-border pb-8 last:pb-0 hover-slide-right"
-                  whileHover={{ x: 4 }}
+                  className="relative pl-8 border-l-2 border-border pb-8 last:pb-0 hover:border-primary/50 transition-colors duration-300"
+                  whileHover={{ x: 6 }}
+                  whileTap={{ x: 3 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-accent" />
+                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-primary transition-transform duration-200 group-hover:scale-125" />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
                     <h3 className="heading-small text-foreground">
                       {exp.role}
@@ -151,8 +153,9 @@ const Experience = () => {
             {skillCategories.map((category, index) => (
               <AnimatedSection key={category.title} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="card-elevated card-hover-glow h-full"
-                  whileHover={{ y: -4 }}
+                  className="card-elevated card-hover-glow h-full border border-transparent"
+                  whileHover={{ y: -8, borderColor: "hsl(var(--primary) / 0.3)" }}
+                  whileTap={{ y: -4, scale: 0.99 }}
                   transition={{ duration: 0.3 }}
                 >
                   <h3 className="heading-small text-foreground mb-4">
@@ -164,7 +167,7 @@ const Experience = () => {
                         key={skill} 
                         className="body-small flex items-center gap-2"
                       >
-                        <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                         {skill}
                       </li>
                     ))}
