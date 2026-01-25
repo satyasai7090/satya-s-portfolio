@@ -49,11 +49,12 @@ const About = () => {
           <div className="space-y-8">
             <AnimatedSection delay={0.1}>
               <motion.div
-                className="card-elevated card-hover-glow"
-                whileHover={{ y: -4 }}
+                className="group card-elevated card-hover-glow border border-transparent cursor-pointer"
+                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
+                whileTap={{ y: -3, scale: 0.99 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="heading-subsection text-foreground mb-4">Structure First</h3>
+                <h3 className="heading-subsection text-foreground mb-4 transition-colors duration-200 group-hover:text-primary">Structure First</h3>
                 <p className="body-default text-muted-foreground">
                   Every documentation project begins with a clear understanding of the information 
                   architecture. I map out content hierarchies, user journeys, and cross-references 
@@ -65,11 +66,12 @@ const About = () => {
             
             <AnimatedSection delay={0.15}>
               <motion.div
-                className="card-elevated card-hover-glow"
-                whileHover={{ y: -4 }}
+                className="group card-elevated card-hover-glow border border-transparent cursor-pointer"
+                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
+                whileTap={{ y: -3, scale: 0.99 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="heading-subsection text-foreground mb-4">User-Centered Writing</h3>
+                <h3 className="heading-subsection text-foreground mb-4 transition-colors duration-200 group-hover:text-primary">User-Centered Writing</h3>
                 <p className="body-default text-muted-foreground">
                   I write with the end user in mind—whether that's a developer integrating an API, 
                   an administrator configuring a system, or an end user navigating a new feature. 
@@ -81,11 +83,12 @@ const About = () => {
             
             <AnimatedSection delay={0.2}>
               <motion.div
-                className="card-elevated card-hover-glow"
-                whileHover={{ y: -4 }}
+                className="group card-elevated card-hover-glow border border-transparent cursor-pointer"
+                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
+                whileTap={{ y: -3, scale: 0.99 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="heading-subsection text-foreground mb-4">Collaborative Process</h3>
+                <h3 className="heading-subsection text-foreground mb-4 transition-colors duration-200 group-hover:text-primary">Collaborative Process</h3>
                 <p className="body-default text-muted-foreground">
                   Great documentation requires close collaboration with product managers, engineers, 
                   QA, and support teams. I embed myself within cross-functional teams, participate 
