@@ -120,8 +120,8 @@ const About = () => {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-accent" />
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-primary" />
                   </div>
                   <p className="body-default text-foreground">{item}</p>
                 </motion.div>
