@@ -93,7 +93,7 @@ const Contact = () => {
                 <div className="divider my-8" />
                 
                 <p className="body-small">
-                  Based in the United States, available for remote work globally.
+                  Based in India, available for remote work globally.
                 </p>
               </div>
             </AnimatedSection>
