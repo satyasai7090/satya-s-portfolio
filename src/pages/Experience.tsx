@@ -117,12 +117,12 @@ const Experience = () => {
             {experience.map((exp, index) => (
               <AnimatedSection key={exp.role} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="relative pl-8 border-l-2 border-border pb-8 last:pb-0 hover:border-primary/50 transition-colors duration-300"
+                  className="group relative pl-8 border-l-2 border-border pb-8 last:pb-0 hover:border-primary/50 transition-colors duration-300"
                   whileHover={{ x: 6 }}
                   whileTap={{ x: 3 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-primary transition-transform duration-200 group-hover:scale-125" />
+                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-primary/60 transition-all duration-300 group-hover:bg-primary group-hover:scale-125 group-hover:shadow-md group-hover:shadow-primary/40" />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
                     <h3 className="heading-small text-foreground">
                       {exp.role}
@@ -163,13 +163,15 @@ const Experience = () => {
                   </h3>
                   <ul className="space-y-2">
                     {category.skills.map((skill) => (
-                      <li 
+                      <motion.li 
                         key={skill} 
-                        className="body-small flex items-center gap-2"
+                        className="group body-small flex items-center gap-2 p-2 -mx-2 rounded-md cursor-pointer transition-colors duration-200 hover:bg-primary/5"
+                        whileHover={{ x: 4 }}
+                        whileTap={{ scale: 0.98 }}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                        {skill}
-                      </li>
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/40 flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-150 group-hover:shadow-sm group-hover:shadow-primary/40" />
+                        <span className="transition-colors duration-200 group-hover:text-foreground">{skill}</span>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>

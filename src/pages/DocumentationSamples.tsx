@@ -81,18 +81,19 @@ const DocumentationSamples = () => {
             {documentationSamples.map((sample, index) => (
               <AnimatedSection key={sample.title} delay={index * 0.1}>
                 <motion.div
-                  className="card-elevated card-hover-glow"
-                  whileHover={{ y: -2 }}
+                  className="group card-elevated card-hover-glow border border-transparent"
+                  whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
+                  whileTap={{ y: -3, scale: 0.99 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <h3 className="heading-card text-foreground">{sample.title}</h3>
-                    <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full">
+                    <h3 className="heading-card text-foreground transition-colors duration-200 group-hover:text-primary">{sample.title}</h3>
+                    <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105">
                       {sample.type}
                     </span>
                   </div>
                   <p className="body-default text-muted-foreground mb-6">{sample.description}</p>
-                  <div className="bg-muted/50 rounded-lg p-6 overflow-x-auto">
+                  <div className="bg-muted/50 rounded-lg p-6 overflow-x-auto transition-all duration-300 group-hover:bg-muted/70 group-hover:shadow-inner">
                     <pre className="text-sm text-foreground/90 whitespace-pre-wrap font-mono">
                       {sample.preview}
                     </pre>
