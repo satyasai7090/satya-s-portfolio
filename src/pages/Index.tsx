@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Linkedin, Mail, FileText, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/layout/PageLayout";
@@ -70,17 +71,33 @@ const linkVariants = {
 };
 
 const Index = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transforms for decorative elements
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y5 = useTransform(scrollYProgress, [0, 1], [0, -140]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -10]);
+
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center overflow-hidden relative">
-        {/* Background decorative elements */}
+      <section ref={heroRef} className="min-h-[90vh] flex items-center overflow-hidden relative">
+        {/* Background decorative elements with parallax */}
         <motion.div 
           className="absolute top-20 right-[10%] w-3 h-3 rounded-full bg-primary/30"
           variants={decorativeVariants}
           initial="hidden"
           animate="visible"
           custom={0.8}
+          style={{ y: y1 }}
         />
         <motion.div 
           className="absolute top-40 right-[5%] w-2 h-2 rounded-full bg-secondary/50"
@@ -88,6 +105,7 @@ const Index = () => {
           initial="hidden"
           animate="visible"
           custom={1.0}
+          style={{ y: y2 }}
         />
         <motion.div 
           className="absolute bottom-32 left-[8%] w-2 h-2 rounded-full bg-primary/20"
@@ -95,6 +113,7 @@ const Index = () => {
           initial="hidden"
           animate="visible"
           custom={1.2}
+          style={{ y: y3 }}
         />
         
         <div className="container-wide">
@@ -214,13 +233,14 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground font-medium">Years<br />Experience</p>
                 </motion.div>
                 
-                {/* Decorative elements */}
+                {/* Decorative elements with parallax */}
                 <motion.div 
                   className="absolute -bottom-6 -left-6 w-28 h-28 bg-accent rounded-3xl -z-10"
                   variants={decorativeVariants}
                   initial="hidden"
                   animate="visible"
                   custom={0.6}
+                  style={{ y: y4, rotate: rotate1 }}
                 />
                 <motion.div 
                   className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-2xl -z-10"
@@ -228,6 +248,7 @@ const Index = () => {
                   initial="hidden"
                   animate="visible"
                   custom={0.7}
+                  style={{ y: y5, rotate: rotate2 }}
                 />
                 <motion.div 
                   className="absolute top-8 -left-3 w-6 h-6 bg-primary/20 rounded-full -z-10"
@@ -235,6 +256,7 @@ const Index = () => {
                   initial="hidden"
                   animate="visible"
                   custom={1.0}
+                  style={{ y: y3 }}
                 />
               </div>
             </motion.div>
