@@ -10,7 +10,7 @@ import CaseStudies from "./pages/CaseStudies";
 import DocumentationSamples from "./pages/DocumentationSamples";
 import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
-import Resume from "./pages/Resume";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,7 +27,6 @@ function AnimatedRoutes() {
         <Route path="/documentation-samples" element={<DocumentationSamples />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/resume" element={<Resume />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
