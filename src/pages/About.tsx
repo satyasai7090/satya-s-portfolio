@@ -116,12 +116,13 @@ const About = () => {
             ].map((item, index) => (
               <AnimatedSection key={index} delay={0.1 + index * 0.05}>
                 <motion.div
-                  className="flex items-start gap-3 p-4 hover-slide-right"
+                  className="group flex items-start gap-3 p-4 hover-slide-right cursor-pointer"
                   whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-primary" />
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/30">
+                    <Check className="w-3.5 h-3.5 text-primary/60 transition-colors duration-300 group-hover:text-primary-foreground" />
                   </div>
                   <p className="body-default text-foreground">{item}</p>
                 </motion.div>
