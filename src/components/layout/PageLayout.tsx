@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import { PageTransition } from "@/components/shared/PageTransition";
+import { ScrollProgress } from "@/components/shared/ScrollProgress";
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -11,6 +12,7 @@ export function PageLayout({ children }: PageLayoutProps) {
   return (
     <PageTransition>
       <div className="min-h-screen flex flex-col">
+        <ScrollProgress />
         <Navigation />
         <main className="flex-1 pt-16 md:pt-20">
           {children}
