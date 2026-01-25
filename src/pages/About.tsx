@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
-import { AnimatedSection } from "@/components/shared/AnimatedSection";
+import { AnimatedSection, AnimatedContainer, AnimatedItem, containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 import { Check } from "lucide-react";
 
 const About = () => {
@@ -22,18 +22,30 @@ const About = () => {
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
             <div className="prose prose-lg">
-              <p className="body-default text-muted-foreground leading-relaxed mb-6">
+              <motion.p 
+                className="body-default text-muted-foreground leading-relaxed mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
                 With over three years of experience in technical writing, I've had the privilege 
                 of working within complex, enterprise-grade software environments where precision, 
                 compliance, and user clarity are paramount. My work has spanned regulatory-driven 
                 industries and high-stakes B2B platforms, where documentation isn't just helpful—it's 
                 mission-critical.
-              </p>
-              <p className="body-default text-muted-foreground leading-relaxed">
+              </motion.p>
+              <motion.p 
+                className="body-default text-muted-foreground leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
                 I take ownership of documentation from ideation to delivery, ensuring that every 
                 piece of content serves both the user's immediate needs and the organization's 
                 long-term goals for quality and consistency.
-              </p>
+              </motion.p>
             </div>
           </AnimatedSection>
         </div>
@@ -46,12 +58,12 @@ const About = () => {
             <p className="label-caps mb-3">Approach</p>
             <h2 className="heading-section text-foreground mb-8">How I Approach Documentation</h2>
           </AnimatedSection>
-          <div className="space-y-8">
-            <AnimatedSection delay={0.1}>
+          <AnimatedContainer className="space-y-8" staggerDelay={0.15}>
+            <AnimatedItem>
               <motion.div
                 className="group card-elevated card-hover-glow border border-transparent cursor-pointer"
-                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
-                whileTap={{ y: -3, scale: 0.99 }}
+                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)", scale: 1.01 }}
+                whileTap={{ y: -3, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="heading-subsection text-foreground mb-4 transition-colors duration-200 group-hover:text-primary">Structure First</h3>
@@ -62,13 +74,13 @@ const About = () => {
                   and makes future updates manageable.
                 </p>
               </motion.div>
-            </AnimatedSection>
+            </AnimatedItem>
             
-            <AnimatedSection delay={0.15}>
+            <AnimatedItem>
               <motion.div
                 className="group card-elevated card-hover-glow border border-transparent cursor-pointer"
-                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
-                whileTap={{ y: -3, scale: 0.99 }}
+                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)", scale: 1.01 }}
+                whileTap={{ y: -3, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="heading-subsection text-foreground mb-4 transition-colors duration-200 group-hover:text-primary">User-Centered Writing</h3>
@@ -79,13 +91,13 @@ const About = () => {
                   from terminology to task structure.
                 </p>
               </motion.div>
-            </AnimatedSection>
+            </AnimatedItem>
             
-            <AnimatedSection delay={0.2}>
+            <AnimatedItem>
               <motion.div
                 className="group card-elevated card-hover-glow border border-transparent cursor-pointer"
-                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
-                whileTap={{ y: -3, scale: 0.99 }}
+                whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)", scale: 1.01 }}
+                whileTap={{ y: -3, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="heading-subsection text-foreground mb-4 transition-colors duration-200 group-hover:text-primary">Collaborative Process</h3>
@@ -96,8 +108,8 @@ const About = () => {
                   the development cycle.
                 </p>
               </motion.div>
-            </AnimatedSection>
-          </div>
+            </AnimatedItem>
+          </AnimatedContainer>
         </div>
       </section>
 
@@ -108,7 +120,13 @@ const About = () => {
             <p className="label-caps mb-3">Value</p>
             <h2 className="heading-section text-foreground mb-8">What I Bring to Teams</h2>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-6">
+          <motion.div 
+            className="grid md:grid-cols-2 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {[
               "Reliability in complex, high-stakes environments",
               "Meticulous attention to accuracy and detail",
@@ -117,21 +135,20 @@ const About = () => {
               "Acting lead experience on documentation initiatives",
               "Recognition for documentation excellence",
             ].map((item, index) => (
-              <AnimatedSection key={index} delay={0.1 + index * 0.05}>
-                <motion.div
-                  className="group flex items-start gap-3 p-4 hover-slide-right cursor-pointer"
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/30">
-                    <Check className="w-3.5 h-3.5 text-primary/60 transition-colors duration-300 group-hover:text-primary-foreground" />
-                  </div>
-                  <p className="body-default text-foreground">{item}</p>
-                </motion.div>
-              </AnimatedSection>
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="group flex items-start gap-3 p-4 hover-slide-right cursor-pointer"
+                whileHover={{ x: 6, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-md group-hover:shadow-primary/30">
+                  <Check className="w-3.5 h-3.5 text-primary/60 transition-colors duration-300 group-hover:text-primary-foreground" />
+                </div>
+                <p className="body-default text-foreground">{item}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </PageLayout>

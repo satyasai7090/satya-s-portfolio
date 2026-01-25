@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { PageHero, heroItemVariants, heroContainerVariants } from "@/components/shared/PageHero";
-import { AnimatedSection } from "@/components/shared/AnimatedSection";
+import { PageHero } from "@/components/shared/PageHero";
+import { AnimatedSection, AnimatedContainer, AnimatedItem, containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 
 const caseStudies = [
   {
@@ -47,67 +47,67 @@ const CaseStudies = () => {
               </div>
             </AnimatedSection>
 
-            <div className="space-y-8">
-              <AnimatedSection delay={0.1}>
+            <AnimatedContainer className="space-y-8" staggerDelay={0.12}>
+              <AnimatedItem>
                 <motion.div
-                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileHover={{ x: 8, scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
+                  className="p-5 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-primary/20"
                 >
                   <h3 className="text-label text-foreground mb-2">Context</h3>
                   <p className="body-default text-muted-foreground">{study.context}</p>
                 </motion.div>
-              </AnimatedSection>
+              </AnimatedItem>
 
-              <AnimatedSection delay={0.15}>
+              <AnimatedItem>
                 <motion.div
-                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileHover={{ x: 8, scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
+                  className="p-5 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-primary/20"
                 >
                   <h3 className="text-label text-foreground mb-2">Problem</h3>
                   <p className="body-default text-muted-foreground">{study.problem}</p>
                 </motion.div>
-              </AnimatedSection>
+              </AnimatedItem>
 
-              <AnimatedSection delay={0.2}>
+              <AnimatedItem>
                 <motion.div
-                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileHover={{ x: 8, scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
+                  className="p-5 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-primary/20"
                 >
                   <h3 className="text-label text-foreground mb-2">Role & Approach</h3>
                   <p className="body-default text-muted-foreground">{study.role}</p>
                 </motion.div>
-              </AnimatedSection>
+              </AnimatedItem>
 
-              <AnimatedSection delay={0.25}>
+              <AnimatedItem>
                 <motion.div
-                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileHover={{ x: 8, scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
+                  className="p-5 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-primary/20"
                 >
                   <h3 className="text-label text-foreground mb-2">Tools & Collaboration</h3>
                   <p className="body-default text-muted-foreground">{study.tools}</p>
                 </motion.div>
-              </AnimatedSection>
+              </AnimatedItem>
 
-              <AnimatedSection delay={0.3}>
+              <AnimatedItem>
                 <motion.div
                   className="card-elevated border-l-4 border-primary"
-                  whileHover={{ scale: 1.02, y: -4 }}
+                  whileHover={{ scale: 1.02, y: -6 }}
                   whileTap={{ scale: 1.01 }}
                   transition={{ duration: 0.2 }}
                 >
                   <h3 className="text-label text-foreground mb-2">Outcome & Impact</h3>
                   <p className="body-default text-foreground">{study.outcome}</p>
                 </motion.div>
-              </AnimatedSection>
-            </div>
+              </AnimatedItem>
+            </AnimatedContainer>
           </div>
         </section>
       ))}
