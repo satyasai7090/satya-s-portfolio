@@ -50,8 +50,10 @@ const CaseStudies = () => {
             <div className="space-y-8">
               <AnimatedSection delay={0.1}>
                 <motion.div
-                  whileHover={{ x: 4 }}
+                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
+                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                 >
                   <h3 className="text-label text-foreground mb-2">Context</h3>
                   <p className="body-default text-muted-foreground">{study.context}</p>
@@ -60,8 +62,10 @@ const CaseStudies = () => {
 
               <AnimatedSection delay={0.15}>
                 <motion.div
-                  whileHover={{ x: 4 }}
+                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
+                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                 >
                   <h3 className="text-label text-foreground mb-2">Problem</h3>
                   <p className="body-default text-muted-foreground">{study.problem}</p>
@@ -70,8 +74,10 @@ const CaseStudies = () => {
 
               <AnimatedSection delay={0.2}>
                 <motion.div
-                  whileHover={{ x: 4 }}
+                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
+                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                 >
                   <h3 className="text-label text-foreground mb-2">Role & Approach</h3>
                   <p className="body-default text-muted-foreground">{study.role}</p>
@@ -80,8 +86,10 @@ const CaseStudies = () => {
 
               <AnimatedSection delay={0.25}>
                 <motion.div
-                  whileHover={{ x: 4 }}
+                  whileHover={{ x: 6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.2 }}
+                  className="p-4 rounded-lg hover:bg-accent/10 transition-colors duration-200"
                 >
                   <h3 className="text-label text-foreground mb-2">Tools & Collaboration</h3>
                   <p className="body-default text-muted-foreground">{study.tools}</p>
@@ -90,8 +98,9 @@ const CaseStudies = () => {
 
               <AnimatedSection delay={0.3}>
                 <motion.div
-                  className="card-elevated border-l-4 border-accent"
-                  whileHover={{ scale: 1.01 }}
+                  className="card-elevated border-l-4 border-primary"
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  whileTap={{ scale: 1.01 }}
                   transition={{ duration: 0.2 }}
                 >
                   <h3 className="text-label text-foreground mb-2">Outcome & Impact</h3>

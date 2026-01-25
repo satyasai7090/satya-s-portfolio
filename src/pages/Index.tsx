@@ -164,8 +164,12 @@ const Index = () => {
                 icon: FileText,
                 label: "Resume",
                 external: false
-              }].map((link, i) => <motion.a key={link.label} href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors" custom={i} variants={linkVariants} initial="hidden" animate="visible" whileHover={{
-                x: 3
+              }].map((link, i) => <motion.a key={link.label} href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-200" custom={i} variants={linkVariants} initial="hidden" animate="visible" whileHover={{
+                x: 4,
+                scale: 1.02
+              }}
+              whileTap={{
+                scale: 0.98
               }}>
                     <link.icon className="h-4 w-4" />
                     <span>{link.label}</span>
@@ -217,9 +221,12 @@ const Index = () => {
         <div className="container-wide">
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection delay={0}>
-              <motion.div className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50" whileHover={{
-              y: -4,
-              boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)"
+              <motion.div className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300" whileHover={{
+              y: -6,
+              boxShadow: "0 20px 50px -15px hsl(var(--primary) / 0.25)"
+            }} whileTap={{
+              y: -3,
+              scale: 0.99
             }} transition={{
               duration: 0.3
             }}>
@@ -228,9 +235,12 @@ const Index = () => {
               </motion.div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <motion.div className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50" whileHover={{
-              y: -4,
-              boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)"
+              <motion.div className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300" whileHover={{
+              y: -6,
+              boxShadow: "0 20px 50px -15px hsl(var(--primary) / 0.25)"
+            }} whileTap={{
+              y: -3,
+              scale: 0.99
             }} transition={{
               duration: 0.3
             }}>
@@ -239,9 +249,12 @@ const Index = () => {
               </motion.div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <motion.div className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50" whileHover={{
-              y: -4,
-              boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)"
+              <motion.div className="text-center p-8 bg-card rounded-2xl shadow-sm border border-border/50 hover:border-primary/30 transition-all duration-300" whileHover={{
+              y: -6,
+              boxShadow: "0 20px 50px -15px hsl(var(--primary) / 0.25)"
+            }} whileTap={{
+              y: -3,
+              scale: 0.99
             }} transition={{
               duration: 0.3
             }}>
