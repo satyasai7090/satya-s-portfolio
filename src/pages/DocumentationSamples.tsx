@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { PageHero, heroItemVariants } from "@/components/shared/PageHero";
-import { AnimatedSection } from "@/components/shared/AnimatedSection";
+import { PageHero } from "@/components/shared/PageHero";
+import { AnimatedContainer, AnimatedItem, containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 
 const documentationSamples = [
   {
@@ -77,31 +77,40 @@ const DocumentationSamples = () => {
 
       <section className="section-padding surface-warm">
         <div className="container-narrow">
-          <div className="space-y-8">
-            {documentationSamples.map((sample, index) => (
-              <AnimatedSection key={sample.title} delay={index * 0.1}>
-                <motion.div
-                  className="group card-elevated card-hover-glow border border-transparent"
-                  whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.3)" }}
-                  whileTap={{ y: -3, scale: 0.99 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <h3 className="heading-card text-foreground transition-colors duration-200 group-hover:text-primary">{sample.title}</h3>
-                    <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105">
-                      {sample.type}
-                    </span>
-                  </div>
-                  <p className="body-default text-muted-foreground mb-6">{sample.description}</p>
-                  <div className="bg-muted/50 rounded-lg p-6 overflow-x-auto transition-all duration-300 group-hover:bg-muted/70 group-hover:shadow-inner">
-                    <pre className="text-sm text-foreground/90 whitespace-pre-wrap font-mono">
-                      {sample.preview}
-                    </pre>
-                  </div>
-                </motion.div>
-              </AnimatedSection>
+          <motion.div 
+            className="space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {documentationSamples.map((sample) => (
+              <motion.div
+                key={sample.title}
+                variants={itemVariants}
+                className="group card-elevated card-hover-glow border border-transparent"
+                whileHover={{ y: -8, borderColor: "hsl(var(--primary) / 0.3)", scale: 1.01 }}
+                whileTap={{ y: -4, scale: 0.99 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <h3 className="heading-card text-foreground transition-colors duration-200 group-hover:text-primary">{sample.title}</h3>
+                  <motion.span 
+                    className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {sample.type}
+                  </motion.span>
+                </div>
+                <p className="body-default text-muted-foreground mb-6">{sample.description}</p>
+                <div className="bg-muted/50 rounded-lg p-6 overflow-x-auto transition-all duration-300 group-hover:bg-muted/70 group-hover:shadow-inner">
+                  <pre className="text-sm text-foreground/90 whitespace-pre-wrap font-mono">
+                    {sample.preview}
+                  </pre>
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </PageLayout>
