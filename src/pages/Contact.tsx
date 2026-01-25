@@ -97,8 +97,8 @@ const Contact = () => {
             {/* Contact Form */}
             <AnimatedSection delay={0.1} className="md:col-span-3">
               <motion.div
-                className="card-elevated"
-                whileHover={{ boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.1)" }}
+                className="card-elevated card-hover-glow"
+                whileHover={{ y: -2 }}
                 transition={{ duration: 0.3 }}
               >
                 <h2 className="heading-subsection text-foreground mb-6">

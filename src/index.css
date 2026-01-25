@@ -270,10 +270,70 @@
     @apply py-20 md:py-28;
   }
 
+  /* ============================================
+     CARD & INTERACTIVE ELEMENT STYLES
+     ============================================ */
+
   .card-elevated {
-    @apply bg-card rounded-lg p-6 md:p-8;
+    @apply bg-card rounded-lg p-6 md:p-8 transition-all duration-300;
     box-shadow: var(--shadow-medium);
   }
+
+  .card-elevated:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Card hover with accent glow */
+  .card-hover-glow {
+    @apply bg-card rounded-lg transition-all duration-300;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .card-hover-glow:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.15);
+  }
+
+  /* Subtle lift on hover */
+  .hover-lift {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+
+  /* Scale on hover */
+  .hover-scale {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  /* Subtle scale */
+  .hover-scale-subtle {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-scale-subtle:hover {
+    @apply scale-[1.02];
+  }
+
+  /* Slide right on hover */
+  .hover-slide-right {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-slide-right:hover {
+    @apply translate-x-1;
+  }
+
+  /* ============================================
+     LINK STYLES
+     ============================================ */
 
   .link-underline {
     @apply relative inline-block;
@@ -288,6 +348,10 @@
     @apply scale-x-100;
   }
 
+  /* ============================================
+     UTILITY CLASSES
+     ============================================ */
+
   .divider {
     @apply w-full h-px bg-border;
   }
@@ -298,5 +362,63 @@
 
   .surface-cool {
     background-color: hsl(var(--surface-cool));
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  /* Hide non-essential elements */
+  .print\\:hidden,
+  nav,
+  footer,
+  .scroll-progress,
+  button:not(.print-show) {
+    display: none !important;
+  }
+
+  /* Reset backgrounds and shadows */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Ensure content fits on page */
+  .resume-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5in !important;
+  }
+
+  /* Typography adjustments for print */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    page-break-after: avoid !important;
+  }
+
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Avoid breaking inside elements */
+  .print\\:break-inside-avoid {
+    break-inside: avoid !important;
+  }
+
+  /* Links in print */
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 0.5in;
+    size: letter;
   }
 }

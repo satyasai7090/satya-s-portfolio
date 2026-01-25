@@ -81,8 +81,8 @@ const DocumentationSamples = () => {
             {documentationSamples.map((sample, index) => (
               <AnimatedSection key={sample.title} delay={index * 0.1}>
                 <motion.div
-                  className="card-elevated"
-                  whileHover={{ y: -2, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.1)" }}
+                  className="card-elevated card-hover-glow"
+                  whileHover={{ y: -2 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-4">

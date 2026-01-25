@@ -89,8 +89,8 @@ const Experience = () => {
             {impactStats.map((stat, index) => (
               <AnimatedSection key={stat.label} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="card-elevated text-center h-full"
-                  whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                  className="card-elevated card-hover-glow text-center h-full"
+                  whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
                   <p className="text-stat text-foreground mb-2">
@@ -116,7 +116,7 @@ const Experience = () => {
             {experience.map((exp, index) => (
               <AnimatedSection key={exp.role} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="relative pl-8 border-l-2 border-border pb-8 last:pb-0"
+                  className="relative pl-8 border-l-2 border-border pb-8 last:pb-0 hover-slide-right"
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -151,8 +151,8 @@ const Experience = () => {
             {skillCategories.map((category, index) => (
               <AnimatedSection key={category.title} delay={0.1 + index * 0.1}>
                 <motion.div
-                  className="card-elevated h-full"
-                  whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                  className="card-elevated card-hover-glow h-full"
+                  whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
                   <h3 className="heading-small text-foreground mb-4">

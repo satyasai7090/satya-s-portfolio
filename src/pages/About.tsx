@@ -49,8 +49,8 @@ const About = () => {
           <div className="space-y-8">
             <AnimatedSection delay={0.1}>
               <motion.div
-                className="card-elevated"
-                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                className="card-elevated card-hover-glow"
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="heading-subsection text-foreground mb-4">Structure First</h3>
@@ -65,8 +65,8 @@ const About = () => {
             
             <AnimatedSection delay={0.15}>
               <motion.div
-                className="card-elevated"
-                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                className="card-elevated card-hover-glow"
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="heading-subsection text-foreground mb-4">User-Centered Writing</h3>
@@ -81,8 +81,8 @@ const About = () => {
             
             <AnimatedSection delay={0.2}>
               <motion.div
-                className="card-elevated"
-                whileHover={{ y: -4, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.15)" }}
+                className="card-elevated card-hover-glow"
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="heading-subsection text-foreground mb-4">Collaborative Process</h3>
@@ -116,7 +116,7 @@ const About = () => {
             ].map((item, index) => (
               <AnimatedSection key={index} delay={0.1 + index * 0.05}>
                 <motion.div
-                  className="flex items-start gap-3 p-4"
+                  className="flex items-start gap-3 p-4 hover-slide-right"
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
