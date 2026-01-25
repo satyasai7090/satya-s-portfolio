@@ -190,8 +190,8 @@ const Index = () => {
                 scale: 1.05,
                 y: -2
               }}>
-                  <p className="text-3xl font-display font-semibold text-primary">5+</p>
-                  <p className="text-xs text-muted-foreground font-medium">Years<br />Experience</p>
+                  <p className="text-stat-sm text-primary">5+</p>
+                  <p className="body-small font-medium">Years<br />Experience</p>
                 </motion.div>
                 
                 {/* Decorative elements with parallax */}
@@ -223,8 +223,8 @@ const Index = () => {
             }} transition={{
               duration: 0.3
             }}>
-                <p className="text-4xl font-display font-semibold text-primary mb-2">5+</p>
-                <p className="text-muted-foreground font-medium">Years Experience</p>
+                <p className="text-stat text-primary mb-2">5+</p>
+                <p className="body-default text-muted-foreground font-medium">Years Experience</p>
               </motion.div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
@@ -234,8 +234,8 @@ const Index = () => {
             }} transition={{
               duration: 0.3
             }}>
-                <p className="text-4xl font-display font-semibold text-primary mb-2">200+</p>
-                <p className="text-muted-foreground font-medium">Documents Delivered</p>
+                <p className="text-stat text-primary mb-2">200+</p>
+                <p className="body-default text-muted-foreground font-medium">Documents Delivered</p>
               </motion.div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
@@ -245,8 +245,8 @@ const Index = () => {
             }} transition={{
               duration: 0.3
             }}>
-                <p className="text-4xl font-display font-semibold text-primary mb-2">7+</p>
-                <p className="text-muted-foreground font-medium">Enterprise Projects</p>
+                <p className="text-stat text-primary mb-2">7+</p>
+                <p className="body-default text-muted-foreground font-medium">Enterprise Projects</p>
               </motion.div>
             </AnimatedSection>
           </div>

@@ -53,7 +53,7 @@ const CaseStudies = () => {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h3 className="font-semibold text-foreground mb-2">Context</h3>
+                  <h3 className="text-label text-foreground mb-2">Context</h3>
                   <p className="body-default text-muted-foreground">{study.context}</p>
                 </motion.div>
               </AnimatedSection>
@@ -63,7 +63,7 @@ const CaseStudies = () => {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h3 className="font-semibold text-foreground mb-2">Problem</h3>
+                  <h3 className="text-label text-foreground mb-2">Problem</h3>
                   <p className="body-default text-muted-foreground">{study.problem}</p>
                 </motion.div>
               </AnimatedSection>
@@ -73,7 +73,7 @@ const CaseStudies = () => {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h3 className="font-semibold text-foreground mb-2">Role & Approach</h3>
+                  <h3 className="text-label text-foreground mb-2">Role & Approach</h3>
                   <p className="body-default text-muted-foreground">{study.role}</p>
                 </motion.div>
               </AnimatedSection>
@@ -83,7 +83,7 @@ const CaseStudies = () => {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h3 className="font-semibold text-foreground mb-2">Tools & Collaboration</h3>
+                  <h3 className="text-label text-foreground mb-2">Tools & Collaboration</h3>
                   <p className="body-default text-muted-foreground">{study.tools}</p>
                 </motion.div>
               </AnimatedSection>
@@ -94,7 +94,7 @@ const CaseStudies = () => {
                   whileHover={{ scale: 1.01 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h3 className="font-semibold text-foreground mb-2">Outcome & Impact</h3>
+                  <h3 className="text-label text-foreground mb-2">Outcome & Impact</h3>
                   <p className="body-default text-foreground">{study.outcome}</p>
                 </motion.div>
               </AnimatedSection>

@@ -59,8 +59,8 @@ const Contact = () => {
                       <Mail className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium text-foreground group-hover:text-accent transition-colors">
+                      <p className="body-small">Email</p>
+                      <p className="text-label text-foreground group-hover:text-accent-foreground transition-colors">
                         sarah.mitchell@example.com
                       </p>
                     </div>
@@ -78,8 +78,8 @@ const Contact = () => {
                       <Linkedin className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">LinkedIn</p>
-                      <p className="font-medium text-foreground group-hover:text-accent transition-colors">
+                      <p className="body-small">LinkedIn</p>
+                      <p className="text-label text-foreground group-hover:text-accent-foreground transition-colors">
                         linkedin.com/in/sarahmitchell
                       </p>
                     </div>
@@ -88,7 +88,7 @@ const Contact = () => {
                 
                 <div className="divider my-8" />
                 
-                <p className="text-sm text-muted-foreground">
+                <p className="body-small">
                   Based in the United States, available for remote work globally.
                 </p>
               </div>
@@ -115,10 +115,10 @@ const Contact = () => {
                     <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="w-8 h-8 text-accent" />
                     </div>
-                    <h3 className="text-xl font-display font-medium text-foreground mb-2">
+                    <h3 className="heading-small text-foreground mb-2">
                       Message Sent!
                     </h3>
-                    <p className="text-muted-foreground">
+                    <p className="body-default text-muted-foreground">
                       Thank you for reaching out. I'll get back to you within 24-48 hours.
                     </p>
                     <Button 
@@ -162,7 +162,7 @@ const Contact = () => {
                         rows={4}
                         required 
                       />
-                      <p className="text-xs text-muted-foreground">
+                      <p className="body-small text-xs">
                         A sentence or two is perfect. We can discuss details later.
                       </p>
                     </div>

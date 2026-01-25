@@ -175,31 +175,87 @@
 }
 
 @layer components {
+  /* ============================================
+     TYPOGRAPHY SYSTEM
+     Consistent font hierarchy across all pages
+     ============================================ */
+  
+  /* Display - Hero titles, main page headers */
   .heading-display {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight;
   }
 
+  /* Section - Major section headers (h2 level) */
   .heading-section {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-3xl md:text-4xl font-medium tracking-tight;
   }
 
+  /* Subsection - Card titles, minor headers (h3 level) */
   .heading-subsection {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-2xl md:text-3xl font-medium tracking-tight;
   }
 
+  /* Card Title - Smaller card headers, list item titles (h4 level) */
+  .heading-card {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-xl md:text-2xl font-medium tracking-tight;
+  }
+
+  /* Small Title - Inline titles, timeline items (h5 level) */
+  .heading-small {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-lg md:text-xl font-medium tracking-tight;
+  }
+
+  /* Stats - Large numbers, metrics display */
+  .text-stat {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-4xl md:text-5xl font-medium;
+  }
+
+  /* Stats Small - Floating badges, inline stats */
+  .text-stat-sm {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-3xl font-semibold;
+  }
+
+  /* Logo/Brand text */
+  .text-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-xl font-medium;
+  }
+
+  /* Body Large - Intro paragraphs, descriptions */
   .body-large {
     @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
   }
 
+  /* Body Default - Standard paragraphs */
   .body-default {
     @apply text-base leading-relaxed;
   }
 
+  /* Body Small - Supporting text, captions */
+  .body-small {
+    @apply text-sm leading-relaxed text-muted-foreground;
+  }
+
+  /* Label Caps - Section labels, categories */
   .label-caps {
     @apply text-xs font-semibold uppercase tracking-widest text-muted-foreground;
+  }
+
+  /* Label - Form labels, meta info */
+  .text-label {
+    @apply text-sm font-medium;
+  }
+
+  /* Nav Link - Navigation items */
+  .text-nav {
+    @apply text-sm font-medium;
   }
 
   .container-narrow {
