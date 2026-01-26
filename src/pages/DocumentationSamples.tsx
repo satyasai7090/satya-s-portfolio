@@ -105,6 +105,13 @@ const DocumentationSamples = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"
+                      onClick={(e) => {
+                        // Fallback for blocked popups in preview
+                        if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
+                          e.preventDefault();
+                          window.open(sample.pdfLink, '_blank');
+                        }
+                      }}
                     >
                       <span>View PDF</span>
                       <motion.span
