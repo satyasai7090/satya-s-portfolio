@@ -217,7 +217,7 @@ const Index = () => {
       </section>
       
       {/* Brief Overview Section */}
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-cool">
         <div className="container-wide">
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection delay={0}>

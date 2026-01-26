@@ -37,7 +37,7 @@ const CaseStudies = () => {
       {caseStudies.map((study, index) => (
         <section
           key={study.id}
-          className={`section-padding ${index % 2 === 0 ? "surface-warm" : ""}`}
+          className={`section-padding ${index % 2 === 0 ? "surface-cool" : "surface-accent"}`}
         >
           <div className="container-narrow">
             <AnimatedSection>
