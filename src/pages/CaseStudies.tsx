@@ -29,42 +29,29 @@ const caseStudies: CaseStudy[] = [
       {
         heading: "Context & Constraints",
         content: [
-          "RMJ documentation supports multiple product versions and UI variants. Each version is maintained on a separate Git branch, and publishing must result in independently verifiable builds in Flare Online.",
-          "A key constraint shapes this entire workflow: RMJ documentation relies on a required post-build script that must execute after the MadCap Flare build completes. This post-build step cannot currently be executed directly from MadCap Central. As a result, publishing must be driven locally through Flare Desktop or an equivalent CLI workflow.",
-          "The goal of this project was to work within these constraints, not remove or bypass them."
+          "RMJ documentation supports multiple product versions and UI variants, each on a separate Git branch. A required post-build script must execute after every MadCap Flare build—but cannot run from MadCap Central.",
+          "Publishing must be driven locally. The goal was to automate within these constraints, not bypass them."
         ],
       },
       {
-        heading: "Why the Obvious Solutions Failed",
-        content: [
-          "Publishing directly from MadCap Central could not be used because the required post-build script would not execute. Reducing build time was not the real solution either—the per-version build duration was acceptable.",
-          "The true bottleneck emerged when publishing many versions. Manual repetition—switching branches, triggering builds, waiting, verifying—consumed hours of active oversight. This was an orchestration problem, not a build problem."
-        ],
+        heading: "Why Obvious Solutions Failed",
+        content: "MadCap Central couldn't run the post-build script. Build speed wasn't the issue—manual orchestration was. Publishing 10+ versions meant hours of switching branches, triggering builds, waiting, and verifying."
       },
       {
         heading: "The Key Insight",
-        content: [
-          "The problem was not how RMJ documentation was built. The problem was the manual orchestration of publishing multiple versions.",
-          "Each version already existed in its own branch and could be treated independently. Automation needed to respect version isolation, independent verification, and the existing build and post-build logic without modification."
-        ],
+        content: "The problem wasn't how builds worked—it was the repetitive manual orchestration. Each branch could be processed independently, preserving version isolation and existing build logic."
       },
       {
         heading: "Designing a Safe Automation Workflow",
-        content: [
-          "The automation wraps around the existing RMJ publishing process rather than replacing it. No changes were made to Flare project configuration. No changes were made to the required post-build script.",
-          "Publishing remains sequential and version-isolated. Each branch is checked out, built, post-processed, and published before moving to the next. This preserves the exact behavior of manual publishing while removing the need for constant human intervention."
-        ],
+        content: "The automation wraps around the existing process without modifying Flare configuration or the post-build script. Branches are processed sequentially—checkout, build, post-process, publish—preserving manual behavior while eliminating human intervention.",
         image: {
           placeholder: "Automation Script Location",
-          caption: "Batch publishing automation maintained outside the RMJ repository to allow safe branch switching without risking content loss or cross-version contamination."
+          caption: "Batch automation maintained outside the RMJ repository to enable safe branch switching."
         }
       },
       {
         heading: "Execution in Practice",
-        content: [
-          "Publishing is triggered via a single PowerShell command. An explicit list of RMJ branches is provided as input. Each branch is processed independently and sequentially, with no manual intervention required during execution.",
-          "The script handles branch switching, build invocation, post-build execution, and upload to Flare Online—all in a single unattended run."
-        ],
+        content: "A single PowerShell command takes a list of branches and processes each independently. No manual intervention required during execution.",
         image: {
           placeholder: "CLI Execution",
           caption: "Single command triggering sequential publishing across multiple RMJ versions."
@@ -72,53 +59,20 @@ const caseStudies: CaseStudy[] = [
       },
       {
         heading: "Verification & Trust",
-        content: [
-          "Each publish produces a separate build with its own build ID in Flare Online. Builds are visible and verifiable through the standard Flare Online interface. Output is identical to manual Flare Desktop publishing—because it uses the same underlying process.",
-          "This transparency was essential for adoption. The automation does not obscure what happens; it simply removes the need to do it manually."
-        ],
+        content: "Each publish produces a separate, verifiable build in Flare Online—identical to manual publishing. The automation is transparent; it removes effort without obscuring what happens.",
         image: {
           placeholder: "Flare Online Builds",
-          caption: "Independent build IDs visible in Flare Online, confirming version isolation and successful publishing."
+          caption: "Independent build IDs in Flare Online confirming version isolation."
         }
       },
       {
         heading: "Impact at Scale",
-        content: [
-          "Per-version build time remains unchanged—automation does not speed up individual builds. What it eliminates is hours of active oversight. Manual effort is reduced from continuous monitoring to minutes of initial setup.",
-          "Publishing 10–15 versions becomes practical and repeatable. The solution scales linearly as RMJ grows, without added complexity or new tooling dependencies.",
-          "Publishing shifted from a repetitive manual task to a controlled, reliable workflow."
-        ],
+        content: "Manual effort dropped from hours to minutes of setup. Publishing 10–15 versions became practical and repeatable. The solution scales linearly without added complexity. Publishing shifted from a repetitive task to a controlled, reliable workflow."
       },
     ],
   },
   {
     id: 2,
-    title: "Enterprise API Documentation Overhaul",
-    sections: [
-      {
-        heading: "Context",
-        content: "A leading B2B SaaS platform providing workflow automation tools for enterprise clients. The platform integrated with dozens of third-party systems and required comprehensive API documentation for developer partners.",
-      },
-      {
-        heading: "Problem",
-        content: "The existing API documentation was fragmented across multiple repositories, inconsistent in style, and frequently outdated. Developer onboarding times averaged 3+ weeks, and support tickets related to integration issues consumed significant engineering resources.",
-      },
-      {
-        heading: "Role & Approach",
-        content: "I was brought in as the sole technical writer responsible for the complete documentation overhaul. This included auditing existing content, establishing new information architecture, and collaborating directly with the API engineering team.",
-      },
-      {
-        heading: "Tools & Collaboration",
-        content: "Worked extensively with OpenAPI/Swagger specifications, Git-based docs-as-code workflows, and Markdown. Collaborated daily with backend engineers, product managers, and developer relations.",
-      },
-      {
-        heading: "Outcome & Impact",
-        content: "Reduced developer onboarding time by 60% (from 3 weeks to under 1 week). Integration-related support tickets dropped by 45% within the first quarter post-launch. The new documentation structure became the template for all future API products.",
-      },
-    ],
-  },
-  {
-    id: 3,
     title: "Regulatory Compliance Documentation Suite",
     sections: [
       {
