@@ -20,24 +20,32 @@ const documentationSamples = [
     description: "Release notes documenting new features, enhancements, security updates, bug fixes, and upgrade guidance for an enterprise CRM platform.",
     pdfLink: "https://drive.google.com/file/d/1NqGAjfdit373R7D8lEUlSqVx0CkkWbIQ/view?usp=sharing",
     cover: cloudSuiteCover,
+    accentColor: "from-blue-500/20 to-indigo-500/20",
+    borderColor: "border-blue-200/50 dark:border-blue-800/30",
   },
   {
     title: "PennyWise App – Quick Start & Walkthrough Guide",
     description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.",
     pdfLink: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing",
     cover: pennywiseCover,
+    accentColor: "from-emerald-500/20 to-teal-500/20",
+    borderColor: "border-emerald-200/50 dark:border-emerald-800/30",
   },
   {
     title: "HealthMate Smart Glucometer – Quick Start Guide",
     description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.",
     pdfLink: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing",
     cover: glucometerCover,
+    accentColor: "from-cyan-500/20 to-sky-500/20",
+    borderColor: "border-cyan-200/50 dark:border-cyan-800/30",
   },
   {
     title: "HealthMate Pro BPM-500 – User Guide",
     description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.",
     pdfLink: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing",
     cover: bpm500Cover,
+    accentColor: "from-rose-500/20 to-pink-500/20",
+    borderColor: "border-rose-200/50 dark:border-rose-800/30",
   },
 ];
 
@@ -84,8 +92,11 @@ const DocumentationSamples = () => {
                   transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] shadow-[0_4px_20px_rgba(0,0,0,0.08),0_8px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12),0_16px_60px_rgba(0,0,0,0.08)] transition-all duration-500 border border-border/40"
+                className={`group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] shadow-[0_4px_20px_rgba(0,0,0,0.08),0_8px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12),0_16px_60px_rgba(0,0,0,0.08)] transition-all duration-500 border-2 ${sample.borderColor}`}
               >
+                {/* Subtle gradient accent frame */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${sample.accentColor} z-0`} />
+                
                 {/* Paper texture overlay */}
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')] opacity-50 pointer-events-none z-10" />
                 
