@@ -46,40 +46,81 @@ const DocumentationSamples = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
           >
-            {documentationSamples.map((sample) => (
+            {documentationSamples.map((sample, index) => (
               <motion.div
                 key={sample.title}
                 variants={itemVariants}
-                className="card-elevated p-6 flex flex-col"
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative card-hover-glow p-6 flex flex-col cursor-pointer overflow-hidden"
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary shrink-0">
+                {/* Decorative gradient overlay on hover */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={false}
+                />
+                
+                {/* Animated corner accent */}
+                <motion.div 
+                  className="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileHover={{ scale: 1.5, opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                />
+                
+                <div className="relative flex items-start gap-4 mb-4">
+                  {/* Icon with enhanced hover effect */}
+                  <motion.div 
+                    className="p-3 rounded-xl bg-primary/10 text-primary shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/25"
+                    whileHover={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <FileText className="w-6 h-6" />
-                  </div>
+                  </motion.div>
+                  
                   <div className="flex-1 min-w-0">
-                    <h3 className="heading-card text-foreground mb-2">
+                    <h3 className="heading-card text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                       {sample.title}
                     </h3>
-                    <p className="body-default text-muted-foreground text-sm">
+                    <p className="body-default text-muted-foreground text-sm leading-relaxed">
                       {sample.description}
                     </p>
                   </div>
                 </div>
-                <div className="mt-auto pt-4">
+                
+                {/* Bottom section with animated button */}
+                <div className="relative mt-auto pt-4 border-t border-border/50 group-hover:border-primary/20 transition-colors duration-300">
                   <Button
                     asChild
                     variant="outline"
                     size="sm"
-                    className="w-full"
+                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 group-hover:shadow-md group-hover:shadow-primary/20"
                   >
                     <a
                       href={sample.pdfLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
                     >
-                      View PDF
+                      <span>View PDF</span>
+                      <motion.span
+                        className="inline-block"
+                        initial={{ x: 0 }}
+                        whileHover={{ x: 4 }}
+                      >
+                        →
+                      </motion.span>
                     </a>
                   </Button>
+                </div>
+                
+                {/* Subtle index indicator */}
+                <div className="absolute bottom-2 right-3 text-[10px] font-mono text-muted-foreground/30 group-hover:text-primary/40 transition-colors duration-300">
+                  0{index + 1}
                 </div>
               </motion.div>
             ))}
