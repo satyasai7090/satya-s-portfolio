@@ -97,9 +97,10 @@ export default {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			},
-  			warm: 'hsl(var(--surface-warm))',
-  			cool: 'hsl(var(--surface-cool))'
-  		},
+			warm: 'hsl(var(--surface-warm))',
+			cool: 'hsl(var(--surface-cool))',
+			accent: 'hsl(var(--surface-accent))'
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

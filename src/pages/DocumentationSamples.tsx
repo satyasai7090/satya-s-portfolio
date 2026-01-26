@@ -75,7 +75,7 @@ const DocumentationSamples = () => {
         description="Sample documentation created for imaginary products to demonstrate structure and writing style."
       />
 
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-cool">
         <div className="container-narrow">
           <motion.div 
             className="space-y-8"

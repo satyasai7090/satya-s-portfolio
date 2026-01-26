@@ -39,7 +39,7 @@ const Contact = () => {
       />
 
       {/* Contact Content */}
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-cool">
         <div className="container-narrow">
           <div className="grid md:grid-cols-5 gap-12 md:gap-16">
             {/* Direct Contact */}

@@ -77,7 +77,7 @@ const Experience = () => {
       />
 
       {/* Professional Impact */}
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-cool">
         <div className="container-wide">
           <AnimatedSection>
             <div className="text-center mb-12">
@@ -146,7 +146,7 @@ const Experience = () => {
       </section>
 
       {/* Skills */}
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-accent">
         <div className="container-wide">
           <AnimatedSection>
             <div className="text-center mb-12">

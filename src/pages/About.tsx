@@ -14,7 +14,7 @@ const About = () => {
       />
 
       {/* Professional Overview */}
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-cool">
         <div className="container-narrow">
           <AnimatedSection>
             <p className="label-caps mb-3">Overview</p>
@@ -114,7 +114,7 @@ const About = () => {
       </section>
 
       {/* What I Bring */}
-      <section className="section-padding surface-warm">
+      <section className="section-padding surface-accent">
         <div className="container-narrow">
           <AnimatedSection>
             <p className="label-caps mb-3">Value</p>
