@@ -5,26 +5,36 @@ import { PageHero } from "@/components/shared/PageHero";
 import { containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 import { Button } from "@/components/ui/button";
 
+// Import cover images
+import cloudSuiteCover from "@/assets/covers/cloudsuite-crm-cover.jpg";
+import pennywiseCover from "@/assets/covers/pennywise-cover.jpg";
+import glucometerCover from "@/assets/covers/glucometer-cover.jpg";
+import bpm500Cover from "@/assets/covers/bpm500-cover.jpg";
+
 const documentationSamples = [
   {
     title: "CloudSuite CRM – Release Notes (v3.12.0)",
     description: "Release notes documenting new features, enhancements, security updates, bug fixes, and upgrade guidance for an enterprise CRM platform.",
     pdfLink: "https://drive.google.com/file/d/1NqGAjfdit373R7D8lEUlSqVx0CkkWbIQ/view?usp=sharing",
+    cover: cloudSuiteCover,
   },
   {
     title: "PennyWise App – Quick Start & Walkthrough Guide",
     description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.",
     pdfLink: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing",
+    cover: pennywiseCover,
   },
   {
     title: "HealthMate Smart Glucometer – Quick Start Guide",
     description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.",
     pdfLink: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing",
+    cover: glucometerCover,
   },
   {
     title: "HealthMate Pro BPM-500 – User Guide",
     description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.",
     pdfLink: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing",
+    cover: bpm500Cover,
   },
 ];
 
@@ -56,49 +66,42 @@ const DocumentationSamples = () => {
                   transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative card-hover-glow p-6 flex flex-col cursor-pointer overflow-hidden"
+                className="group relative card-hover-glow rounded-xl overflow-hidden cursor-pointer aspect-[3/4]"
               >
-                {/* Decorative gradient overlay on hover */}
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  initial={false}
+                {/* Cover Image */}
+                <img
+                  src={sample.cover}
+                  alt={`${sample.title} cover`}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
                 
-                {/* Animated corner accent */}
-                <motion.div 
-                  className="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileHover={{ scale: 1.5, opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                />
+                {/* Dark overlay that appears on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 
-                <div className="relative flex items-start gap-4 mb-4">
-                  {/* Icon with enhanced hover effect */}
+                {/* Content overlay - appears on hover */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
+                  {/* Icon */}
                   <motion.div 
-                    className="p-3 rounded-xl bg-primary/10 text-primary shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/25"
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
+                    className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30"
                   >
-                    <FileText className="w-6 h-6" />
+                    <FileText className="w-5 h-5" />
                   </motion.div>
                   
-                  <div className="flex-1 min-w-0">
-                    <h3 className="heading-card text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                      {sample.title}
-                    </h3>
-                    <p className="body-default text-muted-foreground text-sm leading-relaxed">
-                      {sample.description}
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Bottom section with animated button */}
-                <div className="relative mt-auto pt-4 border-t border-border/50 group-hover:border-primary/20 transition-colors duration-300">
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+                    {sample.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
+                    {sample.description}
+                  </p>
+                  
+                  {/* Button */}
                   <Button
                     asChild
-                    variant="outline"
                     size="sm"
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 group-hover:shadow-md group-hover:shadow-primary/20"
+                    className="w-full bg-white text-black hover:bg-white/90 transition-all duration-300 shadow-lg"
                   >
                     <a
                       href={sample.pdfLink}
@@ -114,19 +117,13 @@ const DocumentationSamples = () => {
                       }}
                     >
                       <span>View PDF</span>
-                      <motion.span
-                        className="inline-block"
-                        initial={{ x: 0 }}
-                        whileHover={{ x: 4 }}
-                      >
-                        →
-                      </motion.span>
+                      <span>→</span>
                     </a>
                   </Button>
                 </div>
                 
-                {/* Subtle index indicator */}
-                <div className="absolute bottom-2 right-3 text-[10px] font-mono text-muted-foreground/30 group-hover:text-primary/40 transition-colors duration-300">
+                {/* Subtle index indicator - always visible */}
+                <div className="absolute top-3 right-3 text-xs font-mono text-white/50 bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   0{index + 1}
                 </div>
               </motion.div>
