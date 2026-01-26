@@ -66,8 +66,15 @@ const DocumentationSamples = () => {
                   transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative card-hover-glow rounded-xl overflow-hidden cursor-pointer aspect-[3/4]"
+                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] shadow-[0_4px_20px_rgba(0,0,0,0.08),0_8px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12),0_16px_60px_rgba(0,0,0,0.08)] transition-all duration-500 border border-border/40"
               >
+                {/* Paper texture overlay */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')] opacity-50 pointer-events-none z-10" />
+                
+                {/* Document edge effect */}
+                <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-l from-black/5 to-transparent z-10" />
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-t from-black/5 to-transparent z-10" />
+                
                 {/* Cover Image */}
                 <img
                   src={sample.cover}
