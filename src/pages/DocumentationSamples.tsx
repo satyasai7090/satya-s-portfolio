@@ -9,22 +9,22 @@ const documentationSamples = [
   {
     title: "CloudSuite CRM – Release Notes (v3.12.0)",
     description: "Release notes documenting new features, enhancements, security updates, bug fixes, and upgrade guidance for an enterprise CRM platform.",
-    pdfLink: "/docs/CloudSuite_CRM_Release_Notes.pdf",
+    pdfLink: "https://drive.google.com/file/d/1NqGAjfdit373R7D8lEUlSqVx0CkkWbIQ/view?usp=sharing",
   },
   {
     title: "PennyWise App – Quick Start & Walkthrough Guide",
     description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.",
-    pdfLink: "/docs/PennyWise_Quick_Start_Guide.pdf",
+    pdfLink: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing",
   },
   {
     title: "HealthMate Smart Glucometer – Quick Start Guide",
     description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.",
-    pdfLink: "/docs/HealthMate_Glucometer_Quick_Start.pdf",
+    pdfLink: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing",
   },
   {
     title: "HealthMate Pro BPM-500 – User Guide",
     description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.",
-    pdfLink: "/docs/HealthMate_BPM500_User_Guide.pdf",
+    pdfLink: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing",
   },
 ];
 
