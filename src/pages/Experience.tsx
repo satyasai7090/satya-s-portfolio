@@ -13,21 +13,27 @@ const impactStats = [
 const experience = [
   {
     role: "Senior Technical Writer",
-    company: "Enterprise SaaS Company",
-    period: "2023 – Present",
-    description: "Lead technical writer for core platform products. Own end-to-end documentation for API products, developer portals, and enterprise integrations. Mentor junior writers and establish documentation standards.",
+    company: "Redwood Software",
+    period: "Dec 2025 – Present",
+    description: "Senior Technical Writer responsible for end-to-end documentation of RunMyJobs, an enterprise workload automation and job scheduling platform. Own and maintain user guides, configuration documentation, and release content for complex scheduling, automation, and integration workflows. Collaborate closely with product managers, engineers, and QA teams to translate technical concepts into clear, structured, and user-focused documentation. Contribute to documentation standards, consistency, and continuous improvement of the overall documentation experience for enterprise customers.",
   },
   {
     role: "Technical Writer",
-    company: "Healthcare Technology Startup",
-    period: "2021 – 2023",
-    description: "Sole documentation owner for clinical software platform. Built compliance documentation framework meeting FDA and EU regulatory requirements. Reduced documentation-related release delays by 80%.",
+    company: "Oracle India Pvt. Ltd.",
+    period: "Jun 2024 – Nov 2025",
+    description: "Technical Writer supporting enterprise healthcare safety software products. Developed and maintained high-quality product documentation including user guides, release notes, and regulatory-compliant content. Worked closely with cross-functional teams to ensure documentation accuracy, compliance, and alignment with product releases in a regulated environment.",
   },
   {
-    role: "Technical Writer (Contract)",
-    company: "Various Technology Clients",
-    period: "2020 – 2021",
-    description: "Contract documentation work for B2B software companies. Projects included API documentation, user guides, and knowledge base development.",
+    role: "Product Information Specialist",
+    company: "Unisys India Pvt. Ltd.",
+    period: "Apr 2023 – Jun 2024",
+    description: "Owned and delivered technical documentation for enterprise data exchange and integration solutions. Created and maintained product documentation, configuration guides, and knowledge base content. Collaborated with engineering and support teams to improve documentation quality, usability, and consistency across releases.",
+  },
+  {
+    role: "Technical Writer",
+    company: "Cyient Ltd.",
+    period: "Dec 2020 – Apr 2023",
+    description: "Produced technical documentation for enterprise and industrial software products, including user manuals, installation guides, and process documentation. Supported documentation lifecycle activities and worked closely with subject matter experts to ensure clarity, accuracy, and adherence to documentation standards.",
   },
 ];
 
