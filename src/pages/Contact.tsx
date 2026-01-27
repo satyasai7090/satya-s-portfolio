@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { AnimatedSection, containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
@@ -10,36 +11,46 @@ import { Label } from "@/components/ui/label";
 import { Linkedin, Mail, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = "service_bj7tvcm";
+const EMAILJS_TEMPLATE_ID = "template_nfhlzio";
+const EMAILJS_PUBLIC_KEY = "ONoT_lt-eA91kFfmc";
+
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const message = formData.get("message") as string;
 
-    // Build mailto URL with pre-filled content
-    const subject = encodeURIComponent("Project Collaboration Inquiry");
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nProject Description:\n${message}`
-    );
-    const mailtoUrl = `mailto:satyasai7090@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      if (!formRef.current) return;
 
-    // Open default email client
-    window.location.href = mailtoUrl;
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
 
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    toast({
-      title: "Email client opened!",
-      description: "Please send the email from your mail app to complete.",
-    });
+      setIsSubmitted(true);
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -170,6 +181,7 @@ const Contact = () => {
                   </motion.div>
                 ) : (
                   <motion.form 
+                    ref={formRef}
                     onSubmit={handleSubmit} 
                     className="space-y-6"
                     variants={containerVariants}
