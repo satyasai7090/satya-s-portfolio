@@ -2,13 +2,17 @@ import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/shared/AnimatedSection";
-import { ImageIcon } from "lucide-react";
+
+// Import case study images
+import automationScriptLocation from "@/assets/case-study/automation-script-location.jpeg";
+import cliExecution from "@/assets/case-study/cli-execution.jpeg";
+import flareOnlineBuilds from "@/assets/case-study/flare-online-builds.jpeg";
 
 interface CaseStudySection {
   heading: string;
   content: string | string[];
   image?: {
-    placeholder: string;
+    src: string;
     caption: string;
   };
 }
@@ -45,7 +49,7 @@ const caseStudies: CaseStudy[] = [
         heading: "Designing a Safe Automation Workflow",
         content: "The automation wraps around the existing process without modifying Flare configuration or the post-build script. Branches are processed sequentially—checkout, build, post-process, publish—preserving manual behavior while eliminating human intervention.",
         image: {
-          placeholder: "Automation Script Location",
+          src: automationScriptLocation,
           caption: "Batch automation maintained outside the RMJ repository to enable safe branch switching."
         }
       },
@@ -53,7 +57,7 @@ const caseStudies: CaseStudy[] = [
         heading: "Execution in Practice",
         content: "A single PowerShell command takes a list of branches and processes each independently. No manual intervention required during execution.",
         image: {
-          placeholder: "CLI Execution",
+          src: cliExecution,
           caption: "Single command triggering sequential publishing across multiple RMJ versions."
         }
       },
@@ -61,7 +65,7 @@ const caseStudies: CaseStudy[] = [
         heading: "Verification & Trust",
         content: "Each publish produces a separate, verifiable build in Flare Online—identical to manual publishing. The automation is transparent; it removes effort without obscuring what happens.",
         image: {
-          placeholder: "Flare Online Builds",
+          src: flareOnlineBuilds,
           caption: "Independent build IDs in Flare Online confirming version isolation."
         }
       },
@@ -71,40 +75,18 @@ const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    id: 2,
-    title: "Regulatory Compliance Documentation Suite",
-    sections: [
-      {
-        heading: "Context",
-        content: "A healthcare technology company developing software for clinical trial management. All documentation required strict adherence to FDA 21 CFR Part 11 and EU Annex 11 compliance standards.",
-      },
-      {
-        heading: "Problem",
-        content: "The documentation process was reactive rather than proactive, with compliance reviews happening late in the release cycle. This caused delays, rework, and risk of non-compliance. There was no standardized template system for compliance-critical documents.",
-      },
-      {
-        heading: "Role & Approach",
-        content: "Took ownership of building a compliance-first documentation framework. Led the creation of standardized templates, established review workflows, and trained team members on regulatory documentation requirements.",
-      },
-      {
-        heading: "Tools & Collaboration",
-        content: "Utilized structured authoring tools, XML-based content management systems, and collaborative review platforms. Worked closely with regulatory affairs, QA, and product teams.",
-      },
-      {
-        heading: "Outcome & Impact",
-        content: "Achieved zero compliance findings in two consecutive FDA audits. Reduced documentation-related release delays by 80%. The template system was adopted company-wide and reduced new document creation time by 50%.",
-      },
-    ],
-  },
 ];
 
-function ImagePlaceholder({ placeholder, caption }: { placeholder: string; caption: string }) {
+function CaseStudyImage({ src, caption }: { src: string; caption: string }) {
   return (
     <div className="mt-6 mb-2">
-      <div className="bg-muted/50 border-2 border-dashed border-border rounded-xl p-8 flex flex-col items-center justify-center min-h-[200px]">
-        <ImageIcon className="w-12 h-12 text-muted-foreground/50 mb-3" />
-        <p className="text-sm font-medium text-muted-foreground">[Image Placeholder: {placeholder}]</p>
+      <div className="rounded-xl overflow-hidden border border-border/50 shadow-lg bg-black/5 dark:bg-white/5">
+        <img 
+          src={src} 
+          alt={caption}
+          className="w-full h-auto object-contain max-h-[500px]"
+          loading="lazy"
+        />
       </div>
       <p className="text-sm text-muted-foreground mt-3 italic text-center px-4">{caption}</p>
     </div>
@@ -167,8 +149,8 @@ const CaseStudies = () => {
                         <h3 className="text-label text-foreground mb-2">{section.heading}</h3>
                         {renderContent(section.content)}
                         {section.image && (
-                          <ImagePlaceholder 
-                            placeholder={section.image.placeholder} 
+                          <CaseStudyImage 
+                            src={section.image.src} 
                             caption={section.image.caption} 
                           />
                         )}
@@ -183,8 +165,8 @@ const CaseStudies = () => {
                         <h3 className="text-label text-foreground mb-2">{section.heading}</h3>
                         {renderContent(section.content)}
                         {section.image && (
-                          <ImagePlaceholder 
-                            placeholder={section.image.placeholder} 
+                          <CaseStudyImage 
+                            src={section.image.src} 
                             caption={section.image.caption} 
                           />
                         )}
