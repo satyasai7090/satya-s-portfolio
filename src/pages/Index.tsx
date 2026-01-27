@@ -5,7 +5,7 @@ import { Linkedin, Mail, FileText, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { AnimatedSection, AnimatedImage, AnimatedText } from "@/components/shared/AnimatedSection";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 const containerVariants = {
   hidden: {
     opacity: 0
@@ -181,12 +181,16 @@ const Index = () => {
             <motion.div className="order-1 lg:order-2 relative" variants={imageVariants} initial="hidden" animate="visible">
               <div className="relative max-w-md mx-auto lg:max-w-none">
                 {/* Main image container */}
-                <motion.div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-2xl" whileHover={{
+                <motion.div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-2xl ring-1 ring-border/10" whileHover={{
                 scale: 1.01
               }} transition={{
                 duration: 0.3
               }}>
-                  <img src={profilePhoto} alt="Sarah Mitchell - Technical Writer" className="w-full h-full object-cover" />
+                  <img 
+                    src={profilePhoto} 
+                    alt="Satya Sai Pasupuleti - Technical Writer" 
+                    className="w-full h-full object-cover object-top brightness-105 contrast-[1.02] saturate-[1.05]" 
+                  />
                 </motion.div>
                 
                 {/* Floating experience badge */}
