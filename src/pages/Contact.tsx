@@ -9,14 +9,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Linkedin, Mail, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -25,35 +24,22 @@ const Contact = () => {
     const email = formData.get("email") as string;
     const message = formData.get("message") as string;
 
-    try {
-      const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: { name, email, message },
-      });
+    // Build mailto URL with pre-filled content
+    const subject = encodeURIComponent("Project Collaboration Inquiry");
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nProject Description:\n${message}`
+    );
+    const mailtoUrl = `mailto:satyasai7090@gmail.com?subject=${subject}&body=${body}`;
 
-      if (error) {
-        console.error("Error sending email:", error);
-        throw new Error(error.message || "Failed to send message");
-      }
+    // Open default email client
+    window.location.href = mailtoUrl;
 
-      if (!data?.success) {
-        throw new Error(data?.error || "Failed to send message");
-      }
-
-      setIsSubmitted(true);
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-    } catch (error: any) {
-      console.error("Contact form error:", error);
-      toast({
-        title: "Error sending message",
-        description: error.message || "Please try again or email directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitted(true);
+    setIsSubmitting(false);
+    toast({
+      title: "Email client opened!",
+      description: "Please send the email from your mail app to complete.",
+    });
   };
 
   return (
