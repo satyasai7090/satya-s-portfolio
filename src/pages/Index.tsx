@@ -191,6 +191,9 @@ const Index = () => {
                     alt="Satya Sai Pasupuleti - Technical Writer" 
                     className="w-full h-full object-cover object-top brightness-105 contrast-[1.02] saturate-[1.05]" 
                   />
+                  {/* Subtle gradient overlay for stylized look */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-secondary/5 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/8 pointer-events-none" />
                 </motion.div>
                 
                 {/* Floating experience badge */}
