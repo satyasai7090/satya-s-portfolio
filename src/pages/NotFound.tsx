@@ -13,12 +13,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{
-        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-      }}
-    >
+    <div className="flex min-h-screen items-center justify-center bg-background">
       <motion.div
         className="text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -26,16 +21,8 @@ const NotFound = () => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.h1
-          className="mb-4 leading-[1.1]"
-          style={{
-            fontFamily: "'Playfair Display', Georgia, serif",
-            fontSize: "clamp(4rem, 10vw, 8rem)",
-            fontWeight: 600,
-            background: "linear-gradient(135deg, #d4af37 0%, #f5d670 40%, #d4af37 70%, #b8962e 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
+          className="heading-display gold-text mb-4"
+          style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -43,8 +30,7 @@ const NotFound = () => {
           404
         </motion.h1>
         <motion.p
-          className="text-xl text-gray-400 mb-8"
-          style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+          className="body-large mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -61,7 +47,7 @@ const NotFound = () => {
           <Button
             asChild
             size="lg"
-            className="bg-[#d4af37] text-[#1a1a2e] hover:bg-[#f5d670] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] font-semibold px-8 h-12 text-base rounded-xl transition-all duration-300"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(var(--ent-gold)/0.4)] font-semibold px-8 h-12 text-base rounded-xl transition-all duration-300"
           >
             <Link to="/">
               <ArrowLeft className="mr-2 h-4 w-4" />

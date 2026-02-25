@@ -16,7 +16,7 @@ export function SectionHeader({ label, title, description, centered = false }: S
         </AnimatedText>
       )}
       <AnimatedText delay={0.1}>
-        <h2 className="heading-section text-foreground">{title}</h2>
+        <h2 className="heading-section gold-text">{title}</h2>
       </AnimatedText>
       {description && (
         <AnimatedText delay={0.2}>

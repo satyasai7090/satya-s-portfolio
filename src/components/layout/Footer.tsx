@@ -2,26 +2,14 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
-    <footer
-      className="border-t border-[#d4af37]/10"
-      style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)" }}
-    >
+    <footer className="border-t border-border bg-background">
       <div className="container-wide py-12 md:py-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div>
-            <p
-              className="text-xl font-medium mb-2"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                background: "linear-gradient(135deg, #d4af37 0%, #f5d670 50%, #d4af37 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <p className="heading-small gold-text mb-2">
               Let's work together
             </p>
-            <p className="text-sm text-gray-400" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+            <p className="body-small">
               Open to new opportunities and collaborations.
             </p>
           </div>
@@ -29,8 +17,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
             <Link 
               to="/contact" 
-              className="text-sm font-medium text-gray-300 hover:text-[#d4af37] transition-colors"
-              style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+              className="text-nav text-foreground hover:text-primary transition-colors"
             >
               Contact
             </Link>
@@ -38,8 +25,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/satya-sai-pasupuleti-7090pj" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm font-medium text-gray-400 hover:text-[#d4af37] transition-colors"
-              style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+              className="text-nav text-muted-foreground hover:text-primary transition-colors"
             >
               LinkedIn
             </a>
@@ -47,17 +33,16 @@ export function Footer() {
               href="mailto:satyasai7090@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-gray-400 hover:text-[#d4af37] transition-colors"
-              style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+              className="text-nav text-muted-foreground hover:text-primary transition-colors"
             >
               Email
             </a>
           </div>
         </div>
         
-        <div className="w-full h-px bg-[#d4af37]/10 mt-12 mb-6" />
+        <div className="divider mt-12 mb-6" />
         
-        <p className="text-sm text-gray-500" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+        <p className="body-small">
           © {new Date().getFullYear()} All rights reserved.
         </p>
       </div>

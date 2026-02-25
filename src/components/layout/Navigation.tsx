@@ -19,29 +19,12 @@ export function Navigation() {
     <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-[#d4af37]/10"
-      style={{
-        background: "rgba(26, 26, 46, 0.85)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-      }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-xl border-b border-border/50"
     >
       <nav className="container-wide">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link 
-            to="/" 
-            className="transition-colors"
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: "1.25rem",
-              fontWeight: 600,
-              background: "linear-gradient(135deg, #d4af37 0%, #f5d670 50%, #d4af37 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <Link to="/" className="text-logo gold-text hover:opacity-80 transition-opacity">
             Portfolio
           </Link>
           
@@ -52,19 +35,18 @@ export function Navigation() {
                   <Link
                     to={link.href}
                     className={cn(
-                      "text-sm font-medium transition-colors duration-200 relative",
+                      "text-nav transition-all duration-300 relative",
                       location.pathname === link.href
-                        ? "text-[#d4af37]"
-                        : "text-gray-400 hover:text-[#d4af37]/80"
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-primary"
                     )}
-                    style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
                   >
                     {link.label}
                     {location.pathname === link.href && (
                       <motion.div
                         layoutId="nav-indicator"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#d4af37]"
-                        transition={{ duration: 0.3 }}
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
                   </Link>
@@ -90,16 +72,15 @@ function MobileNav() {
       <details className="group">
         <summary className="list-none cursor-pointer p-2">
           <div className="flex flex-col gap-1.5">
-            <span className="block w-6 h-0.5 bg-gray-300 transition-transform group-open:rotate-45 group-open:translate-y-2" />
-            <span className="block w-6 h-0.5 bg-gray-300 transition-opacity group-open:opacity-0" />
-            <span className="block w-6 h-0.5 bg-gray-300 transition-transform group-open:-rotate-45 group-open:-translate-y-2" />
+            <span className="block w-6 h-0.5 bg-foreground transition-transform group-open:rotate-45 group-open:translate-y-2" />
+            <span className="block w-6 h-0.5 bg-foreground transition-opacity group-open:opacity-0" />
+            <span className="block w-6 h-0.5 bg-foreground transition-transform group-open:-rotate-45 group-open:-translate-y-2" />
           </div>
         </summary>
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 right-0 border-b border-[#d4af37]/10 shadow-lg"
-          style={{ background: "rgba(26, 26, 46, 0.95)", backdropFilter: "blur(16px)" }}
+          className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border shadow-lg"
         >
           <ul className="container-wide py-6 space-y-4">
             {navLinks.map((link) => (
@@ -107,12 +88,11 @@ function MobileNav() {
                 <Link
                   to={link.href}
                   className={cn(
-                    "block text-base font-medium py-2 transition-colors",
+                    "block body-default font-medium py-2 transition-colors",
                     location.pathname === link.href
-                      ? "text-[#d4af37]"
-                      : "text-gray-400"
+                      ? "text-primary"
+                      : "text-muted-foreground"
                   )}
-                  style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
                 >
                   {link.label}
                 </Link>
