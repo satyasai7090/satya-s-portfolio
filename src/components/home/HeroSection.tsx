@@ -239,7 +239,7 @@ export function HeroSection() {
                 backgroundClip: "text",
               }}
             >
-              Crafting Clarity<br />in Complex Tech
+              Satya Sai<br />Pasupuleti
             </motion.h1>
 
             {/* H2 — Name */}
@@ -252,7 +252,7 @@ export function HeroSection() {
                 fontWeight: 300,
               }}
             >
-              Satya Sai Pasupuleti — Technical Writer from Hyderabad
+              Crafting Clarity in Complex Tech
             </motion.h2>
 
             {/* H3 — Services */}
