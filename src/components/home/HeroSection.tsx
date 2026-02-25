@@ -5,29 +5,27 @@ import { ArrowRight, FileText, Code, BookOpen, FileCode, Braces, Terminal } from
 import { Button } from "@/components/ui/button";
 import profilePhoto from "@/assets/profile-photo.png";
 
-// Counter animation hook
-function useCounter(end: number, duration: number = 2000, startOnView: boolean = true) {
+function useCounter(end: number, duration: number = 2000) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (!startOnView || !inView) return;
+    if (!inView) return;
     let startTime: number | null = null;
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * end));
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [end, duration, inView, startOnView]);
+  }, [end, duration, inView]);
 
   return { count, ref };
 }
 
-// Floating icon component
 function FloatingIcon({ icon: Icon, className, delay, duration }: {
   icon: React.ElementType;
   className: string;
@@ -36,20 +34,20 @@ function FloatingIcon({ icon: Icon, className, delay, duration }: {
 }) {
   return (
     <motion.div
-      className={`absolute opacity-[0.06] ${className}`}
-      initial={{ opacity: 0, scale: 0 }}
+      className={`absolute ${className}`}
+      style={{ opacity: 0 }}
       animate={{
-        opacity: 0.06,
-        scale: 1,
+        opacity: [0, 0.07, 0.07],
+        scale: [0, 1, 1],
         y: [0, -15, 0],
       }}
       transition={{
-        opacity: { duration: 0.8, delay },
+        opacity: { duration: 0.8, delay, times: [0, 0.5, 1] },
         scale: { duration: 0.8, delay },
         y: { duration, repeat: Infinity, ease: "easeInOut", delay },
       }}
     >
-      <Icon className="w-full h-full text-[#d4af37]" strokeWidth={1} />
+      <Icon className="w-full h-full text-primary" strokeWidth={1} />
     </motion.div>
   );
 }
@@ -108,26 +106,20 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-      }}
+      className="relative min-h-screen flex items-center overflow-hidden ent-hero-bg"
     >
       {/* Animated gradient overlay */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{ y: bgY }}
-      >
+      <motion.div className="absolute inset-0 pointer-events-none" style={{ y: bgY }}>
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 70% 40%, rgba(212,175,55,0.12) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(15,52,96,0.3) 0%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 70% 40%, hsl(var(--ent-gold) / 0.08) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 20% 80%, hsl(var(--ent-section-2) / 0.5) 0%, transparent 70%)",
           }}
         />
       </motion.div>
 
-      {/* Floating code/doc icons */}
+      {/* Floating icons */}
       <FloatingIcon icon={Code} className="top-[12%] right-[8%] w-10 h-10" delay={0.5} duration={6} />
       <FloatingIcon icon={FileText} className="top-[25%] right-[22%] w-8 h-8" delay={1.0} duration={7} />
       <FloatingIcon icon={BookOpen} className="bottom-[20%] right-[15%] w-9 h-9" delay={1.5} duration={5.5} />
@@ -135,12 +127,13 @@ export function HeroSection() {
       <FloatingIcon icon={Braces} className="bottom-[30%] left-[12%] w-8 h-8" delay={1.2} duration={7.5} />
       <FloatingIcon icon={Terminal} className="top-[60%] right-[5%] w-6 h-6" delay={1.8} duration={5} />
 
-      {/* Subtle grid pattern */}
+      {/* Subtle grid */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none"
         style={{
+          opacity: "var(--ent-grid-opacity, 0.03)",
           backgroundImage:
-            "linear-gradient(rgba(212,175,55,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.3) 1px, transparent 1px)",
+            "linear-gradient(hsl(var(--ent-gold) / 0.2) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ent-gold) / 0.2) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -156,11 +149,11 @@ export function HeroSection() {
             style={{ y: photoY }}
           >
             <div className="relative max-w-sm mx-auto lg:max-w-md">
-              {/* Glow behind photo */}
-              <div className="absolute -inset-4 rounded-3xl bg-[#d4af37]/10 blur-2xl" />
+              <div className="absolute -inset-4 rounded-3xl bg-primary/10 blur-2xl" />
 
               <motion.div
-                className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-[#d4af37]/20"
+                className="relative aspect-[4/5] rounded-3xl overflow-hidden ring-1 ring-primary/20"
+                style={{ boxShadow: "var(--shadow-elevated)" }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4 }}
               >
@@ -169,26 +162,29 @@ export function HeroSection() {
                   alt="Satya Sai Pasupuleti — Technical Writer"
                   className="w-full h-full object-cover object-top"
                 />
-                {/* Cinematic overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/60 via-transparent to-[#0f3460]/20 pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#d4af37]/10 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/10 pointer-events-none" />
               </motion.div>
 
               {/* Floating badge */}
               <motion.div
-                className="absolute -right-3 top-1/3 bg-[#16213e]/90 backdrop-blur-md shadow-xl rounded-2xl px-5 py-4 border border-[#d4af37]/20"
+                className="absolute -right-3 top-1/3 backdrop-blur-md shadow-xl rounded-2xl px-5 py-4 border ent-card"
+                style={{
+                  backgroundColor: "hsl(var(--ent-badge-bg) / 0.9)",
+                  borderColor: "hsl(var(--ent-badge-border) / 0.2)",
+                }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
                 whileHover={{ scale: 1.05, y: -2 }}
               >
-                <p className="text-3xl font-semibold text-[#d4af37]" style={{ fontFamily: "'Playfair Display', serif" }}>5+</p>
-                <p className="text-xs text-gray-300 font-medium">Years<br />Experience</p>
+                <p className="text-3xl font-semibold text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>5+</p>
+                <p className="text-xs text-muted-foreground font-medium">Years<br />Experience</p>
               </motion.div>
 
               {/* Decorative shapes */}
               <motion.div
-                className="absolute -bottom-6 -left-6 w-28 h-28 bg-[#d4af37]/10 rounded-3xl -z-10"
+                className="absolute -bottom-6 -left-6 w-28 h-28 bg-primary/10 rounded-3xl -z-10"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1, rotate: [0, 5, 0] }}
                 transition={{
@@ -198,7 +194,7 @@ export function HeroSection() {
                 }}
               />
               <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-[#0f3460]/40 rounded-2xl -z-10"
+                className="absolute -top-4 -right-4 w-20 h-20 bg-muted/30 rounded-2xl -z-10"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1, rotate: [0, -4, 0] }}
                 transition={{
@@ -217,65 +213,29 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            {/* Label */}
-            <motion.p
-              variants={itemVariants}
-              className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d4af37]/70 mb-5"
-            >
+            <motion.p variants={itemVariants} className="label-caps mb-5">
               Senior Technical Writer
             </motion.p>
 
-            {/* H1 — Gold gradient */}
-            <motion.h1
-              variants={itemVariants}
-              className="mb-5 leading-[1.1] tracking-tight"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-                fontWeight: 600,
-                background: "linear-gradient(135deg, #d4af37 0%, #f5d670 40%, #d4af37 70%, #b8962e 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <motion.h1 variants={itemVariants} className="heading-display gold-text mb-5 leading-[1.1]">
               Satya Sai<br />Pasupuleti
             </motion.h1>
 
-            {/* H2 — Name */}
-            <motion.h2
-              variants={itemVariants}
-              className="mb-4 font-light text-gray-200"
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: "clamp(1.1rem, 2vw, 1.5rem)",
-                fontWeight: 300,
-              }}
-            >
+            <motion.h2 variants={itemVariants} className="body-large mb-4 font-light">
               Crafting Clarity in Complex Tech
             </motion.h2>
 
-            {/* H3 — Services */}
-            <motion.h3
-              variants={itemVariants}
-              className="mb-8"
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
-                fontWeight: 400,
-                color: "rgba(255,255,255,0.5)",
-              }}
-            >
+            <motion.h3 variants={itemVariants} className="body-small mb-8" style={{ fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
               API Guides&ensp;·&ensp;Release Notes&ensp;·&ensp;User Docs for SaaS Leaders
             </motion.h3>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-12">
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
                 <Button
                   asChild
                   size="lg"
-                  className="bg-[#d4af37] text-[#1a1a2e] hover:bg-[#f5d670] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] font-semibold px-8 h-12 text-base rounded-xl transition-all duration-300"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 h-12 text-base rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--ent-gold)/0.4)]"
                 >
                   <Link to="/documentation-samples">
                     View Docs
@@ -283,11 +243,11 @@ export function HeroSection() {
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
                 <Button
                   asChild
                   size="lg"
-                  className="bg-transparent border-2 border-[#d4af37]/50 text-[#d4af37] hover:bg-[#d4af37]/10 hover:border-[#d4af37] font-medium px-8 h-12 text-base rounded-xl transition-all duration-300"
+                  className="bg-transparent border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary font-medium px-8 h-12 text-base rounded-xl transition-all duration-300"
                 >
                   <a
                     href="https://drive.google.com/file/d/1EbbJkW94T3EXT_Y3dWEcT66H5fRRSkov/view"
@@ -318,12 +278,12 @@ export function HeroSection() {
                 >
                   <span
                     ref={metric.ref}
-                    className="block text-3xl md:text-4xl font-semibold text-[#d4af37]"
+                    className="block text-3xl md:text-4xl font-semibold text-primary"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >
                     {metric.counter.count}{metric.suffix}
                   </span>
-                  <span className="text-xs text-gray-400 whitespace-pre-line leading-tight mt-1 block">
+                  <span className="text-xs text-muted-foreground whitespace-pre-line leading-tight mt-1 block">
                     {metric.label}
                   </span>
                 </motion.div>

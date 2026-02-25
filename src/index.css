@@ -4,166 +4,163 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap");
-
 /* Enterprise Professional Portfolio Design System */
 
 @layer base {
   :root {
-    /* Core palette - Clean white base */
+    /* Core palette */
     --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
+    --foreground: 220 25% 10%;
 
     --card: 0 0% 99%;
-    --card-foreground: 0 0% 9%;
+    --card-foreground: 220 25% 10%;
 
-    --popover: 0 0% 89%;
-    --popover-foreground: 0 0% 9%;
+    --popover: 0 0% 99%;
+    --popover-foreground: 220 25% 10%;
 
-    /* Deep slate primary - confident, editorial */
-    --primary: 161 93% 30%;
-    --primary-foreground: 151 80% 95%;
+    --primary: 43 72% 52%;
+    --primary-foreground: 220 25% 10%;
 
-    /* Warm cream secondary */
-    --secondary: 0 0% 32%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 15% 93%;
+    --secondary-foreground: 220 25% 10%;
 
-    /* Subtle muted tones */
-    --muted: 0 0% 63%;
-    --muted-foreground: 0 0% 9%;
+    --muted: 220 10% 93%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Warm accent - sophisticated gold undertone */
-    --accent: 166 76% 96%;
-    --accent-foreground: 173 80% 40%;
+    --accent: 43 72% 95%;
+    --accent-foreground: 43 65% 35%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 0 0% 83%;
-    --input: 0 0% 83%;
-    --ring: 161 93% 30%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 43 72% 52%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens for portfolio - Distinct surface layers */
-    --hero-gradient: linear-gradient(135deg, hsl(220 25% 18%) 0%, hsl(220 20% 28%) 100%);
-    --text-gradient: linear-gradient(135deg, hsl(220 25% 18%) 0%, hsl(220 15% 35%) 100%);
-    --surface-warm: 40 45% 96%;
-    --surface-cool: 220 35% 96%;
-    --surface-accent: 160 35% 95%;
+    /* Enterprise tokens — Light */
+    --ent-hero-bg: 220 20% 97%;
+    --ent-section-1: 0 0% 100%;
+    --ent-section-2: 220 25% 97%;
+    --ent-section-3: 40 30% 97%;
+    --ent-heading: 220 25% 10%;
+    --ent-body: 220 15% 30%;
+    --ent-body-muted: 220 10% 50%;
+    --ent-gold: 43 72% 52%;
+    --ent-gold-light: 43 80% 65%;
+    --ent-gold-dark: 43 65% 40%;
+    --ent-card-bg: 0 0% 100%;
+    --ent-card-border: 220 15% 90%;
+    --ent-card-hover-border: 43 72% 52%;
+    --ent-nav-bg: 0 0% 100%;
+    --ent-nav-border: 220 15% 92%;
+    --ent-input-bg: 220 20% 97%;
+    --ent-timeline-border: 220 15% 85%;
+    --ent-timeline-dot: 43 72% 52%;
+    --ent-floating-icon-color: 220 25% 10%;
+    --ent-grid-opacity: 0.04;
+    --ent-hero-overlay-from: 220 20% 97%;
+    --ent-badge-bg: 0 0% 100%;
+    --ent-badge-border: 43 72% 52%;
 
     /* Shadows */
     --shadow-subtle: 0 1px 3px hsl(220 25% 12% / 0.04), 0 1px 2px hsl(220 25% 12% / 0.06);
-    --shadow-medium: 0 4px 6px -1px hsl(220 25% 12% / 0.05), 0 2px 4px -2px hsl(220 25% 12% / 0.05);
-    --shadow-elevated: 0 10px 15px -3px hsl(220 25% 12% / 0.08), 0 4px 6px -4px hsl(220 25% 12% / 0.05);
+    --shadow-medium: 0 4px 6px -1px hsl(220 25% 12% / 0.06), 0 2px 4px -2px hsl(220 25% 12% / 0.04);
+    --shadow-elevated: 0 10px 25px -5px hsl(220 25% 12% / 0.08), 0 4px 6px -4px hsl(220 25% 12% / 0.04);
+    --shadow-gold: 0 8px 30px -8px hsl(43 72% 52% / 0.2);
+    --shadow-gold-hover: 0 15px 50px -12px hsl(43 72% 52% / 0.3);
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 161 93% 30%;
-    --sidebar-primary-foreground: 151 80% 95%;
-    --sidebar-accent: 0 0% 32%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 83%;
-    --sidebar-ring: 161 93% 30%;
-    --chart-1: 158 64% 51%;
-    --chart-2: 141 69% 58%;
-    --chart-3: 172 66% 50%;
-    --chart-4: 82 77% 55%;
-    --chart-5: 0 0% 45%;
+    --sidebar-foreground: 220 25% 10%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 43 72% 95%;
+    --sidebar-accent-foreground: 43 65% 35%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 43 72% 52%;
+    --chart-1: 43 72% 52%;
+    --chart-2: 38 80% 58%;
+    --chart-3: 48 65% 48%;
+    --chart-4: 35 70% 55%;
+    --chart-5: 220 10% 45%;
     --sidebar: 0 0% 98%;
-    --font-sans: 'Work Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono: 'Inconsolata', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-    --tracking-normal: 0em;
-    --spacing: 0.25rem;
   }
 
   .dark {
-    /* Core backgrounds - Deep charcoal base */
-    --background: 220 15% 8%;
-    --foreground: 0 0% 98%;
+    --background: 222 25% 7%;
+    --foreground: 0 0% 95%;
 
-    /* Cards slightly elevated from background */
-    --card: 220 12% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 222 22% 10%;
+    --card-foreground: 0 0% 95%;
 
-    /* Popovers/dropdowns - more elevated */
-    --popover: 0 0% 25%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 22% 12%;
+    --popover-foreground: 0 0% 95%;
 
-    /* Primary - vibrant teal/green accent */
-    --primary: 158 64% 51%;
-    --primary-foreground: 165 91% 9%;
+    --primary: 43 72% 52%;
+    --primary-foreground: 222 25% 7%;
 
-    /* Secondary - muted slate */
-    --secondary: 0 0% 45%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 222 15% 16%;
+    --secondary-foreground: 0 0% 95%;
 
-    /* Muted text - readable but subdued */
-    --muted: 0 0% 45%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 222 15% 18%;
+    --muted-foreground: 220 10% 65%;
 
-    /* Accent - teal tint for highlights */
-    --accent: 178 84% 10%;
-    --accent-foreground: 172 66% 50%;
+    --accent: 43 30% 12%;
+    --accent-foreground: 43 72% 65%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 85% 97%;
 
-    /* Borders - subtle but visible */
-    --border: 0 0% 32%;
-    --input: 0 0% 32%;
-    --ring: 158 64% 51%;
+    --border: 222 15% 18%;
+    --input: 222 15% 18%;
+    --ring: 43 72% 52%;
 
-    /* Surface variants for sections - Distinct layers for dark mode */
-    --surface-warm: 35 20% 14%;
-    --surface-cool: 220 25% 12%;
-    --surface-accent: 165 20% 11%;
+    /* Enterprise tokens — Dark */
+    --ent-hero-bg: 222 30% 8%;
+    --ent-section-1: 222 25% 9%;
+    --ent-section-2: 222 28% 11%;
+    --ent-section-3: 222 32% 13%;
+    --ent-heading: 0 0% 95%;
+    --ent-body: 220 10% 75%;
+    --ent-body-muted: 220 8% 55%;
+    --ent-gold: 43 72% 52%;
+    --ent-gold-light: 43 80% 65%;
+    --ent-gold-dark: 43 65% 40%;
+    --ent-card-bg: 222 22% 12%;
+    --ent-card-border: 222 15% 18%;
+    --ent-card-hover-border: 43 72% 52%;
+    --ent-nav-bg: 222 25% 7%;
+    --ent-nav-border: 43 72% 52%;
+    --ent-input-bg: 222 28% 12%;
+    --ent-timeline-border: 43 72% 52%;
+    --ent-timeline-dot: 43 72% 52%;
+    --ent-floating-icon-color: 43 72% 52%;
+    --ent-grid-opacity: 0.02;
+    --ent-hero-overlay-from: 222 30% 8%;
+    --ent-badge-bg: 222 28% 12%;
+    --ent-badge-border: 43 72% 52%;
 
-    /* Enhanced shadows for dark mode with subtle glow */
     --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.3), 0 1px 2px hsl(0 0% 0% / 0.4);
     --shadow-medium: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
-    --shadow-elevated: 0 10px 15px -3px hsl(0 0% 0% / 0.5), 0 4px 6px -4px hsl(0 0% 0% / 0.3), 0 0 0 1px hsl(var(--primary) / 0.05);
+    --shadow-elevated: 0 10px 25px -5px hsl(0 0% 0% / 0.5), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+    --shadow-gold: 0 8px 30px -8px hsl(43 72% 52% / 0.15);
+    --shadow-gold-hover: 0 15px 50px -12px hsl(43 72% 52% / 0.25);
 
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 158 64% 51%;
-    --sidebar-primary-foreground: 165 91% 9%;
-    --sidebar-accent: 172 66% 50%;
-    --sidebar-accent-foreground: 178 84% 10%;
-    --sidebar-border: 0 0% 32%;
-    --sidebar-ring: 158 64% 51%;
-    --chart-1: 156 71% 66%;
-    --chart-2: 141 76% 73%;
-    --chart-3: 170 76% 64%;
-    --chart-4: 81 84% 67%;
-    --chart-5: 0 0% 45%;
-    --sidebar: 0 0% 14%;
-    --radius: 0rem;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --sidebar-background: 222 22% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 222 25% 7%;
+    --sidebar-accent: 43 30% 12%;
+    --sidebar-accent-foreground: 43 72% 65%;
+    --sidebar-border: 222 15% 18%;
+    --sidebar-ring: 43 72% 52%;
+    --chart-1: 43 80% 62%;
+    --chart-2: 38 85% 68%;
+    --chart-3: 48 70% 58%;
+    --chart-4: 35 75% 62%;
+    --chart-5: 220 10% 55%;
+    --sidebar: 222 22% 10%;
   }
 }
 
@@ -179,7 +176,19 @@
   /* Smooth theme transitions */
   body,
   body * {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease;
+    transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease;
+  }
+
+  /* Exclude framer-motion elements from transition interference */
+  [style*="transform"] {
+    transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
   body {
@@ -195,87 +204,111 @@
 
 @layer components {
   /* ============================================
-     TYPOGRAPHY SYSTEM
-     Consistent font hierarchy across all pages
+     ENTERPRISE TYPOGRAPHY
      ============================================ */
 
-  /* Display - Hero titles, main page headers */
   .heading-display {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight;
   }
 
-  /* Section - Major section headers (h2 level) */
   .heading-section {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-3xl md:text-4xl font-medium tracking-tight;
   }
 
-  /* Subsection - Card titles, minor headers (h3 level) */
   .heading-subsection {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-2xl md:text-3xl font-medium tracking-tight;
   }
 
-  /* Card Title - Smaller card headers, list item titles (h4 level) */
   .heading-card {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-xl md:text-2xl font-medium tracking-tight;
   }
 
-  /* Small Title - Inline titles, timeline items (h5 level) */
   .heading-small {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-lg md:text-xl font-medium tracking-tight;
   }
 
-  /* Stats - Large numbers, metrics display */
   .text-stat {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-4xl md:text-5xl font-medium;
   }
 
-  /* Stats Small - Floating badges, inline stats */
   .text-stat-sm {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-3xl font-semibold;
   }
 
-  /* Logo/Brand text */
   .text-logo {
     font-family: 'Playfair Display', Georgia, serif;
     @apply text-xl font-medium;
   }
 
-  /* Body Large - Intro paragraphs, descriptions */
   .body-large {
-    @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
+    @apply text-lg md:text-xl leading-relaxed;
+    color: hsl(var(--ent-body));
   }
 
-  /* Body Default - Standard paragraphs */
   .body-default {
     @apply text-base leading-relaxed;
+    color: hsl(var(--ent-body));
   }
 
-  /* Body Small - Supporting text, captions */
   .body-small {
-    @apply text-sm leading-relaxed text-muted-foreground;
+    @apply text-sm leading-relaxed;
+    color: hsl(var(--ent-body-muted));
   }
 
-  /* Label Caps - Section labels, categories */
   .label-caps {
-    @apply text-xs font-semibold uppercase tracking-widest text-muted-foreground;
+    @apply text-xs font-semibold uppercase tracking-widest;
+    color: hsl(var(--ent-gold) / 0.8);
   }
 
-  /* Label - Form labels, meta info */
   .text-label {
     @apply text-sm font-medium;
   }
 
-  /* Nav Link - Navigation items */
   .text-nav {
     @apply text-sm font-medium;
   }
+
+  /* ============================================
+     ENTERPRISE GOLD GRADIENT TEXT
+     ============================================ */
+
+  .gold-text {
+    background: linear-gradient(135deg, hsl(var(--ent-gold)) 0%, hsl(var(--ent-gold-light)) 40%, hsl(var(--ent-gold)) 70%, hsl(var(--ent-gold-dark)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ============================================
+     ENTERPRISE SECTION BACKGROUNDS
+     ============================================ */
+
+  .ent-section-1 {
+    background-color: hsl(var(--ent-section-1));
+  }
+
+  .ent-section-2 {
+    background-color: hsl(var(--ent-section-2));
+  }
+
+  .ent-section-3 {
+    background-color: hsl(var(--ent-section-3));
+  }
+
+  .ent-hero-bg {
+    background-color: hsl(var(--ent-hero-bg));
+  }
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
 
   .container-narrow {
     @apply max-w-3xl mx-auto px-6;
@@ -290,9 +323,26 @@
   }
 
   /* ============================================
-     CARD & INTERACTIVE ELEMENT STYLES
-     Enhanced for better visual feedback
+     ENTERPRISE CARDS
      ============================================ */
+
+  .ent-card {
+    background-color: hsl(var(--ent-card-bg));
+    border: 1px solid hsl(var(--ent-card-border));
+    @apply rounded-xl p-6 md:p-8 transition-all duration-400 ease-out;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .ent-card:hover {
+    border-color: hsl(var(--ent-card-hover-border) / 0.3);
+    box-shadow: var(--shadow-gold);
+    @apply -translate-y-2;
+  }
+
+  .ent-card:active {
+    @apply -translate-y-1 scale-[0.99];
+    transition-duration: 100ms;
+  }
 
   .card-elevated {
     @apply bg-card rounded-lg p-6 md:p-8 transition-all duration-300 ease-out border border-transparent;
@@ -309,15 +359,15 @@
     transition-duration: 100ms;
   }
 
-  /* Card hover with accent glow - enhanced */
   .card-hover-glow {
     @apply bg-card rounded-lg transition-all duration-300 ease-out border border-transparent;
     box-shadow: var(--shadow-subtle);
   }
 
   .card-hover-glow:hover {
-    @apply -translate-y-2 border-primary/30;
-    box-shadow: 0 15px 50px -12px hsl(var(--primary) / 0.25), 0 0 0 1px hsl(var(--primary) / 0.1);
+    @apply -translate-y-2;
+    border-color: hsl(var(--ent-gold) / 0.3);
+    box-shadow: var(--shadow-gold-hover);
   }
 
   .card-hover-glow:active {
@@ -325,104 +375,88 @@
     transition-duration: 100ms;
   }
 
-  /* Interactive card with border glow */
   .card-interactive {
     @apply bg-card rounded-lg transition-all duration-300 ease-out border border-border;
     box-shadow: var(--shadow-subtle);
   }
 
   .card-interactive:hover {
-    @apply -translate-y-2 border-primary/40 bg-card;
-    box-shadow: 0 20px 50px -15px hsl(var(--primary) / 0.3), inset 0 1px 0 hsl(var(--primary) / 0.1);
+    @apply -translate-y-2;
+    border-color: hsl(var(--ent-gold) / 0.4);
+    box-shadow: 0 20px 50px -15px hsl(var(--ent-gold) / 0.2), inset 0 1px 0 hsl(var(--ent-gold) / 0.1);
   }
 
   .card-interactive:active {
-    @apply -translate-y-1 scale-[0.99] border-primary/50;
+    @apply -translate-y-1 scale-[0.99];
     transition-duration: 100ms;
   }
 
-  /* Subtle lift on hover - enhanced */
+  /* ============================================
+     HOVER EFFECTS
+     ============================================ */
+
   .hover-lift {
     @apply transition-all duration-300 ease-out;
   }
-
   .hover-lift:hover {
     @apply -translate-y-2;
-    filter: brightness(1.02);
   }
-
   .hover-lift:active {
     @apply -translate-y-1 scale-[0.99];
     transition-duration: 100ms;
   }
 
-  /* Scale on hover - enhanced */
   .hover-scale {
     @apply transition-all duration-200 ease-out;
   }
-
   .hover-scale:hover {
     @apply scale-110;
-    filter: brightness(1.05);
   }
-
   .hover-scale:active {
     @apply scale-105;
     transition-duration: 100ms;
   }
 
-  /* Subtle scale - enhanced */
   .hover-scale-subtle {
     @apply transition-all duration-200 ease-out;
   }
-
   .hover-scale-subtle:hover {
     @apply scale-[1.03];
   }
-
   .hover-scale-subtle:active {
     @apply scale-[1.01];
     transition-duration: 100ms;
   }
 
-  /* Slide right on hover - enhanced */
   .hover-slide-right {
     @apply transition-all duration-200 ease-out;
   }
-
   .hover-slide-right:hover {
     @apply translate-x-2;
   }
-
   .hover-slide-right:active {
     @apply translate-x-1;
     transition-duration: 100ms;
   }
 
-  /* Icon hover effect */
   .hover-icon {
     @apply transition-all duration-200 ease-out;
   }
-
   .hover-icon:hover {
     @apply scale-110 text-primary;
   }
-
   .hover-icon:active {
     @apply scale-100;
     transition-duration: 100ms;
   }
 
-  /* Button press effect */
   .press-effect {
     @apply transition-all duration-150 ease-out;
   }
-
   .press-effect:hover {
     @apply -translate-y-0.5;
     box-shadow: 0 4px 12px -2px hsl(var(--primary) / 0.3);
   }
-
   .press-effect:active {
     @apply translate-y-0 scale-[0.98];
     box-shadow: 0 2px 4px -1px hsl(var(--primary) / 0.2);
@@ -430,34 +464,30 @@
   }
 
   /* ============================================
-     LINK STYLES - Enhanced
+     LINK STYLES
      ============================================ */
 
   .link-underline {
     @apply relative inline-block transition-colors duration-200;
   }
-
   .link-underline::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary origin-left scale-x-0 transition-transform duration-300 ease-out;
+    @apply absolute bottom-0 left-0 w-full h-0.5 origin-left scale-x-0 transition-transform duration-300 ease-out;
+    background-color: hsl(var(--ent-gold));
   }
-
   .link-underline:hover {
-    @apply text-primary;
+    color: hsl(var(--ent-gold));
   }
-
   .link-underline:hover::after {
     @apply scale-x-100;
   }
 
-  /* Glow link effect */
   .link-glow {
     @apply transition-all duration-200 ease-out;
   }
-
   .link-glow:hover {
-    @apply text-primary;
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    color: hsl(var(--ent-gold));
+    text-shadow: 0 0 20px hsl(var(--ent-gold) / 0.5);
   }
 
   /* ============================================
@@ -465,43 +495,56 @@
      ============================================ */
 
   .divider {
-    @apply w-full h-px bg-border;
+    @apply w-full h-px;
+    background-color: hsl(var(--ent-card-border));
   }
 
   .surface-warm {
-    background-color: hsl(var(--surface-warm));
+    background-color: hsl(var(--ent-section-3));
   }
 
   .surface-cool {
-    background-color: hsl(var(--surface-cool));
+    background-color: hsl(var(--ent-section-2));
   }
 
   .surface-accent {
-    background-color: hsl(var(--surface-accent));
+    background-color: hsl(var(--ent-section-3));
   }
 
-  /* Focus ring for accessibility */
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
   }
 
-  /* Glassmorphism effect for dark mode */
-  .dark .glass {
-    @apply bg-card/80 backdrop-blur-md border border-border/50;
-  }
-
-  /* Pulse animation for interactive elements */
   .pulse-subtle {
     animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   @keyframes pulse-subtle {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.85;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  /* Enterprise shimmer animation */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--ent-gold) / 0) 0%,
+      hsl(var(--ent-gold) / 0.08) 50%,
+      hsl(var(--ent-gold) / 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Reveal line animation */
+  @keyframes reveal-line {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
 }
 
@@ -510,7 +553,6 @@
    ============================================ */
 
 @media print {
-  /* Hide non-essential elements */
   .print\\:hidden,
   nav,
   footer,
@@ -519,7 +561,6 @@
     display: none !important;
   }
 
-  /* Reset backgrounds and shadows */
   body {
     background: white !important;
     color: black !important;
@@ -527,14 +568,12 @@
     line-height: 1.4 !important;
   }
 
-  /* Ensure content fits on page */
   .resume-content {
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0.5in !important;
   }
 
-  /* Typography adjustments for print */
   h1, h2, h3, h4, h5, h6 {
     color: black !important;
     page-break-after: avoid !important;
@@ -545,18 +584,15 @@
     widows: 3;
   }
 
-  /* Avoid breaking inside elements */
   .print\\:break-inside-avoid {
     break-inside: avoid !important;
   }
 
-  /* Links in print */
   a {
     color: black !important;
     text-decoration: none !important;
   }
 
-  /* Page margins */
   @page {
     margin: 0.5in;
     size: letter;
