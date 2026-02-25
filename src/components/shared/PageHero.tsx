@@ -1,13 +1,13 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, forwardRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Code, FileText, BookOpen, FileCode, Braces, Terminal } from "lucide-react";
 
-function FloatingIcon({ icon: Icon, className, delay, duration }: {
+const FloatingIcon = forwardRef<HTMLDivElement, {
   icon: React.ElementType;
   className: string;
   delay: number;
   duration: number;
-}) {
+}>(({ icon: Icon, className, delay, duration }, ref) => {
   return (
     <motion.div
       className={`absolute ${className}`}
@@ -26,7 +26,8 @@ function FloatingIcon({ icon: Icon, className, delay, duration }: {
       <Icon className="w-full h-full text-primary" strokeWidth={1} style={{ opacity: 0.5 }} />
     </motion.div>
   );
-}
+});
+FloatingIcon.displayName = "FloatingIcon";
 
 const heroContainerVariants = {
   hidden: { opacity: 0 },
