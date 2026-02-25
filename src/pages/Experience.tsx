@@ -3,6 +3,20 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { AnimatedSection, AnimatedContainer, AnimatedItem, containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 
+const sectionBg = {
+  primary: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)",
+  secondary: "linear-gradient(135deg, #16213e 0%, #0f3460 100%)",
+  tertiary: "linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%)",
+};
+
+const goldGradient = {
+  fontFamily: "'Playfair Display', Georgia, serif",
+  background: "linear-gradient(135deg, #d4af37 0%, #f5d670 40%, #d4af37 70%, #b8962e 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+};
+
 const impactStats = [
   { value: "200+", label: "Documents Delivered", description: "User guides, API docs, release notes, and compliance materials" },
   { value: "60%", label: "Onboarding Reduction", description: "Average reduction in user/developer onboarding time" },
@@ -40,48 +54,15 @@ const experience = [
 const skillCategories = [
   {
     title: "Documentation Types",
-    skills: [
-      "API & Developer Documentation",
-      "User Guides & Tutorials",
-      "Installation & Configuration Guides",
-      "Release Notes & Changelogs",
-      "Regulatory & Compliance Documentation",
-      "Knowledge Base Articles",
-      "Internal Process Documentation",
-      "UI / UX Documentation",
-      "Data Exchange & Integration Documentation",
-      "Administrator & Configuration Guides",
-    ],
+    skills: ["API & Developer Documentation", "User Guides & Tutorials", "Installation & Configuration Guides", "Release Notes & Changelogs", "Regulatory & Compliance Documentation", "Knowledge Base Articles", "Internal Process Documentation", "UI / UX Documentation", "Data Exchange & Integration Documentation", "Administrator & Configuration Guides"],
   },
   {
     title: "Tools & Technologies",
-    skills: [
-      "Arbortext Editor",
-      "Oxygen XML Editor",
-      "XML / DITA (Structured Authoring)",
-      "MadCap Flare",
-      "Adobe RoboHelp",
-      "Content Management Systems (CMS)",
-      "Jira",
-      "Confluence",
-      "Snagit",
-      "Camtasia",
-    ],
+    skills: ["Arbortext Editor", "Oxygen XML Editor", "XML / DITA (Structured Authoring)", "MadCap Flare", "Adobe RoboHelp", "Content Management Systems (CMS)", "Jira", "Confluence", "Snagit", "Camtasia"],
   },
   {
     title: "Collaboration & Process",
-    skills: [
-      "Agile / Scrum Environments",
-      "SDLC / DDLC",
-      "Cross-functional Team Collaboration",
-      "SME Interviews & Reviews",
-      "Documentation Reviews & Quality Audits",
-      "Style Guide Development & Maintenance",
-      "Content Strategy & Information Architecture",
-      "Release Coordination",
-      "Stakeholder Communication",
-      "AI-assisted Documentation (OpenAI)",
-    ],
+    skills: ["Agile / Scrum Environments", "SDLC / DDLC", "Cross-functional Team Collaboration", "SME Interviews & Reviews", "Documentation Reviews & Quality Audits", "Style Guide Development & Maintenance", "Content Strategy & Information Architecture", "Release Coordination", "Stakeholder Communication", "AI-assisted Documentation (OpenAI)"],
   },
 ];
 
@@ -95,15 +76,17 @@ const Experience = () => {
       />
 
       {/* Professional Impact */}
-      <section className="section-padding surface-cool">
+      <section className="py-20 md:py-28" style={{ background: sectionBg.primary }}>
         <div className="container-wide">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <p className="label-caps mb-3">Impact</p>
-              <h2 className="heading-section text-foreground">Professional Impact</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d4af37]/70 mb-3">Impact</p>
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tight" style={goldGradient}>
+                Professional Impact
+              </h2>
             </div>
           </AnimatedSection>
-          <motion.div 
+          <motion.div
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
@@ -114,15 +97,23 @@ const Experience = () => {
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
-                className="card-elevated card-hover-glow text-center h-full border border-transparent"
-                whileHover={{ y: -8, borderColor: "hsl(var(--primary) / 0.3)", scale: 1.02 }}
+                className="text-center h-full rounded-xl p-6 md:p-8 border border-[#d4af37]/10 transition-all duration-300"
+                style={{ background: "rgba(212, 175, 55, 0.03)" }}
+                whileHover={{ y: -8, borderColor: "rgba(212, 175, 55, 0.3)", scale: 1.02, boxShadow: "0 15px 50px -12px rgba(212, 175, 55, 0.15)" }}
                 whileTap={{ y: -4, scale: 0.98 }}
               >
-                <p className="text-stat text-foreground mb-2">
+                <p
+                  className="text-4xl md:text-5xl font-medium mb-2 text-[#d4af37]"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                >
                   {stat.value}
                 </p>
-                <p className="text-label text-foreground mb-2">{stat.label}</p>
-                <p className="body-small">{stat.description}</p>
+                <p className="text-sm font-medium text-gray-200 mb-2" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+                  {stat.label}
+                </p>
+                <p className="text-sm text-gray-500" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+                  {stat.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -130,32 +121,38 @@ const Experience = () => {
       </section>
 
       {/* Experience Timeline */}
-      <section className="section-padding">
+      <section className="py-20 md:py-28" style={{ background: sectionBg.secondary }}>
         <div className="container-narrow">
           <AnimatedSection>
-            <p className="label-caps mb-3">Experience</p>
-            <h2 className="heading-section text-foreground mb-10">Professional History</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d4af37]/70 mb-3">Experience</p>
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-10" style={goldGradient}>
+              Professional History
+            </h2>
           </AnimatedSection>
           <AnimatedContainer className="space-y-8" staggerDelay={0.15}>
             {experience.map((exp) => (
               <AnimatedItem key={exp.role}>
                 <motion.div
-                  className="group relative pl-8 border-l-2 border-border pb-8 last:pb-0 hover:border-primary/50 transition-colors duration-300"
+                  className="group relative pl-8 border-l-2 border-[#d4af37]/20 pb-8 last:pb-0 hover:border-[#d4af37]/50 transition-colors duration-300"
                   whileHover={{ x: 8, scale: 1.01 }}
                   whileTap={{ x: 4, scale: 0.99 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-primary/60 transition-all duration-300 group-hover:bg-primary group-hover:scale-150 group-hover:shadow-lg group-hover:shadow-primary/40" />
+                  <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-[#d4af37]/40 transition-all duration-300 group-hover:bg-[#d4af37] group-hover:scale-150 group-hover:shadow-lg group-hover:shadow-[#d4af37]/40" />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
-                    <h3 className="heading-small text-foreground">
+                    <h3 className="text-lg md:text-xl font-medium tracking-tight text-gray-100" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                       {exp.role}
                     </h3>
-                    <span className="body-small">
+                    <span className="text-sm text-gray-500" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
                       {exp.period}
                     </span>
                   </div>
-                  <p className="text-label text-accent-foreground mb-3">{exp.company}</p>
-                  <p className="body-default text-muted-foreground">{exp.description}</p>
+                  <p className="text-sm font-medium text-[#d4af37]/80 mb-3" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+                    {exp.company}
+                  </p>
+                  <p className="text-base leading-relaxed text-gray-400" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+                    {exp.description}
+                  </p>
                 </motion.div>
               </AnimatedItem>
             ))}
@@ -164,15 +161,17 @@ const Experience = () => {
       </section>
 
       {/* Skills */}
-      <section className="section-padding surface-accent">
+      <section className="py-20 md:py-28" style={{ background: sectionBg.tertiary }}>
         <div className="container-wide">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <p className="label-caps mb-3">Skills</p>
-              <h2 className="heading-section text-foreground">Core Skills & Tools</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d4af37]/70 mb-3">Skills</p>
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tight" style={goldGradient}>
+                Core Skills & Tools
+              </h2>
             </div>
           </AnimatedSection>
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -183,23 +182,26 @@ const Experience = () => {
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="card-elevated card-hover-glow h-full border border-transparent"
-                whileHover={{ y: -8, borderColor: "hsl(var(--primary) / 0.3)", scale: 1.02 }}
+                className="h-full rounded-xl p-6 md:p-8 border border-[#d4af37]/10 transition-all duration-300"
+                style={{ background: "rgba(212, 175, 55, 0.03)" }}
+                whileHover={{ y: -8, borderColor: "rgba(212, 175, 55, 0.3)", scale: 1.02, boxShadow: "0 15px 50px -12px rgba(212, 175, 55, 0.15)" }}
                 whileTap={{ y: -4, scale: 0.98 }}
               >
-                <h3 className="heading-small text-foreground mb-4">
+                <h3 className="text-lg md:text-xl font-medium tracking-tight text-gray-100 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                   {category.title}
                 </h3>
                 <ul className="space-y-2">
                   {category.skills.map((skill) => (
-                    <motion.li 
-                      key={skill} 
-                      className="group body-small flex items-center gap-2 p-2 -mx-2 rounded-md cursor-pointer transition-colors duration-200 hover:bg-primary/5"
-                      whileHover={{ x: 6, scale: 1.02 }}
+                    <motion.li
+                      key={skill}
+                      className="group text-sm flex items-center gap-2 p-2 -mx-2 rounded-md cursor-pointer transition-colors duration-200"
+                      whileHover={{ x: 6, scale: 1.02, backgroundColor: "rgba(212, 175, 55, 0.05)" }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/40 flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-[2] group-hover:shadow-sm group-hover:shadow-primary/40" />
-                      <span className="transition-colors duration-200 group-hover:text-foreground">{skill}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]/30 flex-shrink-0 transition-all duration-300 group-hover:bg-[#d4af37] group-hover:scale-[2] group-hover:shadow-sm group-hover:shadow-[#d4af37]/40" />
+                      <span className="text-gray-400 transition-colors duration-200 group-hover:text-gray-200" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+                        {skill}
+                      </span>
                     </motion.li>
                   ))}
                 </ul>
