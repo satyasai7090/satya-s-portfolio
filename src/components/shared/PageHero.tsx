@@ -54,7 +54,7 @@ interface PageHeroProps {
   children?: ReactNode;
 }
 
-export function PageHero({ label, title, description, children }: PageHeroProps) {
+export const PageHero = forwardRef<HTMLElement, PageHeroProps>(({ label, title, description, children }, ref) => {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -140,4 +140,5 @@ export function PageHero({ label, title, description, children }: PageHeroProps)
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
-}
+});
+PageHero.displayName = "PageHero";

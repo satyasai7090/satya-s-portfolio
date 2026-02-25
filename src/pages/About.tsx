@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
@@ -28,7 +29,7 @@ const values = [
   "Recognition for documentation excellence",
 ];
 
-const About = () => {
+const About = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <PageLayout>
       <PageHero
@@ -133,6 +134,7 @@ const About = () => {
       </section>
     </PageLayout>
   );
-};
+});
+About.displayName = "About";
 
 export default About;

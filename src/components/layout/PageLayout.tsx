@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import { PageTransition } from "@/components/shared/PageTransition";
@@ -8,10 +8,10 @@ interface PageLayoutProps {
   children: ReactNode;
 }
 
-export function PageLayout({ children }: PageLayoutProps) {
+export const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(({ children }, ref) => {
   return (
     <PageTransition>
-      <div className="min-h-screen flex flex-col">
+      <div ref={ref} className="min-h-screen flex flex-col">
         <ScrollProgress />
         <Navigation />
         <main className="flex-1 pt-16 md:pt-20">
@@ -21,4 +21,5 @@ export function PageLayout({ children }: PageLayoutProps) {
       </div>
     </PageTransition>
   );
-}
+});
+PageLayout.displayName = "PageLayout";

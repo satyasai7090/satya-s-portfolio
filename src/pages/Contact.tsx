@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, forwardRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
@@ -12,7 +12,7 @@ const EMAILJS_SERVICE_ID = "service_bj7tvcm";
 const EMAILJS_TEMPLATE_ID = "template_nfhlzio";
 const EMAILJS_PUBLIC_KEY = "ONoT_lt-eA91kFfmc";
 
-const Contact = () => {
+const Contact = forwardRef<HTMLDivElement>((_, ref) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -219,6 +219,7 @@ const Contact = () => {
       </section>
     </PageLayout>
   );
-};
+});
+Contact.displayName = "Contact";
 
 export default Contact;
