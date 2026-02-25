@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight, FileText, Code, BookOpen, FileCode, Braces, Terminal } from "lucide-react";
@@ -26,12 +26,12 @@ function useCounter(end: number, duration: number = 2000) {
   return { count, ref };
 }
 
-function FloatingIcon({ icon: Icon, className, delay, duration }: {
+const FloatingIcon = forwardRef<HTMLDivElement, {
   icon: React.ElementType;
   className: string;
   delay: number;
   duration: number;
-}) {
+}>(({ icon: Icon, className, delay, duration }, ref) => {
   return (
     <motion.div
       className={`absolute ${className}`}
@@ -50,7 +50,8 @@ function FloatingIcon({ icon: Icon, className, delay, duration }: {
       <Icon className="w-full h-full text-primary" strokeWidth={1} />
     </motion.div>
   );
-}
+});
+FloatingIcon.displayName = "FloatingIcon";
 
 const containerVariants = {
   hidden: { opacity: 0 },
