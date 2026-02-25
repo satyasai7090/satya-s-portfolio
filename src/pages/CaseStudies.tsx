@@ -3,7 +3,6 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/shared/AnimatedSection";
 
-// Import case study images
 import automationScriptLocation from "@/assets/case-study/automation-script-location.jpeg";
 import cliExecution from "@/assets/case-study/cli-execution.jpeg";
 import flareOnlineBuilds from "@/assets/case-study/flare-online-builds.jpeg";
@@ -80,7 +79,7 @@ const caseStudies: CaseStudy[] = [
 function CaseStudyImage({ src, caption }: { src: string; caption: string }) {
   return (
     <div className="mt-6 mb-2">
-      <div className="rounded-xl overflow-hidden border border-border/50 shadow-lg bg-black/5 dark:bg-white/5">
+      <div className="rounded-xl overflow-hidden border border-[#d4af37]/15 shadow-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
         <img 
           src={src} 
           alt={caption}
@@ -88,7 +87,9 @@ function CaseStudyImage({ src, caption }: { src: string; caption: string }) {
           loading="lazy"
         />
       </div>
-      <p className="text-sm text-muted-foreground mt-3 italic text-center px-4">{caption}</p>
+      <p className="text-sm text-gray-500 mt-3 italic text-center px-4" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+        {caption}
+      </p>
     </div>
   );
 }
@@ -98,12 +99,18 @@ function renderContent(content: string | string[]) {
     return (
       <div className="space-y-3">
         {content.map((paragraph, idx) => (
-          <p key={idx} className="body-default text-muted-foreground">{paragraph}</p>
+          <p key={idx} className="text-base leading-relaxed text-gray-400" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+            {paragraph}
+          </p>
         ))}
       </div>
     );
   }
-  return <p className="body-default text-muted-foreground">{content}</p>;
+  return (
+    <p className="text-base leading-relaxed text-gray-400" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+      {content}
+    </p>
+  );
 }
 
 const CaseStudies = () => {
@@ -115,61 +122,82 @@ const CaseStudies = () => {
         description="Real-world examples of documentation challenges solved and measurable impact delivered."
       />
 
-      {/* Case Studies */}
       {caseStudies.map((study, index) => (
         <section
           key={study.id}
-          className={`section-padding ${index % 2 === 0 ? "surface-cool" : "surface-accent"}`}
+          className="py-20 md:py-28"
+          style={{
+            background: index % 2 === 0
+              ? "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)"
+              : "linear-gradient(135deg, #16213e 0%, #0f3460 100%)",
+          }}
         >
           <div className="container-narrow">
             <AnimatedSection>
               <div className="mb-8">
-                <p className="label-caps mb-3">Case Study {study.id}</p>
-                <h2 className="heading-section text-foreground">{study.title}</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d4af37]/70 mb-3">
+                  Case Study {study.id}
+                </p>
+                <h2
+                  className="text-3xl md:text-4xl font-medium tracking-tight"
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    background: "linear-gradient(135deg, #d4af37 0%, #f5d670 40%, #d4af37 70%, #b8962e 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {study.title}
+                </h2>
                 {study.subtitle && (
-                  <p className="body-large mt-3 text-muted-foreground">{study.subtitle}</p>
+                  <p className="text-lg mt-3 text-gray-400" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+                    {study.subtitle}
+                  </p>
                 )}
               </div>
             </AnimatedSection>
 
             <AnimatedContainer className="space-y-8" staggerDelay={0.12}>
               {study.sections.map((section, sectionIndex) => {
-                const isOutcome = section.heading.toLowerCase().includes("outcome") || 
-                                  section.heading.toLowerCase().includes("impact");
-                
+                const isOutcome = section.heading.toLowerCase().includes("outcome") ||
+                  section.heading.toLowerCase().includes("impact");
+
                 return (
                   <AnimatedItem key={sectionIndex}>
                     {isOutcome ? (
                       <motion.div
-                        className="card-elevated border-l-4 border-primary"
+                        className="rounded-xl p-6 md:p-8 border-l-4 border-[#d4af37]"
+                        style={{ background: "rgba(212, 175, 55, 0.05)" }}
                         whileHover={{ scale: 1.02, y: -6 }}
                         whileTap={{ scale: 1.01 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <h3 className="text-label text-foreground mb-2">{section.heading}</h3>
+                        <h3
+                          className="text-lg font-medium text-gray-100 mb-2"
+                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                        >
+                          {section.heading}
+                        </h3>
                         {renderContent(section.content)}
-                        {section.image && (
-                          <CaseStudyImage 
-                            src={section.image.src} 
-                            caption={section.image.caption} 
-                          />
-                        )}
+                        {section.image && <CaseStudyImage src={section.image.src} caption={section.image.caption} />}
                       </motion.div>
                     ) : (
                       <motion.div
                         whileHover={{ x: 8, scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
                         transition={{ duration: 0.2 }}
-                        className="p-5 rounded-xl hover:bg-accent/10 transition-all duration-300 border border-transparent hover:border-primary/20"
+                        className="p-5 rounded-xl transition-all duration-300 border border-transparent hover:border-[#d4af37]/20"
+                        style={{ background: "transparent" }}
                       >
-                        <h3 className="text-label text-foreground mb-2">{section.heading}</h3>
+                        <h3
+                          className="text-lg font-medium text-gray-100 mb-2"
+                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                        >
+                          {section.heading}
+                        </h3>
                         {renderContent(section.content)}
-                        {section.image && (
-                          <CaseStudyImage 
-                            src={section.image.src} 
-                            caption={section.image.caption} 
-                          />
-                        )}
+                        {section.image && <CaseStudyImage src={section.image.src} caption={section.image.caption} />}
                       </motion.div>
                     )}
                   </AnimatedItem>

@@ -6,7 +6,6 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
 import { Button } from "@/components/ui/button";
 
-// Import cover images
 import cloudSuiteCover from "@/assets/covers/cloudsuite-crm-cover.jpg";
 import pennywiseCover from "@/assets/covers/pennywise-cover.jpg";
 import glucometerCover from "@/assets/covers/glucometer-cover.jpg";
@@ -20,32 +19,24 @@ const documentationSamples = [
     description: "Release notes documenting new features, enhancements, security updates, bug fixes, and upgrade guidance for an enterprise CRM platform.",
     pdfLink: "https://drive.google.com/file/d/1NqGAjfdit373R7D8lEUlSqVx0CkkWbIQ/view?usp=sharing",
     cover: cloudSuiteCover,
-    accentColor: "from-slate-600/15 to-blue-900/20",
-    borderColor: "border-slate-300/60 dark:border-slate-600/40",
   },
   {
     title: "PennyWise App – Quick Start & Walkthrough Guide",
     description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.",
     pdfLink: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing",
     cover: pennywiseCover,
-    accentColor: "from-teal-500/15 to-emerald-600/20",
-    borderColor: "border-teal-300/60 dark:border-teal-700/40",
   },
   {
     title: "HealthMate Smart Glucometer – Quick Start Guide",
     description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.",
     pdfLink: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing",
     cover: glucometerCover,
-    accentColor: "from-sky-400/15 to-cyan-500/20",
-    borderColor: "border-sky-300/60 dark:border-sky-700/40",
   },
   {
     title: "HealthMate Pro BPM-500 – User Guide",
     description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.",
     pdfLink: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing",
     cover: bpm500Cover,
-    accentColor: "from-violet-500/15 to-indigo-600/20",
-    borderColor: "border-violet-300/60 dark:border-violet-700/40",
   },
 ];
 
@@ -64,6 +55,14 @@ const blogPosts = [
   },
 ];
 
+const goldGradient = {
+  fontFamily: "'Playfair Display', Georgia, serif",
+  background: "linear-gradient(135deg, #d4af37 0%, #f5d670 40%, #d4af37 70%, #b8962e 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+};
+
 const DocumentationSamples = () => {
   return (
     <PageLayout>
@@ -73,7 +72,10 @@ const DocumentationSamples = () => {
         description="Sample documentation created for imaginary products to demonstrate structure and writing style."
       />
 
-      <section className="section-padding surface-cool">
+      <section
+        className="py-20 md:py-28"
+        style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)" }}
+      >
         <div className="container-narrow">
           <motion.div 
             className="grid gap-6 md:grid-cols-2"
@@ -92,18 +94,8 @@ const DocumentationSamples = () => {
                   transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className={`group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] shadow-[0_4px_20px_rgba(0,0,0,0.08),0_8px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12),0_16px_60px_rgba(0,0,0,0.08)] transition-all duration-500 border-2 ${sample.borderColor}`}
+                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] border border-[#d4af37]/15 transition-all duration-500 hover:border-[#d4af37]/40 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]"
               >
-                {/* Subtle gradient accent frame */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${sample.accentColor} z-0`} />
-                
-                {/* Paper texture overlay */}
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')] opacity-50 pointer-events-none z-10" />
-                
-                {/* Document edge effect */}
-                <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-l from-black/5 to-transparent z-10" />
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-t from-black/5 to-transparent z-10" />
-                
                 {/* Cover Image */}
                 <img
                   src={sample.cover}
@@ -111,33 +103,24 @@ const DocumentationSamples = () => {
                   className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
                 
-                {/* Dark overlay that appears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                {/* Dark overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/95 via-[#1a1a2e]/70 to-[#1a1a2e]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 
-                {/* Content overlay - appears on hover */}
+                {/* Content overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
-                  {/* Icon */}
-                  <motion.div 
-                    className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30"
-                  >
+                  <motion.div className="p-3 rounded-xl bg-[#d4af37]/90 text-[#1a1a2e] w-fit mb-4 shadow-lg shadow-[#d4af37]/30">
                     <FileText className="w-5 h-5" />
                   </motion.div>
-                  
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+                  <h3 className="text-lg font-semibold text-gray-100 mb-2 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                     {sample.title}
                   </h3>
-                  
-                  {/* Description */}
-                  <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-gray-300/80 text-sm leading-relaxed mb-4 line-clamp-3" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
                     {sample.description}
                   </p>
-                  
-                  {/* Button */}
                   <Button
                     asChild
                     size="sm"
-                    className="w-full bg-white text-black hover:bg-white/90 transition-all duration-300 shadow-lg"
+                    className="w-full bg-[#d4af37] text-[#1a1a2e] hover:bg-[#f5d670] transition-all duration-300 shadow-lg font-semibold"
                   >
                     <a
                       href={sample.pdfLink}
@@ -145,7 +128,6 @@ const DocumentationSamples = () => {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"
                       onClick={(e) => {
-                        // Fallback for blocked popups in preview
                         if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
                           e.preventDefault();
                           window.open(sample.pdfLink, '_blank');
@@ -158,8 +140,8 @@ const DocumentationSamples = () => {
                   </Button>
                 </div>
                 
-                {/* Subtle index indicator - always visible */}
-                <div className="absolute top-3 right-3 text-xs font-mono text-white/50 bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                {/* Index indicator */}
+                <div className="absolute top-3 right-3 text-xs font-mono text-gray-400/60 bg-[#1a1a2e]/50 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-[#d4af37] group-hover:text-[#1a1a2e] transition-all duration-300">
                   0{index + 1}
                 </div>
               </motion.div>
@@ -168,17 +150,24 @@ const DocumentationSamples = () => {
         </div>
       </section>
 
-      {/* Blog Posts Section */}
-      <section className="section-padding">
+      {/* Blog Posts */}
+      <section
+        className="py-20 md:py-28"
+        style={{ background: "linear-gradient(135deg, #16213e 0%, #0f3460 100%)" }}
+      >
         <div className="container-narrow">
-          <SectionHeader
-            label="Blog"
-            title="Blog Posts"
-            description="Thoughts and insights on technical writing and documentation."
-          />
+          <div className="mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d4af37]/70 mb-4">Blog</p>
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight" style={goldGradient}>
+              Blog Posts
+            </h2>
+            <p className="text-lg mt-4 text-gray-400" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+              Thoughts and insights on technical writing and documentation.
+            </p>
+          </div>
           
           <motion.div 
-            className="grid gap-6 md:grid-cols-2 mt-12"
+            className="grid gap-6 md:grid-cols-2"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -197,49 +186,28 @@ const DocumentationSamples = () => {
                   transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] shadow-[0_4px_20px_rgba(0,0,0,0.08),0_8px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12),0_16px_60px_rgba(0,0,0,0.08)] transition-all duration-500 border border-border/40"
+                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] border border-[#d4af37]/15 transition-all duration-500 hover:border-[#d4af37]/40 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]"
               >
-                {/* Paper texture overlay */}
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=')] opacity-50 pointer-events-none z-10" />
-                
-                {/* Document edge effect */}
-                <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-l from-black/5 to-transparent z-10" />
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-t from-black/5 to-transparent z-10" />
-                
-                {/* Cover Image */}
                 <img
                   src={post.cover}
                   alt={`${post.title} cover`}
                   className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
-                
-                {/* Dark overlay that appears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                
-                {/* Content overlay - appears on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/95 via-[#1a1a2e]/70 to-[#1a1a2e]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
-                  {/* Icon */}
-                  <motion.div 
-                    className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30"
-                  >
+                  <motion.div className="p-3 rounded-xl bg-[#d4af37]/90 text-[#1a1a2e] w-fit mb-4 shadow-lg shadow-[#d4af37]/30">
                     <ExternalLink className="w-5 h-5" />
                   </motion.div>
-                  
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+                  <h3 className="text-lg font-semibold text-gray-100 mb-2 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                     {post.title}
                   </h3>
-                  
-                  {/* Description */}
-                  <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-gray-300/80 text-sm leading-relaxed mb-4 line-clamp-3" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
                     {post.description}
                   </p>
-                  
-                  {/* Button */}
                   <Button
                     asChild
                     size="sm"
-                    className="w-full bg-white text-black hover:bg-white/90 transition-all duration-300 shadow-lg"
+                    className="w-full bg-[#d4af37] text-[#1a1a2e] hover:bg-[#f5d670] transition-all duration-300 shadow-lg font-semibold"
                   >
                     <span className="flex items-center justify-center gap-2">
                       <span>Read Blog</span>
@@ -247,9 +215,7 @@ const DocumentationSamples = () => {
                     </span>
                   </Button>
                 </div>
-                
-                {/* Subtle index indicator - always visible */}
-                <div className="absolute top-3 right-3 text-xs font-mono text-white/50 bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <div className="absolute top-3 right-3 text-xs font-mono text-gray-400/60 bg-[#1a1a2e]/50 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-[#d4af37] group-hover:text-[#1a1a2e] transition-all duration-300">
                   0{index + 1}
                 </div>
               </motion.a>
