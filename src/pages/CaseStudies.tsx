@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
@@ -66,7 +67,7 @@ function renderContent(content: string | string[]) {
   return <p className="body-default">{content}</p>;
 }
 
-const CaseStudies = () => {
+const CaseStudies = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <PageLayout>
       <PageHero
@@ -128,6 +129,7 @@ const CaseStudies = () => {
       ))}
     </PageLayout>
   );
-};
+});
+CaseStudies.displayName = "CaseStudies";
 
 export default CaseStudies;

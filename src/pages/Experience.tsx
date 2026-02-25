@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
@@ -52,7 +53,7 @@ const skillCategories = [
   },
 ];
 
-const Experience = () => {
+const Experience = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <PageLayout>
       <PageHero
@@ -169,6 +170,7 @@ const Experience = () => {
       </section>
     </PageLayout>
   );
-};
+});
+Experience.displayName = "Experience";
 
 export default Experience;

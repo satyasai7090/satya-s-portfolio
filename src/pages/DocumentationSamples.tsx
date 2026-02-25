@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { FileText, ExternalLink } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
@@ -24,7 +25,7 @@ const blogPosts = [
   { title: "Designing Documentation for Accessibility", description: "Best practices and strategies for creating inclusive documentation that works for everyone.", link: "https://sites.google.com/view/designingdocumentationforacces/home?authuser=0", cover: blogAccessibility },
 ];
 
-const DocumentationSamples = () => {
+const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <PageLayout>
       <PageHero
@@ -145,6 +146,7 @@ const DocumentationSamples = () => {
       </section>
     </PageLayout>
   );
-};
+});
+DocumentationSamples.displayName = "DocumentationSamples";
 
 export default DocumentationSamples;

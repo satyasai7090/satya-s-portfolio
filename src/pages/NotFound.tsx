@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const NotFound = () => {
+const NotFound = forwardRef<HTMLDivElement>((_, ref) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -58,6 +58,7 @@ const NotFound = () => {
       </motion.div>
     </div>
   );
-};
+});
+NotFound.displayName = "NotFound";
 
 export default NotFound;
