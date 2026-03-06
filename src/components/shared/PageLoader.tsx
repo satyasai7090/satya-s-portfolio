@@ -92,9 +92,9 @@ export const PageLoader = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
     </motion.div>
   );
-}
+});
+PageLoader.displayName = "PageLoader";
 
-// Skeleton components for content loading
 export function SkeletonText({ className = "" }: { className?: string }) {
   return (
     <motion.div
