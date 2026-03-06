@@ -1,8 +1,10 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 
-export function PageLoader() {
+export const PageLoader = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <motion.div
+      ref={ref}
       className="fixed inset-0 z-50 flex items-center justify-center bg-background"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
