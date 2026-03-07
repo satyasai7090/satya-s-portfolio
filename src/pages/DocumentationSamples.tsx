@@ -107,18 +107,35 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              className="grid gap-6 md:grid-cols-2"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
             >
-              {filtered.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  variants={itemVariants}
-                  layout
-                  className={item.type === "video" ? "md:col-span-2" : ""}
+              {/* Non-doc items in standard grid */}
+              {filtered.some(i => i.type !== "docs") && (
+                <div className="grid gap-6 md:grid-cols-2 mb-8">
+                  {filtered.filter(i => i.type !== "docs").map((item, index) => (
+                    <motion.div
+                      key={item.title}
+                      variants={itemVariants}
+                      className={item.type === "video" ? "md:col-span-2" : ""}
+                    >
+                      {renderCard(item, index)}
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+              {/* Doc items in book shelf */}
+              {filtered.some(i => i.type === "docs") && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+                  {filtered.filter(i => i.type === "docs").map((item, index) => (
+                    <motion.div key={item.title} variants={itemVariants}>
+                      {renderCard(item, index)}
+                    </motion.div>
+                  ))}
+                </div>
+              )}
                 >
                   {item.type === "video" ? (
                     /* ── Video Card: 16:9 cinematic ── */
