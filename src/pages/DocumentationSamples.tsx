@@ -92,7 +92,7 @@ function VideoCard({ item }: { item: SampleItem }) {
         </h3>
       </div>
       <div className="h-[6px] w-[60%] mx-auto mt-2 bg-foreground/5 rounded-[50%] blur-[5px] transition-all duration-700 group-hover:w-[70%] group-hover:bg-foreground/10" />
-    </a>
+    </button>
   );
 }
 
