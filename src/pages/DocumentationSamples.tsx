@@ -20,6 +20,10 @@ const documentationSamples = [
   { title: "HealthMate Pro BPM-500 – User Guide", description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.", pdfLink: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing", cover: bpm500Cover },
 ];
 
+const videos = [
+  { title: "Product Demo Video – Sample Walkthrough", description: "A sample demo video showcasing product walkthrough and feature highlights, created to demonstrate video documentation skills.", link: "https://youtu.be/ZM9HkCIeRvA", thumbnail: "https://img.youtube.com/vi/ZM9HkCIeRvA/maxresdefault.jpg" },
+];
+
 const blogPosts = [
   { title: "Documentation to Conversation", description: "Exploring how to transform static documentation into interactive conversational experiences.", link: "https://sites.google.com/view/documentation-to-conversation/home", cover: blogDocToConversation },
   { title: "Designing Documentation for Accessibility", description: "Best practices and strategies for creating inclusive documentation that works for everyone.", link: "https://sites.google.com/view/designingdocumentationforacces/home?authuser=0", cover: blogAccessibility },
