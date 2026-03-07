@@ -52,8 +52,8 @@ function VideoCard({ item }: { item: SampleItem }) {
       aria-label={`Open video: ${item.title}`}
       style={{ perspective: "1000px" }}
     >
+      <div className="relative mx-auto max-w-[300px]">
         {/* Screen frame */}
-        <div
           className="video-screen relative rounded-lg overflow-hidden bg-foreground/90"
           style={{
             transformOrigin: "center bottom",
