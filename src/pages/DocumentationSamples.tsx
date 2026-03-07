@@ -181,7 +181,7 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                       </motion.div>
                     </motion.a>
                   ) : (
-                    /* ── Doc Card: Book with cover ── */
+                    /* ── Doc Card: 3D Book ── */
                     <a
                       href={item.link}
                       target="_blank"
@@ -192,49 +192,66 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                           window.open(item.link, '_blank');
                         }
                       }}
-                      className="group block"
-                      style={{ perspective: "900px" }}
+                      className="group block book-card"
+                      style={{ perspective: "1200px" }}
                     >
-                      <div className="relative flex" style={{ transformStyle: "preserve-3d" }}>
-                        {/* Book cover - opens on hover */}
+                      <div
+                        className="relative w-[160px] sm:w-[180px] mx-auto"
+                        style={{ transformStyle: "preserve-3d" }}
+                      >
+                        {/* Page stack (visible when cover opens) */}
+                        <div className="absolute inset-0 rounded-r-md rounded-l-sm bg-card border border-border/50">
+                          {/* Page lines */}
+                          <div className="absolute inset-4 flex flex-col justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                            <FileText className="w-5 h-5 text-primary/50 mb-1" />
+                            <div className="h-[3px] w-3/4 bg-foreground/8 rounded-full" />
+                            <div className="h-[3px] w-full bg-foreground/6 rounded-full" />
+                            <div className="h-[3px] w-5/6 bg-foreground/6 rounded-full" />
+                            <div className="h-[3px] w-2/3 bg-foreground/5 rounded-full" />
+                            <div className="mt-auto">
+                              <span className="text-[10px] font-medium text-primary/70 group-hover:text-primary transition-colors duration-500">
+                                {item.linkLabel} →
+                              </span>
+                            </div>
+                          </div>
+                          {/* Page edges on right side */}
+                          <div className="absolute top-[3px] right-0 bottom-[3px] w-[6px] flex flex-col justify-between">
+                            <div className="h-full bg-gradient-to-l from-border/40 to-transparent rounded-r-sm" />
+                          </div>
+                        </div>
+
+                        {/* Book Cover - flips open */}
                         <div
-                          className="relative w-[120px] sm:w-[140px] flex-shrink-0 aspect-[3/4] rounded-l-md rounded-r-sm overflow-hidden shadow-md transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl"
+                          className="book-cover relative w-full aspect-[3/4] rounded-md overflow-hidden shadow-lg"
                           style={{
                             transformOrigin: "left center",
                             transformStyle: "preserve-3d",
-                            transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s ease",
+                            transition: "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.8s ease",
+                            zIndex: 2,
                           }}
                         >
-                          <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top" />
-                          {/* Spine shadow */}
-                          <div className="absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/15 to-transparent" />
-                          {/* Subtle page edge */}
-                          <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-r from-black/10 to-transparent" />
+                          {/* Front face */}
+                          <div className="absolute inset-0" style={{ backfaceVisibility: "hidden" }}>
+                            <img src={item.cover} alt={item.title} className="w-full h-full object-cover object-top" />
+                            {/* Spine highlight */}
+                            <div className="absolute inset-y-0 left-0 w-[6px] bg-gradient-to-r from-black/25 via-black/10 to-transparent" />
+                            {/* Edge shadow */}
+                            <div className="absolute inset-y-0 right-0 w-2 bg-gradient-to-l from-black/12 to-transparent" />
+                            {/* Subtle gloss */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/5" />
+                          </div>
                         </div>
 
-                        {/* Inner page - revealed on hover */}
-                        <div
-                          className="flex-1 min-w-0 bg-card border border-l-0 border-border/40 rounded-r-md p-5 flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                          style={{
-                            backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(var(--border) / 0.15) 27px, hsl(var(--border) / 0.15) 28px)",
-                            backgroundPositionY: "12px",
-                          }}
-                        >
-                          <span className="inline-block text-[10px] font-mono uppercase tracking-widest text-primary/70 mb-2 group-hover:text-primary transition-colors duration-500">Document</span>
-                          <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1.5 leading-snug group-hover:text-primary transition-colors duration-500" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                        {/* Book title below */}
+                        <div className="mt-4 text-center px-1">
+                          <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-snug group-hover:text-primary transition-colors duration-500 line-clamp-2" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                             {item.title}
                           </h3>
-                          <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{item.description}</p>
-                          <div className="flex items-center gap-1.5 text-xs font-medium text-primary/60 group-hover:text-primary group-hover:gap-2.5 transition-all duration-500">
-                            <FileText className="w-3.5 h-3.5" />
-                            <span>{item.linkLabel}</span>
-                            <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-                          </div>
                         </div>
                       </div>
 
-                      {/* Book bottom shadow */}
-                      <div className="h-2 mx-4 bg-foreground/5 rounded-b-full blur-sm transition-all duration-700 group-hover:mx-2 group-hover:bg-foreground/10" />
+                      {/* Shadow beneath book */}
+                      <div className="w-[140px] sm:w-[160px] h-3 mx-auto mt-1 bg-foreground/6 rounded-[50%] blur-[6px] transition-all duration-700 group-hover:w-[160px] group-hover:sm:w-[180px] group-hover:bg-foreground/10" />
                     </a>
                   )}
                 </motion.div>
