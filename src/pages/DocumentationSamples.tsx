@@ -40,13 +40,18 @@ const categories: { key: CategoryType; label: string; icon: typeof Layers; count
 
 /* ── Video: Monitor/Screen ── */
 function VideoCard({ item }: { item: SampleItem }) {
-  const openLink = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const openLink = () => {
     window.open(item.link, '_blank', 'noopener,noreferrer');
   };
+
   return (
-    <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={openLink} className="group block video-card" style={{ perspective: "1000px" }}>
+    <button
+      type="button"
+      onClick={openLink}
+      className="group block video-card w-full text-left"
+      aria-label={`Open video: ${item.title}`}
+      style={{ perspective: "1000px" }}
+    >
       <div className="relative mx-auto max-w-[300px]">
         {/* Screen frame */}
         <div
@@ -88,7 +93,7 @@ function VideoCard({ item }: { item: SampleItem }) {
         </h3>
       </div>
       <div className="h-[6px] w-[60%] mx-auto mt-2 bg-foreground/5 rounded-[50%] blur-[5px] transition-all duration-700 group-hover:w-[70%] group-hover:bg-foreground/10" />
-    </a>
+    </button>
   );
 }
 
