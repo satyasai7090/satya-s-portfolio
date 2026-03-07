@@ -10,7 +10,6 @@ import cloudSuiteCover from "@/assets/covers/cloudsuite-crm-cover.jpg";
 import pennywiseCover from "@/assets/covers/pennywise-cover.jpg";
 import glucometerCover from "@/assets/covers/glucometer-cover.jpg";
 import bpm500Cover from "@/assets/covers/bpm500-cover.jpg";
-import blogDocToConversation from "@/assets/covers/blog-doc-to-conversation.jpg";
 import blogAccessibility from "@/assets/covers/blog-accessibility.jpg";
 
 const documentationSamples = [
@@ -25,7 +24,6 @@ const videos = [
 ];
 
 const blogPosts = [
-  { title: "Documentation to Conversation", description: "Exploring how to transform static documentation into interactive conversational experiences.", link: "https://sites.google.com/view/documentation-to-conversation/home", cover: blogDocToConversation },
   { title: "Designing Documentation for Accessibility", description: "Best practices and strategies for creating inclusive documentation that works for everyone.", link: "https://sites.google.com/view/designingdocumentationforacces/home?authuser=0", cover: blogAccessibility },
 ];
 
@@ -107,7 +105,7 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
           </div>
 
           <motion.div
-            className="grid gap-6 md:grid-cols-2"
+            className="flex flex-col gap-5"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -120,28 +118,21 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] border border-border/50 transition-all duration-500 hover:border-primary/40"
+                whileHover={{ x: 6, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+                whileTap={{ scale: 0.99 }}
+                className="group flex items-center gap-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-5 transition-all duration-500 hover:border-primary/40 hover:bg-card/80"
                 style={{ boxShadow: "var(--shadow-medium)" }}
               >
-                <img src={post.cover} alt={`${post.title} cover`} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
-                  <motion.div className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30">
-                    <ExternalLink className="w-5 h-5" />
-                  </motion.div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{post.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{post.description}</p>
-                  <Button asChild size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg font-semibold">
-                    <span className="flex items-center justify-center gap-2">
-                      <span>Read Blog</span>
-                      <span>→</span>
-                    </span>
-                  </Button>
+                <div className="hidden sm:block w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-border/30">
+                  <img src={post.cover} alt={`${post.title} cover`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <div className="absolute top-3 right-3 text-xs font-mono text-muted-foreground bg-background/60 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                  0{index + 1}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-semibold text-foreground mb-1 leading-tight group-hover:text-primary transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{post.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">{post.description}</p>
+                </div>
+                <div className="flex-shrink-0 flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="hidden md:inline">Read</span>
+                  <ExternalLink className="w-4 h-4" />
                 </div>
               </motion.a>
             ))}
