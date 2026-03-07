@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { FileText, ExternalLink } from "lucide-react";
+import { FileText, ExternalLink, Play } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
@@ -18,6 +18,10 @@ const documentationSamples = [
   { title: "PennyWise App – Quick Start & Walkthrough Guide", description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.", pdfLink: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing", cover: pennywiseCover },
   { title: "HealthMate Smart Glucometer – Quick Start Guide", description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.", pdfLink: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing", cover: glucometerCover },
   { title: "HealthMate Pro BPM-500 – User Guide", description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.", pdfLink: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing", cover: bpm500Cover },
+];
+
+const videos = [
+  { title: "Product Demo Video – Sample Walkthrough", description: "A sample demo video showcasing product walkthrough and feature highlights, created to demonstrate video documentation skills.", link: "https://youtu.be/ZM9HkCIeRvA", thumbnail: "https://img.youtube.com/vi/ZM9HkCIeRvA/maxresdefault.jpg" },
 ];
 
 const blogPosts = [
@@ -132,6 +136,58 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                   <Button asChild size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg font-semibold">
                     <span className="flex items-center justify-center gap-2">
                       <span>Read Blog</span>
+                      <span>→</span>
+                    </span>
+                  </Button>
+                </div>
+                <div className="absolute top-3 right-3 text-xs font-mono text-muted-foreground bg-background/60 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  0{index + 1}
+                </div>
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Videos */}
+      <section className="section-padding ent-section-1">
+        <div className="container-narrow">
+          <div className="mb-12">
+            <p className="label-caps mb-4">Videos</p>
+            <h2 className="heading-section gold-text">Video Samples</h2>
+            <p className="body-large mt-4">Demo videos and walkthroughs showcasing product documentation in action.</p>
+          </div>
+
+          <motion.div
+            className="grid gap-6 md:grid-cols-2"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {videos.map((video, index) => (
+              <motion.a
+                key={video.title}
+                href={video.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariants}
+                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] border border-border/50 transition-all duration-500 hover:border-primary/40"
+                style={{ boxShadow: "var(--shadow-medium)" }}
+              >
+                <img src={video.thumbnail} alt={`${video.title} thumbnail`} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
+                  <motion.div className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30">
+                    <Play className="w-5 h-5" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{video.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{video.description}</p>
+                  <Button asChild size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg font-semibold">
+                    <span className="flex items-center justify-center gap-2">
+                      <span>Watch Video</span>
                       <span>→</span>
                     </span>
                   </Button>
