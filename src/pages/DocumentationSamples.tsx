@@ -69,13 +69,16 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
               const Icon = cat.icon;
               const isActive = active === cat.key;
               return (
-                <button
+                <motion.button
                   key={cat.key}
                   onClick={() => setActive(cat.key)}
+                  whileHover={{ scale: 1.06, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 20 }}
                   className={`
-                    relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+                    relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-300
                     ${isActive
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
                       : "bg-card border border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-accent/50"
                     }
                   `}
@@ -83,12 +86,19 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                   <Icon className="w-4 h-4" />
                   <span>{cat.label}</span>
                   <span className={`
-                    text-xs px-1.5 py-0.5 rounded-full font-mono
+                    text-xs px-1.5 py-0.5 rounded-full font-mono transition-colors duration-300
                     ${isActive ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"}
                   `}>
                     {cat.count}
                   </span>
-                </button>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 rounded-full bg-primary -z-10"
+                      transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                    />
+                  )}
+                </motion.button>
               );
             })}
           </motion.div>
@@ -112,54 +122,67 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                 >
                   {item.type === "video" ? (
                     /* ── Video Card: 16:9 cinematic ── */
-                    <a
+                    <motion.a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative block rounded-xl overflow-hidden aspect-video border border-border/50 transition-all duration-500 hover:border-primary/40"
+                      whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+                      whileTap={{ scale: 0.985 }}
+                      className="group relative block rounded-xl overflow-hidden aspect-video border border-border/50 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.25)]"
                       style={{ boxShadow: "var(--shadow-medium)" }}
                     >
-                      <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+                      <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110" />
+                      {/* Shimmer overlay on hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[linear-gradient(105deg,transparent_40%,hsl(var(--primary)/0.08)_45%,hsl(var(--primary)/0.15)_50%,hsl(var(--primary)/0.08)_55%,transparent_60%)] bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out]" />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <motion.div
-                          className="w-16 h-16 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/30"
-                          whileHover={{ scale: 1.15 }}
-                          transition={{ type: "spring", stiffness: 400 }}
+                          className="w-18 h-18 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-xl shadow-primary/40 backdrop-blur-sm"
+                          whileHover={{ scale: 1.2, boxShadow: "0 0 40px hsl(var(--primary) / 0.5)" }}
+                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
                         >
-                          <Play className="w-7 h-7 ml-1" fill="currentColor" />
+                          <Play className="w-8 h-8 ml-1" fill="currentColor" />
                         </motion.div>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-2 bg-primary/10 px-2 py-1 rounded-full backdrop-blur-sm">Video</span>
-                        <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{item.title}</h3>
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent transition-opacity duration-500" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-2 bg-primary/10 px-2.5 py-1 rounded-full backdrop-blur-sm border border-primary/20">Video</span>
+                        <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight group-hover:text-primary transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{item.title}</h3>
                         <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 max-w-xl">{item.description}</p>
                       </div>
-                    </a>
+                    </motion.a>
                   ) : item.type === "blog" ? (
                     /* ── Blog Card: Horizontal ribbon ── */
-                    <a
+                    <motion.a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-5 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 transition-all duration-500 hover:border-primary/40 hover:bg-card/90 hover:translate-x-1"
+                      whileHover={{ x: 8, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group flex items-center gap-5 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 transition-all duration-500 hover:border-primary/50 hover:bg-card/90 hover:shadow-[0_12px_40px_-10px_hsl(var(--primary)/0.2)]"
                       style={{ boxShadow: "var(--shadow-medium)" }}
                     >
-                      <div className="hidden sm:block w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-border/30">
-                        <img src={item.cover} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <div className="hidden sm:block w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-border/30 group-hover:border-primary/40 transition-all duration-500 group-hover:shadow-md group-hover:shadow-primary/10">
+                        <img src={item.cover} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-115" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-1.5">Blog</span>
+                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">Blog</span>
                         <h3 className="text-base font-semibold text-foreground mb-1 leading-tight group-hover:text-primary transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{item.title}</h3>
                         <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">{item.description}</p>
                       </div>
-                      <div className="flex-shrink-0 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <ExternalLink className="w-5 h-5" />
-                      </div>
-                    </a>
+                      <motion.div
+                        className="flex-shrink-0 text-primary"
+                        initial={{ opacity: 0, x: -8 }}
+                        whileHover={{ rotate: -15 }}
+                        animate={{}}
+                      >
+                        <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 -translate-x-2">
+                          <ExternalLink className="w-5 h-5" />
+                        </div>
+                      </motion.div>
+                    </motion.a>
                   ) : (
                     /* ── Doc Card: Compact horizontal ── */
-                    <a
+                    <motion.a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -169,28 +192,32 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                           window.open(item.link, '_blank');
                         }
                       }}
-                      className="group flex rounded-xl overflow-hidden border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:bg-card/90 hover:-translate-y-1"
+                      whileHover={{ y: -5, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group flex rounded-xl overflow-hidden border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-500 hover:border-primary/50 hover:bg-card/90 hover:shadow-[0_16px_50px_-12px_hsl(var(--primary)/0.2)]"
                       style={{ boxShadow: "var(--shadow-medium)" }}
                     >
                       {/* Thumbnail */}
                       <div className="relative w-28 sm:w-36 flex-shrink-0 overflow-hidden">
-                        <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/20" />
+                        <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-115" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/30 group-hover:to-card/10 transition-all duration-500" />
+                        {/* Gold accent line */}
+                        <div className="absolute top-0 left-0 w-1 h-full bg-primary/0 group-hover:bg-primary transition-all duration-500" />
                       </div>
                       {/* Content */}
                       <div className="flex-1 p-5 flex flex-col justify-center min-w-0">
-                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-2 w-fit">Document</span>
+                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-2 w-fit opacity-70 group-hover:opacity-100 transition-opacity duration-300">Document</span>
                         <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1.5 leading-tight group-hover:text-primary transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                           {item.title}
                         </h3>
                         <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{item.description}</p>
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:gap-2.5">
-                          <FileText className="w-3.5 h-3.5" />
+                        <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-60 group-hover:opacity-100 transition-all duration-500">
+                          <FileText className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-[-8deg]" />
                           <span>{item.linkLabel}</span>
-                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
                         </div>
                       </div>
-                    </a>
+                    </motion.a>
                   )}
                 </motion.div>
               ))}
