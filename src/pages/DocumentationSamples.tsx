@@ -25,7 +25,6 @@ const videos = [
 ];
 
 const blogPosts = [
-  { title: "Documentation to Conversation", description: "Exploring how to transform static documentation into interactive conversational experiences.", link: "https://sites.google.com/view/documentation-to-conversation/home", cover: blogDocToConversation },
   { title: "Designing Documentation for Accessibility", description: "Best practices and strategies for creating inclusive documentation that works for everyone.", link: "https://sites.google.com/view/designingdocumentationforacces/home?authuser=0", cover: blogAccessibility },
 ];
 
