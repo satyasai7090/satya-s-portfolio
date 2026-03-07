@@ -159,7 +159,7 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
           </div>
 
           <motion.div
-            className="grid gap-6 md:grid-cols-2"
+            className="grid gap-6"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -172,25 +172,22 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] border border-border/50 transition-all duration-500 hover:border-primary/40"
+                whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+                whileTap={{ scale: 0.99 }}
+                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-video border border-border/50 transition-all duration-500 hover:border-primary/40"
                 style={{ boxShadow: "var(--shadow-medium)" }}
               >
                 <img src={video.thumbnail} alt={`${video.title} thumbnail`} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
-                  <motion.div className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30">
-                    <Play className="w-5 h-5" />
-                  </motion.div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{video.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{video.description}</p>
-                  <Button asChild size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg font-semibold">
-                    <span className="flex items-center justify-center gap-2">
-                      <span>Watch Video</span>
-                      <span>→</span>
-                    </span>
-                  </Button>
+                {/* Play button overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
+                    <Play className="w-7 h-7 ml-1" fill="currentColor" />
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{video.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">{video.description}</p>
                 </div>
                 <div className="absolute top-3 right-3 text-xs font-mono text-muted-foreground bg-background/60 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   0{index + 1}
