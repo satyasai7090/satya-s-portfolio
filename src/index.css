@@ -599,17 +599,17 @@
   }
 }
 
-/* Book cover open effect */
+/* Book cover 3D open effect */
 .book-card .book-cover {
   transform: rotateY(0deg);
   box-shadow:
-    2px 2px 8px -2px hsl(var(--foreground) / 0.1),
-    0 1px 3px hsl(var(--foreground) / 0.06);
+    3px 3px 14px -3px hsl(var(--foreground) / 0.16),
+    1px 1px 5px hsl(var(--foreground) / 0.08);
 }
 
 .book-card:hover .book-cover {
-  transform: rotateY(-35deg);
+  transform: rotateY(-32deg);
   box-shadow:
-    12px 8px 25px -6px hsl(var(--foreground) / 0.15),
-    4px 2px 10px -2px hsl(var(--foreground) / 0.08);
+    18px 12px 35px -8px hsl(var(--foreground) / 0.2),
+    8px 5px 14px -3px hsl(var(--foreground) / 0.1);
 }
