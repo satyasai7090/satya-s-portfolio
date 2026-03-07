@@ -10,7 +10,6 @@ import cloudSuiteCover from "@/assets/covers/cloudsuite-crm-cover.jpg";
 import pennywiseCover from "@/assets/covers/pennywise-cover.jpg";
 import glucometerCover from "@/assets/covers/glucometer-cover.jpg";
 import bpm500Cover from "@/assets/covers/bpm500-cover.jpg";
-import blogDocToConversation from "@/assets/covers/blog-doc-to-conversation.jpg";
 import blogAccessibility from "@/assets/covers/blog-accessibility.jpg";
 
 const documentationSamples = [
