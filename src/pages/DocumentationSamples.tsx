@@ -41,10 +41,9 @@ const categories: { key: CategoryType; label: string; icon: typeof Layers; count
 /* ── Video: Monitor/Screen ── */
 function VideoCard({ item }: { item: SampleItem }) {
   const openLink = (e: React.MouseEvent) => {
-    if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
-      e.preventDefault();
-      window.open(item.link, '_blank');
-    }
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(item.link, '_blank', 'noopener,noreferrer');
   };
   return (
     <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={openLink} className="group block video-card" style={{ perspective: "1000px" }}>
