@@ -40,8 +40,14 @@ const categories: { key: CategoryType; label: string; icon: typeof Layers; count
 
 /* ── Video: Monitor/Screen ── */
 function VideoCard({ item }: { item: SampleItem }) {
+  const openLink = (e: React.MouseEvent) => {
+    if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
+      e.preventDefault();
+      window.open(item.link, '_blank');
+    }
+  };
   return (
-    <a href={item.link} target="_blank" rel="noopener noreferrer" className="group block video-card" style={{ perspective: "1000px" }}>
+    <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={openLink} className="group block video-card" style={{ perspective: "1000px" }}>
       <div className="relative mx-auto max-w-[300px]">
         {/* Screen frame */}
         <div
@@ -89,8 +95,14 @@ function VideoCard({ item }: { item: SampleItem }) {
 
 /* ── Blog: Magazine ── */
 function BlogCard({ item }: { item: SampleItem }) {
+  const openLink = (e: React.MouseEvent) => {
+    if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
+      e.preventDefault();
+      window.open(item.link, '_blank');
+    }
+  };
   return (
-    <a href={item.link} target="_blank" rel="noopener noreferrer" className="group block magazine-card" style={{ perspective: "1000px" }}>
+    <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={openLink} className="group block magazine-card" style={{ perspective: "1000px" }}>
       <div className="relative mx-auto">
         <div
           className="magazine-cover relative aspect-[3/4] rounded-sm overflow-hidden"
