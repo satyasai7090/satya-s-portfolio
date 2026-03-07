@@ -599,12 +599,17 @@
   }
 }
 
-/* Book cover open effect */
-.group:hover .book-cover-open,
-.group:hover > div > div:first-child {
-  /* Handled inline for specificity, but we add the 3D open here as a fallback */
+/* Book cover 3D open effect */
+.book-card .book-cover {
+  transform: rotateY(0deg);
+  box-shadow:
+    3px 3px 14px -3px hsl(var(--foreground) / 0.16),
+    1px 1px 5px hsl(var(--foreground) / 0.08);
 }
-a[style*="perspective"]:hover > div > div:first-child {
-  transform: rotateY(-25deg);
-  box-shadow: 8px 4px 20px -4px hsl(var(--foreground) / 0.12);
+
+.book-card:hover .book-cover {
+  transform: rotateY(-32deg);
+  box-shadow:
+    18px 12px 35px -8px hsl(var(--foreground) / 0.2),
+    8px 5px 14px -3px hsl(var(--foreground) / 0.1);
 }
