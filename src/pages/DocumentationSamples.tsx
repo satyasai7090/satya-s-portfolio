@@ -54,6 +54,7 @@ function VideoCard({ item }: { item: SampleItem }) {
     >
       <div className="relative mx-auto max-w-[300px]">
         {/* Screen frame */}
+        <div
           className="video-screen relative rounded-lg overflow-hidden bg-foreground/90"
           style={{
             transformOrigin: "center bottom",
