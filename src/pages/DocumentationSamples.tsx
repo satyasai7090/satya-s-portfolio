@@ -158,47 +158,39 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                       </div>
                     </a>
                   ) : (
-                    /* ── Doc Card: Portrait cover ── */
-                    <div
-                      className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[3/4] border border-border/50 transition-all duration-500 hover:border-primary/40 hover:-translate-y-2 hover:scale-[1.02]"
+                    /* ── Doc Card: Compact horizontal ── */
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
+                          e.preventDefault();
+                          window.open(item.link, '_blank');
+                        }
+                      }}
+                      className="group flex rounded-xl overflow-hidden border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:bg-card/90 hover:-translate-y-1"
                       style={{ boxShadow: "var(--shadow-medium)" }}
                     >
-                      <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                      <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-4 group-hover:translate-y-0">
-                        <motion.div className="p-3 rounded-xl bg-primary/90 text-primary-foreground w-fit mb-4 shadow-lg shadow-primary/30">
-                          <FileText className="w-5 h-5" />
-                        </motion.div>
-                        <h3 className="text-lg font-semibold text-foreground mb-2 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                      {/* Thumbnail */}
+                      <div className="relative w-28 sm:w-36 flex-shrink-0 overflow-hidden">
+                        <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/20" />
+                      </div>
+                      {/* Content */}
+                      <div className="flex-1 p-5 flex flex-col justify-center min-w-0">
+                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-2 w-fit">Document</span>
+                        <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1.5 leading-tight group-hover:text-primary transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                           {item.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
-                        <Button
-                          asChild
-                          size="sm"
-                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg font-semibold"
-                        >
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2"
-                            onClick={(e) => {
-                              if (window.location.hostname.includes('lovableproject.com') || window.location.hostname.includes('lovable.app')) {
-                                e.preventDefault();
-                                window.open(item.link, '_blank');
-                              }
-                            }}
-                          >
-                            <span>{item.linkLabel}</span>
-                            <span>→</span>
-                          </a>
-                        </Button>
+                        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{item.description}</p>
+                        <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:gap-2.5">
+                          <FileText className="w-3.5 h-3.5" />
+                          <span>{item.linkLabel}</span>
+                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </div>
                       </div>
-                      <div className="absolute top-3 right-3 text-xs font-mono text-muted-foreground bg-background/60 px-2 py-1 rounded-full backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                        0{index + 1}
-                      </div>
-                    </div>
+                    </a>
                   )}
                 </motion.div>
               ))}
