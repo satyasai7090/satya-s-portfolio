@@ -181,8 +181,8 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                       </motion.div>
                     </motion.a>
                   ) : (
-                    /* ── Doc Card: Compact horizontal ── */
-                    <motion.a
+                    /* ── Doc Card: Book with cover ── */
+                    <a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -192,32 +192,50 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
                           window.open(item.link, '_blank');
                         }
                       }}
-                      whileHover={{ y: -5, transition: { type: "spring", stiffness: 400, damping: 20 } }}
-                      whileTap={{ scale: 0.98 }}
-                      className="group flex rounded-xl overflow-hidden border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-500 hover:border-primary/50 hover:bg-card/90 hover:shadow-[0_16px_50px_-12px_hsl(var(--primary)/0.2)]"
-                      style={{ boxShadow: "var(--shadow-medium)" }}
+                      className="group block"
+                      style={{ perspective: "900px" }}
                     >
-                      {/* Thumbnail */}
-                      <div className="relative w-28 sm:w-36 flex-shrink-0 overflow-hidden">
-                        <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-115" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/30 group-hover:to-card/10 transition-all duration-500" />
-                        {/* Gold accent line */}
-                        <div className="absolute top-0 left-0 w-1 h-full bg-primary/0 group-hover:bg-primary transition-all duration-500" />
-                      </div>
-                      {/* Content */}
-                      <div className="flex-1 p-5 flex flex-col justify-center min-w-0">
-                        <span className="inline-block text-xs font-mono uppercase tracking-wider text-primary mb-2 w-fit opacity-70 group-hover:opacity-100 transition-opacity duration-300">Document</span>
-                        <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1.5 leading-tight group-hover:text-primary transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                          {item.title}
-                        </h3>
-                        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{item.description}</p>
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-60 group-hover:opacity-100 transition-all duration-500">
-                          <FileText className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-[-8deg]" />
-                          <span>{item.linkLabel}</span>
-                          <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
+                      <div className="relative flex" style={{ transformStyle: "preserve-3d" }}>
+                        {/* Book cover - opens on hover */}
+                        <div
+                          className="relative w-[120px] sm:w-[140px] flex-shrink-0 aspect-[3/4] rounded-l-md rounded-r-sm overflow-hidden shadow-md transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl"
+                          style={{
+                            transformOrigin: "left center",
+                            transformStyle: "preserve-3d",
+                            transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s ease",
+                          }}
+                        >
+                          <img src={item.cover} alt={item.title} className="absolute inset-0 w-full h-full object-cover object-top" />
+                          {/* Spine shadow */}
+                          <div className="absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/15 to-transparent" />
+                          {/* Subtle page edge */}
+                          <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-r from-black/10 to-transparent" />
+                        </div>
+
+                        {/* Inner page - revealed on hover */}
+                        <div
+                          className="flex-1 min-w-0 bg-card border border-l-0 border-border/40 rounded-r-md p-5 flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                          style={{
+                            backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(var(--border) / 0.15) 27px, hsl(var(--border) / 0.15) 28px)",
+                            backgroundPositionY: "12px",
+                          }}
+                        >
+                          <span className="inline-block text-[10px] font-mono uppercase tracking-widest text-primary/70 mb-2 group-hover:text-primary transition-colors duration-500">Document</span>
+                          <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1.5 leading-snug group-hover:text-primary transition-colors duration-500" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                            {item.title}
+                          </h3>
+                          <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2 mb-3">{item.description}</p>
+                          <div className="flex items-center gap-1.5 text-xs font-medium text-primary/60 group-hover:text-primary group-hover:gap-2.5 transition-all duration-500">
+                            <FileText className="w-3.5 h-3.5" />
+                            <span>{item.linkLabel}</span>
+                            <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+                          </div>
                         </div>
                       </div>
-                    </motion.a>
+
+                      {/* Book bottom shadow */}
+                      <div className="h-2 mx-4 bg-foreground/5 rounded-b-full blur-sm transition-all duration-700 group-hover:mx-2 group-hover:bg-foreground/10" />
+                    </a>
                   )}
                 </motion.div>
               ))}

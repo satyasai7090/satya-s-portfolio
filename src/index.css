@@ -598,3 +598,13 @@
     size: letter;
   }
 }
+
+/* Book cover open effect */
+.group:hover .book-cover-open,
+.group:hover > div > div:first-child {
+  /* Handled inline for specificity, but we add the 3D open here as a fallback */
+}
+a[style*="perspective"]:hover > div > div:first-child {
+  transform: rotateY(-25deg);
+  box-shadow: 8px 4px 20px -4px hsl(var(--foreground) / 0.12);
+}
