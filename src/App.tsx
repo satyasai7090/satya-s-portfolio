@@ -15,6 +15,8 @@ const DocumentationSamples = lazy(() => import("./pages/DocumentationSamples"));
 const Experience = lazy(() => import("./pages/Experience"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const ApiDocsSample = lazy(() => import("./pages/samples/ApiDocsSample"));
+const KnowledgeBaseSample = lazy(() => import("./pages/samples/KnowledgeBaseSample"));
 
 const queryClient = new QueryClient();
 
