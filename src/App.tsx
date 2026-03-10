@@ -57,6 +57,8 @@ function AnimatedRoutes() {
             <Route path="/documentation-samples" element={<DocumentationSamples />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/samples/api-docs" element={<ApiDocsSample />} />
+            <Route path="/samples/knowledge-base" element={<KnowledgeBaseSample />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
