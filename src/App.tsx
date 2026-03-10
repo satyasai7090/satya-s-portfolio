@@ -15,6 +15,8 @@ const DocumentationSamples = lazy(() => import("./pages/DocumentationSamples"));
 const Experience = lazy(() => import("./pages/Experience"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const ApiDocsSample = lazy(() => import("./pages/samples/ApiDocsSample"));
+const KnowledgeBaseSample = lazy(() => import("./pages/samples/KnowledgeBaseSample"));
 
 const queryClient = new QueryClient();
 
@@ -55,6 +57,8 @@ function AnimatedRoutes() {
             <Route path="/documentation-samples" element={<DocumentationSamples />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/samples/api-docs" element={<ApiDocsSample />} />
+            <Route path="/samples/knowledge-base" element={<KnowledgeBaseSample />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

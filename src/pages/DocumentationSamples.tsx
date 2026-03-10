@@ -1,6 +1,7 @@
 import { forwardRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, ExternalLink, Play, Layers } from "lucide-react";
+import { FileText, ExternalLink, Play, Layers, Code } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
@@ -10,11 +11,14 @@ import pennywiseCover from "@/assets/covers/pennywise-cover.jpg";
 import glucometerCover from "@/assets/covers/glucometer-cover.jpg";
 import bpm500Cover from "@/assets/covers/bpm500-cover.jpg";
 import blogAccessibility from "@/assets/covers/blog-accessibility.jpg";
+import nexusMftCover from "@/assets/covers/nexus-mft-cover.jpg";
+import apiDocsCover from "@/assets/covers/api-docs-cover.jpg";
+import kbCover from "@/assets/covers/knowledge-base-cover.jpg";
 
-type CategoryType = "all" | "docs" | "blog" | "video";
+type CategoryType = "all" | "docs" | "blog" | "video" | "html";
 
 interface SampleItem {
-  type: "docs" | "blog" | "video";
+  type: "docs" | "blog" | "video" | "html";
   title: string;
   description: string;
   link: string;
@@ -24,15 +28,19 @@ interface SampleItem {
 
 const allItems: SampleItem[] = [
   { type: "docs", title: "CloudSuite CRM – Release Notes (v3.12.0)", description: "Release notes documenting new features, enhancements, security updates, bug fixes, and upgrade guidance for an enterprise CRM platform.", link: "https://drive.google.com/file/d/1NqGAjfdit373R7D8lEUlSqVx0CkkWbIQ/view?usp=sharing", cover: cloudSuiteCover, linkLabel: "View PDF" },
+  { type: "docs", title: "Nexus MFT – Release Notes", description: "Release notes documenting new features, enhancements, and updates for a managed file transfer platform.", link: "https://drive.google.com/file/d/19n2K5EcZN8a6LYDExOC2hvL7FMNV2_4c/view?usp=sharing", cover: nexusMftCover, linkLabel: "View PDF" },
   { type: "docs", title: "PennyWise App – Quick Start & Walkthrough Guide", description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.", link: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing", cover: pennywiseCover, linkLabel: "View PDF" },
   { type: "docs", title: "HealthMate Smart Glucometer – Quick Start Guide", description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.", link: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing", cover: glucometerCover, linkLabel: "View PDF" },
   { type: "docs", title: "HealthMate Pro BPM-500 – User Guide", description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.", link: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing", cover: bpm500Cover, linkLabel: "View PDF" },
   { type: "blog", title: "Designing Documentation for Accessibility", description: "Best practices and strategies for creating inclusive documentation that works for everyone.", link: "https://sites.google.com/view/designingdocumentationforacces/home?authuser=0", cover: blogAccessibility, linkLabel: "Read Blog" },
   { type: "video", title: "Product Demo Video – Sample Walkthrough", description: "A sample demo video showcasing product walkthrough and feature highlights, created to demonstrate video documentation skills.", link: "https://www.youtube.com/watch?v=ZM9HkCIeRvA", cover: "https://img.youtube.com/vi/ZM9HkCIeRvA/maxresdefault.jpg", linkLabel: "Watch Video" },
+  { type: "html", title: "Nexus MFT – API Reference", description: "Interactive REST API documentation with endpoint details, request/response examples, and error code reference.", link: "/samples/api-docs", cover: apiDocsCover, linkLabel: "View Live" },
+  { type: "html", title: "Nexus MFT – Knowledge Base", description: "Troubleshooting guide with symptom-based articles covering connection issues, performance, and authentication errors.", link: "/samples/knowledge-base", cover: kbCover, linkLabel: "View Live" },
 ];
 
 const categories: { key: CategoryType; label: string; icon: typeof Layers; count: number }[] = [
   { key: "all", label: "All Work", icon: Layers, count: allItems.length },
+  { key: "html", label: "HTML Samples", icon: Code, count: allItems.filter(i => i.type === "html").length },
   { key: "docs", label: "Documents", icon: FileText, count: allItems.filter(i => i.type === "docs").length },
   { key: "blog", label: "Blog Posts", icon: ExternalLink, count: allItems.filter(i => i.type === "blog").length },
   { key: "video", label: "Videos", icon: Play, count: allItems.filter(i => i.type === "video").length },
@@ -210,6 +218,46 @@ function BookCard({ item }: { item: SampleItem }) {
   );
 }
 
+/* ── HTML Sample: Browser Window Card ── */
+function HtmlCard({ item }: { item: SampleItem }) {
+  return (
+    <Link to={item.link} className="group block">
+      <div className="rounded-xl overflow-hidden border border-border/60 bg-card shadow-lg shadow-black/5 group-hover:shadow-xl group-hover:shadow-primary/10 group-hover:border-primary/30 transition-all duration-500 group-hover:-translate-y-1">
+        <div className="flex items-center gap-2 px-3 py-2 bg-muted/60 border-b border-border/40">
+          <div className="flex gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
+          </div>
+          <div className="flex-1 mx-2 px-3 py-1 rounded-md bg-background/80 border border-border/30 flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full border border-emerald-400/60 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/60" />
+            </div>
+            <span className="text-[10px] font-mono text-muted-foreground truncate">nexusmft.io/docs</span>
+          </div>
+        </div>
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <img src={item.cover} alt={item.title} className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+          <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-emerald-500/90 text-white tracking-wider">HTML</div>
+          <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+            <span className="text-[10px] font-medium text-primary/80 group-hover:text-primary transition-colors duration-500">{item.linkLabel}</span>
+            <ExternalLink className="w-3.5 h-3.5 text-primary/50 group-hover:text-primary transition-colors duration-500" />
+          </div>
+        </div>
+      </div>
+
+      {/* Title */}
+      <div className="mt-4 text-center px-1">
+        <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-snug group-hover:text-primary transition-colors duration-500 line-clamp-2" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+          {item.title}
+        </h3>
+      </div>
+      <div className="h-[6px] w-[80%] mx-auto mt-2 bg-foreground/5 rounded-[50%] blur-[5px] transition-all duration-700 group-hover:w-[90%] group-hover:bg-foreground/10" />
+    </Link>
+  );
+}
+
 /* ── Page ── */
 const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
   const [active, setActive] = useState<CategoryType>("all");
@@ -218,6 +266,7 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
   const docs = filtered.filter(i => i.type === "docs");
   const blogs = filtered.filter(i => i.type === "blog");
   const videos = filtered.filter(i => i.type === "video");
+  const htmlSamples = filtered.filter(i => i.type === "html");
 
   return (
     <PageLayout>
@@ -271,11 +320,25 @@ const DocumentationSamples = forwardRef<HTMLDivElement>((_, ref) => {
               exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
               className="space-y-16"
             >
+              {/* HTML Samples — Browser Window Cards */}
+              {htmlSamples.length > 0 && (
+                <div>
+                  {active === "all" && <motion.p variants={itemVariants} className="label-caps mb-8 text-center">HTML Samples</motion.p>}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    {htmlSamples.map((item) => (
+                      <motion.div key={item.title} variants={itemVariants}>
+                        <HtmlCard item={item} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Documents shelf */}
               {docs.length > 0 && (
                 <div>
                   {active === "all" && <motion.p variants={itemVariants} className="label-caps mb-8 text-center">Documents</motion.p>}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-10 max-w-2xl mx-auto">
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-x-6 gap-y-10 max-w-3xl mx-auto">
                     {docs.map((item) => (
                       <motion.div key={item.title} variants={itemVariants}>
                         <BookCard item={item} />
