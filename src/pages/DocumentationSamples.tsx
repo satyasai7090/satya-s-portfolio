@@ -1,6 +1,7 @@
 import { forwardRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, ExternalLink, Play, Layers } from "lucide-react";
+import { FileText, ExternalLink, Play, Layers, Code } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/shared/PageHero";
 import { containerVariants, itemVariants } from "@/components/shared/AnimatedSection";
@@ -10,11 +11,14 @@ import pennywiseCover from "@/assets/covers/pennywise-cover.jpg";
 import glucometerCover from "@/assets/covers/glucometer-cover.jpg";
 import bpm500Cover from "@/assets/covers/bpm500-cover.jpg";
 import blogAccessibility from "@/assets/covers/blog-accessibility.jpg";
+import nexusMftCover from "@/assets/covers/nexus-mft-cover.jpg";
+import apiDocsCover from "@/assets/covers/api-docs-cover.jpg";
+import kbCover from "@/assets/covers/knowledge-base-cover.jpg";
 
-type CategoryType = "all" | "docs" | "blog" | "video";
+type CategoryType = "all" | "docs" | "blog" | "video" | "html";
 
 interface SampleItem {
-  type: "docs" | "blog" | "video";
+  type: "docs" | "blog" | "video" | "html";
   title: string;
   description: string;
   link: string;
@@ -24,15 +28,19 @@ interface SampleItem {
 
 const allItems: SampleItem[] = [
   { type: "docs", title: "CloudSuite CRM – Release Notes (v3.12.0)", description: "Release notes documenting new features, enhancements, security updates, bug fixes, and upgrade guidance for an enterprise CRM platform.", link: "https://drive.google.com/file/d/1NqGAjfdit373R7D8lEUlSqVx0CkkWbIQ/view?usp=sharing", cover: cloudSuiteCover, linkLabel: "View PDF" },
+  { type: "docs", title: "Nexus MFT – Release Notes", description: "Release notes documenting new features, enhancements, and updates for a managed file transfer platform.", link: "https://drive.google.com/file/d/19n2K5EcZN8a6LYDExOC2hvL7FMNV2_4c/view?usp=sharing", cover: nexusMftCover, linkLabel: "View PDF" },
   { type: "docs", title: "PennyWise App – Quick Start & Walkthrough Guide", description: "End-user onboarding guide designed to help first-time users set up, navigate, and use a consumer budgeting application effectively.", link: "https://drive.google.com/file/d/1oFtabVG21vZkHDByqgaSk5TzO3qUYS30/view?usp=sharing", cover: pennywiseCover, linkLabel: "View PDF" },
   { type: "docs", title: "HealthMate Smart Glucometer – Quick Start Guide", description: "Concise quick start guide enabling users to safely set up, operate, and interpret results from a smart medical device.", link: "https://drive.google.com/file/d/1TUlks_wyXs5AQsC8STfZUVwwXUiX5QPB/view?usp=sharing", cover: glucometerCover, linkLabel: "View PDF" },
   { type: "docs", title: "HealthMate Pro BPM-500 – User Guide", description: "Comprehensive user manual covering operation, troubleshooting, maintenance, safety, and regulatory compliance for a medical device.", link: "https://drive.google.com/file/d/1ydFLLuf_QKNnCxRX7O2eTzWWk2j_xKrm/view?usp=sharing", cover: bpm500Cover, linkLabel: "View PDF" },
   { type: "blog", title: "Designing Documentation for Accessibility", description: "Best practices and strategies for creating inclusive documentation that works for everyone.", link: "https://sites.google.com/view/designingdocumentationforacces/home?authuser=0", cover: blogAccessibility, linkLabel: "Read Blog" },
   { type: "video", title: "Product Demo Video – Sample Walkthrough", description: "A sample demo video showcasing product walkthrough and feature highlights, created to demonstrate video documentation skills.", link: "https://www.youtube.com/watch?v=ZM9HkCIeRvA", cover: "https://img.youtube.com/vi/ZM9HkCIeRvA/maxresdefault.jpg", linkLabel: "Watch Video" },
+  { type: "html", title: "Nexus MFT – API Reference", description: "Interactive REST API documentation with endpoint details, request/response examples, and error code reference.", link: "/samples/api-docs", cover: apiDocsCover, linkLabel: "View Live" },
+  { type: "html", title: "Nexus MFT – Knowledge Base", description: "Troubleshooting guide with symptom-based articles covering connection issues, performance, and authentication errors.", link: "/samples/knowledge-base", cover: kbCover, linkLabel: "View Live" },
 ];
 
 const categories: { key: CategoryType; label: string; icon: typeof Layers; count: number }[] = [
   { key: "all", label: "All Work", icon: Layers, count: allItems.length },
+  { key: "html", label: "HTML Samples", icon: Code, count: allItems.filter(i => i.type === "html").length },
   { key: "docs", label: "Documents", icon: FileText, count: allItems.filter(i => i.type === "docs").length },
   { key: "blog", label: "Blog Posts", icon: ExternalLink, count: allItems.filter(i => i.type === "blog").length },
   { key: "video", label: "Videos", icon: Play, count: allItems.filter(i => i.type === "video").length },
